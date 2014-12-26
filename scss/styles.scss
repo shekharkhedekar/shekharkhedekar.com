@@ -1,0 +1,222 @@
+@import "imports/normalize";
+@import "imports/compass";
+@import "imports/fonts";
+
+/**********
+* VARIABLES
+***********/
+$baseColor: #ffffff;
+$linkColor: #F7A14E;
+$backgroundColor: #150318;
+
+$gridHeight: 18px;
+$gridWidth: 18px;
+
+$transitionTime: 0.2s;
+$transitionEasing: ease;
+
+$workItemSpacing: $gridWidth*2;
+$workItemBarWidth: $gridWidth/2 + 1;
+$workItemBarBorderWidth: 4px;
+
+/**********
+* MIXINS
+***********/
+@mixin inline-block() {
+    display: inline-block;
+    vertical-align: top;
+    *zoom: 1;
+}
+
+/**********
+* GENERAL
+***********/
+* {
+    box-sizing: border-box;
+}
+
+html {
+    &.wf-active {
+        body {
+            @include opacity(1);
+        }
+    }
+}
+
+body {
+    margin: 0;
+    padding: $gridHeight;
+    font-size: $gridHeight;
+    line-height: $gridHeight*3/2;
+    font-family: 'Titillium Web', sans-serif;
+    background-color: $backgroundColor;
+    @include opacity(0);
+    @include transition(opacity $transitionTime/2 $transitionEasing);
+}
+
+body {
+    color: $baseColor;
+}
+
+p {
+    margin: $gridHeight 0;
+}
+
+a,
+a:link,
+a:hover,
+a:visited,
+a:focus,
+a:active {
+    color: $linkColor;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    @include transition(border-bottom $transitionTime $transitionEasing);
+    @include inline-block();
+    height: $gridHeight + 4;
+}
+
+a:hover {
+    border-bottom: 1px solid $linkColor;
+    text-shadow: 0 0 1px $backgroundColor,
+    0 0 2px $backgroundColor,
+    0 0 3px $backgroundColor,
+    0 0 4px $backgroundColor,
+    0 0 5px $backgroundColor;
+}
+
+/**********
+* BASE CLASSES
+***********/
+.main {
+    font-family: "Arvo", serif;
+    font-size: $gridHeight*2;
+    line-height: $gridHeight*3;
+
+    a {
+        height: $gridHeight*3 - 7px;
+    }
+}
+
+.heading {
+    border-top: 1px solid $baseColor;
+    padding-top: $gridHeight/2;
+}
+
+.main-section {
+    margin-top: $gridHeight*2;
+}
+
+/**********
+* WORK
+***********/
+$timelineWidth: 4px;
+#work {
+}
+
+.work-timeline {
+    min-height: 400px;
+    position: relative;
+
+    /* Vertical timeline bar */
+    &:before {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: -$timelineWidth/2;
+
+        width: $timelineWidth;
+        height: 100%;
+
+        background-color: $baseColor;
+    }
+}
+
+.work-item-wrap {
+    &:nth-child(2n-1) {
+        .work-item {
+            text-align: right;
+            padding-right: $workItemSpacing;
+
+            &:before {
+                right: 0;
+            }
+            &:after {
+                right: -$workItemBarWidth/2 - $workItemBarBorderWidth;
+            }
+        }
+    }
+    &:nth-child(2n) {
+        .work-item {
+            padding-left: $timelineWidth + $workItemSpacing;
+            margin-left: 50%;
+
+            &:before {
+                left: 0;
+            }
+            &:after {
+                left: -$workItemBarWidth/2 - $workItemBarBorderWidth;
+            }
+        }
+    }
+}
+
+.work-item {
+    width: 50%;
+    position: relative;
+
+    &:before,
+    &:after {
+        content: ' ';
+
+        position: absolute;
+        top: 0;
+    }
+
+    /* Timeline Bar */
+    &:after {
+        width: $workItemBarWidth;
+        height: 100%;
+
+        background-color: $linkColor;
+        border: $workItemBarBorderWidth solid $backgroundColor;
+
+        //        @include box-shadow(0 0 0 2px $backgroundColor, 0 0 0 4px $baseColor);
+    }
+    /* Leader Line */
+    &:before {
+        background-color: $baseColor;
+        height: 1px;
+        width: $workItemSpacing - 4px;
+        top: $gridHeight*3/4;
+    }
+
+    /* Proportional heights for # of years */
+    @for $i from 1 through 10 {
+        &.years-#{$i} {
+            min-height: 30px * $i;
+        }
+    }
+}
+
+.work-item-description,
+.work-item-time {
+    font-size: $gridHeight - 4;
+    font-style: italic;
+}
+
+/**********
+* PLAY
+***********/
+
+.play-item {
+    border-left: $workItemBarWidth solid $linkColor;
+    padding-left: $gridWidth;
+    margin-bottom: $gridHeight*2;
+    widows: 50%;
+}
+
+.play-item-description {
+    font-size: $gridHeight - 4;
+}
