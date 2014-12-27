@@ -36,7 +36,7 @@
         });
     };
     var _debounce = function (callback, timeout, delay) {
-        delay = delay || 50;
+        delay = delay || 20;
 
         if (delay) {
             if (timeout) {

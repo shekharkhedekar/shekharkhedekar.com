@@ -76,19 +76,30 @@ a:focus,
 a:active {
     color: $linkColor;
     text-decoration: none;
-    border-bottom: 1px solid transparent;
     @include transition(border-bottom $transitionTime $transitionEasing);
-    @include inline-block();
     height: $gridHeight + 4;
 }
 
 a:hover {
-    border-bottom: 1px solid $linkColor;
-    text-shadow: 0 0 1px $backgroundColor,
-    0 0 2px $backgroundColor,
-    0 0 3px $backgroundColor,
+    text-shadow: 0 0 4px $backgroundColor,
     0 0 4px $backgroundColor,
+    0 0 4px $backgroundColor,
+    0 0 4px $backgroundColor,
+    0 0 4px $backgroundColor,
+    0 0 4px $backgroundColor,
+    0 0 5px $backgroundColor,
+    0 0 5px $backgroundColor,
+    0 0 5px $backgroundColor,
     0 0 5px $backgroundColor;
+    @include background-image(linear-gradient(bottom,
+            $backgroundColor 0%,
+            $backgroundColor 6%,
+            $linkColor 6%,
+            $linkColor 9%,
+            $backgroundColor 9%,
+            $backgroundColor 100%
+
+    ));
 }
 
 /**********
