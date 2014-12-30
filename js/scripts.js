@@ -46,15 +46,14 @@
             return setTimeout(callback, delay);
         }
     };
+    var _onScroll = function (e) {
+        var scrollTop = $document.scrollTop();
+
+        // TODO
+    };
     var _bindEvents = function () {
         var timeout;
-        $document.on('scroll', function (e) {
-            var scrollTop = $document.scrollTop();
-
-            timeout = _debounce(function () {
-                _toggleWorkItems(scrollTop);
-            }, timeout);
-        });
+        $document.on('scroll', _onScroll);
     };
     var _loadWebFonts = function (callback) {
         try {

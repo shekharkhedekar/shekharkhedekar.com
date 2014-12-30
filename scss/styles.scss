@@ -102,6 +102,13 @@ a:hover {
     ));
 }
 
+ul,
+ol {
+    margin: 0;
+    padding:0;
+
+}
+
 /**********
 * BASE CLASSES
 ***********/
@@ -239,8 +246,6 @@ $timelineWidth: 4px;
 .work-item {
     width: 50%;
     position: relative;
-    @include opacity(0.25);
-    @include transition(opacity $transitionTime $transitionEasing);
 
     &.visible {
         @include opacity(1);
@@ -294,6 +299,25 @@ $timelineWidth: 4px;
     width: 66%;
 }
 
+.play-item-title {
+    font-family: "Arvo", serif;
+    margin-bottom: $gridHeight;
+}
 .play-item-description {
     font-size: $gridHeight - 4;
+}
+.teaching-group {
+    margin-bottom: $gridHeight;
+}
+
+.teaching-group-title {
+    font-weight: bold;
+    font-size: $gridHeight - 2;
+}
+.teaching-group-subtitle {
+    font-style: italic;
+}
+.teaching-group-accolades li {
+    list-style-type: square;
+    margin-left: $gridWidth;
 }
