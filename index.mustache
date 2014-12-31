@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Shekhar Khedekar</title>
+    <meta name="keywords"
+          content="Shekhar, Khedekar, Shekhar Khedekar, Interaction Design, QA Engineer, Web Development, Front End Engineer, Front End Developer, HTML, CSS, Javascript, Mountain Biking, Road Biking, Beer Brewing, Percussion, Drum Corps, Snare Drum, Teaching, Arranging"/>
+    <meta name="description" content="Shekhar Khedekar - Site and Resume"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<div class="font-loader">
+    <div class="font-loader-1"></div>
+    <div class="font-loader-2"></div>
+    <div class="font-loader-3"></div>
+</div>
+<div class="content-wrap">
+    <div id="intro">
+        <p class="main">
+            Hey! I'm Shekhar Khedekar.
+        </p>
+
+        <p class="main">
+            I'm a front-end engineer at <a href="http://corp.shocase.com/about-us/" target="_blank">Shocase</a> and a
+            home-brewer,
+            percussion teacher/player, and cyclist.
+        </p>
+
+        <p class="main">
+            If you'd like to get in touch,
+            <a href="mailto:shekhar.khedekar+website@gmail.com?subject=Contacting you from shekharkhedekar.com"
+               title="email">email me,</a>
+            connect on <a href="http://www.linkedin.com/in/shekharkhedekar" title="linkedIn"
+                          target="_blank">LinkedIn,</a>
+            or find me on <a href="http://www.facebook.com/shekhar.khedekar" title="facebook"
+                             target="_blank">Facebook,</a>
+            <a href="https://twitter.com/shekhar" title="twitter" target="_blank">Twitter,</a> and
+            <a href="http://instagram.com/shekhark" title="instagram" target="_blank">Instagram</a>.
+        </p>
+    </div>
+
+    <div id="work" class="main-section">
+        <p class="main heading">Work (or view my <a href="Shekhar Khedekar.pdf" target="_blank"
+                                                    class="pdf fix-box">Resume</a>)</p>
+
+
+        <div class="work-timeline">
+            {{#work}}
+            <div class="work-item-wrap">
+                <div class="work-item years-{{numYears}}">
+                    <div class="work-item-title">{{title}}</div>
+                    <div class="work-item-description">{{description}}</div>
+                    <div class="work-item-time">{{time}}</div>
+                </div>
+            </div>
+            {{/work}}
+        </div>
+    </div>
+
+    <div id="play" class="main-section">
+        <p class="main heading">Play</p>
+
+        {{#play}}
+        <div class="play-item">
+            <div class="play-item-title">{{title}}</div>
+            <div class="play-item-description">
+                {{#description}}
+                        {{#href}}<a href="{{href}}" target="_blank">{{text}}</a>{{/href}}
+                        {{^href}}{{.}}{{/href}}
+
+                {{/description}}
+            </div>
+                {{#teachingGroups}}
+                    <div class="teaching-group">
+                        <div class="teaching-group-title">
+                            {{#href}}<a href="{{href}}" target="_blank">{{title}}</a>{{/href}}
+                            {{^href}}{{.}}{{/href}}
+                            {{#location}}({{location}}){{/location}}
+                        </div>
+
+                        {{#subtitle}}
+                            <div class="teaching-group-subtitle">{{title}}
+                                <ul class="teaching-group-accolades">
+                                    {{#accolades}}
+                                        <li>{{.}}</li>
+                                    {{/accolades}}
+                                </ul>
+                            </div>
+                        {{/subtitle}}
+
+
+                    </div>
+
+                {{/teachingGroups}}
+            </div>
+        {{/play}}
+    </div>
+</div>
+
+
+<script src="scripts.min.js" type="text/javascript"></script>
+<script src="scripts.js" type="text/javascript"></script>
+<script type="text/javascript">
+    // Google Analytics
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-22232924-1']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+
+</body>
+</html>

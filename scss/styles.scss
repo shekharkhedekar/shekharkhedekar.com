@@ -316,6 +316,8 @@ $timelineWidth: 4px;
 }
 .teaching-group-subtitle {
     font-style: italic;
+    font-size: $gridHeight - 4;
+    margin: $gridHeight/2 0;
 }
 .teaching-group-accolades li {
     list-style-type: square;

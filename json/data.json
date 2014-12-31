@@ -1,0 +1,136 @@
+{
+  "work": [
+    {
+      "title": "University of California, Berkeley",
+      "description": "B.S., Mechanical Engineering",
+      "time": "1998-2003",
+      "numYears": 5
+    },
+    {
+      "title": "University of California, Los Angeles",
+      "description": "M.S., Mechanical Engineering",
+      "time": "2003-2004",
+      "numYears": 1
+    },
+    {
+      "title": "Autodesk, Inc.",
+      "description": "QA Engineer/Lead",
+      "time": "2004-2007",
+      "numYears": 3
+    },
+    {
+      "title": "Autodesk, Inc.",
+      "description": "Senior Interaction Designer",
+      "time": "2007-2012",
+      "numYears": 5
+    },
+    {
+      "title": "Autodesk, Inc.",
+      "description": "Front End Engineer",
+      "time": "2012-2013",
+      "numYears": 1
+    },
+    {
+      "title": "Shocase, Inc.",
+      "description": "Front End Engineer",
+      "time": "2013-Present",
+      "numYears": 2
+    }
+  ],
+  "play": [
+    {
+      "title": "Playing/Teaching Percussion",
+      "description": [
+        "I'm currently focusing on playing drumset, though not playing with any groups (yet). I've also taught and arranged for marching/rudimental percussion at the High School, University, Drum Corps (DCI) and WGI levels.<br/><br/>Here are some of the groups I have taught and their accomplishments:<br/><br/>"
+      ],
+      "teachingGroups": [
+        {
+          "href": "http://www.beyerband.org/",
+          "title": "Beyer High School",
+          "location": "Modesto, CA",
+          "subtitle": [
+            {
+              "title": "2004-2005 - Battery Tech",
+              "accolades": [
+                "2005 - WBA AAA Champion"
+              ]
+            },
+            {
+              "title": "2006-2007 - Caption Head/Fall Battery Arranger",
+              "accolades": [
+                "2006 - WBA AAA Champion",
+                "2007 - WBA AAA Champion",
+                "2007 - WGI Scholastic Open Class Bronze Medalist"
+              ]
+            },
+            {
+              "title": "2008-2009 - Arranger",
+              "accolades": [
+                "2008 - WBA AAA Champion"
+              ]
+            }
+          ]
+        },
+        {
+          "href": "https://www.scvanguard.org/programs/vanguard_cadets/",
+          "title": "Santa Clara Vanguard Cadets",
+          "location": "Santa Clara, CA",
+          "subtitle": [
+            {
+              "title": "2006, 2008, 2010 - Guest Tech",
+              "accolades": [
+                "2008 - DCI Open Class Champions, High Drums"
+              ]
+            }
+          ]
+        },
+        {
+          "href": "https://www.scvanguard.org/programs/winter_percussion/",
+          "title": "Vanguard Winter Percussion",
+          "location": "Santa Clara, CA",
+          "subtitle": [
+            {
+              "title": "2009-2010 - Battery Tech/Consultant",
+              "accolades": [
+                "2010 - WGI Independent Open Class Champions"
+              ]
+            },
+            {
+              "title": "2011-2012 - Battery Arranger",
+              "accolades": [
+                "2011 - Promoted from WGI Independent Open to World Class"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Homebrewing Beer",
+      "description": [
+        "I'm a member of",
+        {
+          "href": "http://sfhomebrewersguild.com/about/",
+          "text": "SFHG"
+        },
+        ", and love to try new recipes and build some of",
+        {
+          "href": "https://www.brewtoad.com/users/10932/recipes?page=1&sort=rank&scope_to_user_id=10932",
+          "text": "my own"
+        },
+        ". Really though, I love sharing something I've proudly created with friends."
+      ]
+    },
+    {
+      "title": "2 Wheels!",
+      "description": [
+        "I love",
+        {
+          "href": "http://www.strava.com/athletes/12286",
+          "text": "mountain & road biking, as well as commuting by bike"
+        },
+        "I also have a 2004 Suzuki GS500F (naked conversion) that gets some action commuting and the occasional weekend ride. All in all, I'm more comfortable on 2 wheels than anything else (skates, skateboards, skis etc.)."
+      ]
+    }
+  ]
+}

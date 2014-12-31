@@ -17,7 +17,6 @@
      * Private Methods
      */
     var _toggleWorkItems = function (scrollTop) {
-        console.log('toggle work items');
         // Set scrollTop if not passed
         scrollTop = scrollTop || $document.scrollTop();
 
