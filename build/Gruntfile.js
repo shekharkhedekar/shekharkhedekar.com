@@ -18,11 +18,9 @@ module.exports = function (grunt) {
             scripts: {
                 files:   [
                     'Gruntfile.js',
-                    '../css/**/*.css',
                     '../scss/**/*.scss',
                     '../js/**/*.js',
                     '../json/*.json',
-
                     '../index.mustache'
                 ],
                 tasks:   tasks,
@@ -35,7 +33,7 @@ module.exports = function (grunt) {
             dev: {
                 options: {
                     sassDir:        '../scss',
-                    cssDir:         '../css',
+                    cssDir:         '../www',
                     environment:    'development',
                     noLineComments: true,
                     outputStyle:    'compressed',
@@ -48,7 +46,7 @@ module.exports = function (grunt) {
             options: {},
             dist:    {
                 src:  ['../js/lib/*.js', '../js/scripts.js'],
-                dest: '../scripts.js'
+                dest: '../www/scripts.js'
             }
         },
         uglify:          {
@@ -57,7 +55,7 @@ module.exports = function (grunt) {
             },
             prod:    {
                 files: {
-                    '../scripts.min.js': ['../scripts.js']
+                    '../www/scripts.min.js': ['../www/scripts.js']
                 }
             }
         },
@@ -73,7 +71,7 @@ module.exports = function (grunt) {
                     {
                         data:     '../json/data.json',
                         template: '../index.mustache',
-                        dest:     '../index.html'
+                        dest:     '../www/index.html'
                     }
                 ]
             }

@@ -4,3 +4,6 @@ styles.scssc
 workspace.xml
 styles.css
 .idea/dictionaries
+index.html
+scripts.js
+scripts.min.js
