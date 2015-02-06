@@ -7,3 +7,4 @@ styles.css
 index.html
 scripts.js
 scripts.min.js
+build/.sass-cache/*

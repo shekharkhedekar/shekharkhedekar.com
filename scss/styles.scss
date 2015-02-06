@@ -1,6 +1,7 @@
 @import "imports/normalize";
 @import "imports/compass";
 @import "imports/fonts";
+@import "imports/mixins";
 
 /**********
 * VARIABLES
@@ -294,7 +295,7 @@ $timelineWidth: 4px;
 
 .play-item {
     border-left: $workItemBarWidth solid $linkColor;
-    padding-left: $gridWidth;
+    padding-left: $gridWidth*2;
     margin-bottom: $gridHeight*2;
     width: 66%;
 }

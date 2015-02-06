@@ -33,7 +33,7 @@ module.exports = function (grunt) {
             dev: {
                 options: {
                     sassDir:        '../scss',
-                    cssDir:         '../www',
+                    cssDir:         '../www/css',
                     environment:    'development',
                     noLineComments: true,
                     outputStyle:    'compressed',

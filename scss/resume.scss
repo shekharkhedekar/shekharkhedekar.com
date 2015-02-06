@@ -1,18 +1,25 @@
-/****************************\
+@import "imports/normalize";
+@import "imports/compass";
+@import "imports/fonts";
+@import "imports/mixins";
 
-Stylesheet for http://www.shekharkhedekar.com
-Copyright 2012 Shekhar Khedekar (@shekhar)
+/**********
+* VARIABLES
+***********/
+$baseColor: #000;
+$baseColorLight: $baseColor + #999;
 
-\****************************/
 
-
+/**********
+* GENERAL
+***********/
 html {
     width: 8.5in;
 }
 
 body {
     background: white;
-    color: black;
+    color: $baseColor;
     font-family: Helvetica Neue, Helvetica, Sans-Serif;
     font-size: 10pt;
     margin: 0px;
@@ -34,9 +41,9 @@ section {
 }
 
 h2 {
-    border: 1px solid #999;
+    border: 1px solid $baseColorLight;
     border-width: 1px 0 0 0;
-    color: #999;
+    color: $baseColorLight;
     font-size: 14pt;
     font-weight: 400;
     margin: 0;
@@ -60,7 +67,7 @@ p {
 }
 
 .name {
-    color: #999;
+    color: $baseColorLight;
     font-size: 24pt !important;
     font-weight: 400;
     top: 367px;
