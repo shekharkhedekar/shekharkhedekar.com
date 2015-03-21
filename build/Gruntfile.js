@@ -21,7 +21,7 @@ module.exports = function (grunt) {
                     '../scss/**/*.scss',
                     '../js/**/*.js',
                     '../json/*.json',
-                    '../index.mustache'
+                    '../mustache/*.mustache'
                 ],
                 tasks:   tasks,
                 options: {
@@ -70,7 +70,7 @@ module.exports = function (grunt) {
                 files:   [
                     {
                         data:     '../json/data.json',
-                        template: '../index.mustache',
+                        template: '../mustache/index.mustache',
                         dest:     '../www/index.html'
                     }
                 ]

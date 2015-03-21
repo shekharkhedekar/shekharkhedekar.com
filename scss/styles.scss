@@ -6,19 +6,16 @@
 /**********
 * VARIABLES
 ***********/
-$baseColor: #ffffff;
-$linkColor: #F7A14E;
-$backgroundColor: #150318;
+$primaryColor: #1a1a1a;
+$primaryColorLight: #7f7f7f;
+$secondaryColor: #c3c180;
+$backgroundColor: white;
 
 $gridHeight: 18px;
 $gridWidth: 18px;
 
 $transitionTime: 0.2s;
 $transitionEasing: ease;
-
-$workItemSpacing: $gridWidth*2;
-$workItemBarWidth: $gridWidth/2 + 1;
-$workItemBarBorderWidth: 4px;
 
 /**********
 * MIXINS
@@ -36,13 +33,18 @@ $workItemBarBorderWidth: 4px;
     box-sizing: border-box;
 }
 
+html,
+body {
+    height: 100%;
+}
+
 html {
     &.wf-active {
-        .font-loader {
+        .sk-font-loader {
             display: none;
         }
 
-        .content-wrap {
+        .sk-content-wrap {
             @include opacity(1);
         }
     }
@@ -50,23 +52,15 @@ html {
 
 body {
     margin: 0;
-    padding: $gridHeight;
-    font-size: $gridHeight;
-    line-height: $gridHeight*3/2;
-    font-family: 'Titillium Web', sans-serif;
-    background-color: $backgroundColor;
-    .content-wrap {
+    padding: 0;
+    .sk-content-wrap {
         @include opacity(0);
         @include transition(opacity $transitionTime/2 $transitionEasing);
     }
 }
-
-body {
-    color: $baseColor;
-}
-
 p {
-    margin: $gridHeight 0;
+    margin: 0;
+    padding: 0;
 }
 
 a,
@@ -75,7 +69,7 @@ a:hover,
 a:visited,
 a:focus,
 a:active {
-    color: $linkColor;
+    color: $secondaryColor;
     text-decoration: none;
     @include transition(border-bottom $transitionTime $transitionEasing);
     height: $gridHeight + 4;
@@ -95,46 +89,31 @@ a:hover {
     @include background-image(linear-gradient(bottom,
             $backgroundColor 0%,
             $backgroundColor 6%,
-            $linkColor 6%,
-            $linkColor 9%,
+            $secondaryColor 6%,
+            $secondaryColor 9%,
             $backgroundColor 9%,
             $backgroundColor 100%
-
     ));
 }
 
 ul,
 ol {
     margin: 0;
-    padding:0;
+    padding: 0;
 
 }
 
 /**********
 * BASE CLASSES
 ***********/
-.main {
-    font-family: "Arvo", serif;
-    font-size: $gridHeight*2;
-    line-height: $gridHeight*3;
-
-    a {
-        height: $gridHeight*3 - 7px;
-    }
-}
-
-.heading {
-    border-top: 1px solid $baseColor;
-    padding-top: $gridHeight/2;
-}
-
-.main-section {
-    margin-top: $gridHeight*2;
+.sk-content-wrap {
+    height: 100%;
+    @include opacity(0);
 }
 $loaderSize: $gridHeight;
 $loaderAnimationTime: 1s;
 
-.font-loader {
+.sk-font-loader {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -144,16 +123,16 @@ $loaderAnimationTime: 1s;
     margin-top: $loaderSize/2;
 }
 
-.font-loader-1,
-.font-loader-2,
-.font-loader-3 {
+.sk-font-loader-1,
+.sk-font-loader-2,
+.sk-font-loader-3 {
     position: absolute;
 
     width: $loaderSize;
     height: $loaderSize;
 
     @include border-radius(50%);
-    background-color: $linkColor;
+    background-color: $secondaryColor;
 
 
     @include animation-duration($loaderAnimationTime);
@@ -162,15 +141,15 @@ $loaderAnimationTime: 1s;
     @include transform(scale3d(1,1,1));
 }
 
-.font-loader-1 {
+.sk-font-loader-1 {
     left: 0;
 }
-.font-loader-2 {
+.sk-font-loader-2 {
     left: 50%;
     margin-left: -$loaderSize/2;
     @include animation-delay($loaderAnimationTime/6);
 }
-.font-loader-3 {
+.sk-font-loader-3 {
     right: 0;
     @include animation-delay($loaderAnimationTime/3);
 }
@@ -196,131 +175,53 @@ $loaderAnimationTime: 1s;
         @include transform(scale3d(1,1,1));
     }
 }
-
-.content-wrap {
-    @include opacity(0);
-    @include transition(opacity $transitionTime/2 $transitionEasing);
+.sk-hr {
+    border: 1px solid rgba(255,255,255,.5);
+    height: 4px;
+    border-width: 1px 0;
 }
 
 /**********
-* WORK
+* INTRO
 ***********/
-$timelineWidth: 4px;
-#work {
-}
-
-.work-timeline {
-    min-height: 400px;
-    position: relative;
-}
-
-.work-item-wrap {
-    margin-bottom: $workItemBarBorderWidth;
-    &:nth-child(2n-1) {
-        .work-item {
-            text-align: right;
-            padding-right: $workItemSpacing;
-
-            &:before {
-                right: $workItemBarWidth;
-            }
-            &:after {
-                right: -$workItemBarWidth/2;
-            }
-        }
-    }
-    &:nth-child(2n) {
-        .work-item {
-            padding-left: $timelineWidth + $workItemSpacing;
-            margin-left: 50%;
-
-            &:before {
-                left: $workItemBarWidth;
-            }
-            &:after {
-                left: -$workItemBarWidth/2;
-            }
-        }
-    }
-}
-
-.work-item {
-    width: 50%;
+#sk-intro {
+    height: 100%;
+    @include background-image(
+            radial-gradient(circle, rgba(0,0,0,0.75) 0%, rgba(0,0,0,1) 75%,rgba(0,0,0,1) 100%),
+            url('./img/mtb.jpg')
+    );
+    background-repeat: no-repeat, no-repeat;
+    background-size: cover, cover;
+    background-position: center center;
     position: relative;
 
-    &.visible {
-        @include opacity(1);
-    }
-
-    &:before,
-    &:after {
-        content: ' ';
-
-        position: absolute;
-    }
-
-    /* Timeline Bar */
-    &:after {
-        width: $workItemBarWidth;
-        height: 100%;
-        top: 0;
-
-        background-color: $linkColor;
-    }
-    /* Leader Line */
-    &:before {
-        background-color: $baseColor;
-        height: 1px;
-        width: $workItemSpacing - $workItemBarWidth - 4;
-        top: $gridHeight*3/4;
-    }
-
-    /* Proportional heights for # of years */
-    @for $i from 1 through 10 {
-        &.years-#{$i} {
-            min-height: 30px * $i;
-        }
+    .sk-hr {
+        width: 168px;
     }
 }
+.sk-intro-content-wrap {
+    $introHeight: 316px;
+    $introWidth: 534px;
+    width: $introWidth;
+    height: $introHeight;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -$introHeight/2;
+    margin-left: -$introWidth/2;
+}
+.sk-intro-header,
+.sk-intro-content {
+    text-align: center;
+}
+.sk-intro-header {
+    color: $secondaryColor;
+    font-size: 38px;
+    font-family: "Arvo";
+}
+.sk-intro-content {
+    font-size: 23px;
+    font-family: "Source Sans Pro";
+    color: $primaryColorLight;
 
-.work-item-description,
-.work-item-time {
-    font-size: $gridHeight - 4;
-    font-style: italic;
-}
-
-/**********
-* PLAY
-***********/
-
-.play-item {
-    border-left: $workItemBarWidth solid $linkColor;
-    padding-left: $gridWidth*2;
-    margin-bottom: $gridHeight*2;
-    width: 66%;
-}
-
-.play-item-title {
-    font-family: "Arvo", serif;
-    margin-bottom: $gridHeight;
-}
-.play-item-description {
-    font-size: $gridHeight - 4;
-}
-.teaching-group {
-    margin-bottom: $gridHeight;
-}
-
-.teaching-group-title {
-    font-weight: bold;
-    font-size: $gridHeight - 2;
-}
-.teaching-group-subtitle {
-    font-style: italic;
-    font-size: $gridHeight - 4;
-    margin: $gridHeight/2 0;
-}
-.teaching-group-accolades li {
-    list-style-type: square;
-    margin-left: $gridWidth;
 }

@@ -58,7 +58,7 @@
         try {
             WebFont.load({
                 'google':   {
-                    'families': ['Arvo', 'Titillium Web']
+                    'families': ['Arvo', 'Source Sans Pro']
                 },
                 'active':   callback,
                 'inactive': callback

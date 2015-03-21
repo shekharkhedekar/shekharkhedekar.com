@@ -10,34 +10,38 @@
 </head>
 <body>
 
-<div class="font-loader">
-    <div class="font-loader-1"></div>
-    <div class="font-loader-2"></div>
-    <div class="font-loader-3"></div>
+<div class="sk-font-loader">
+    <div class="sk-font-loader-1"></div>
+    <div class="sk-font-loader-2"></div>
+    <div class="sk-font-loader-3"></div>
 </div>
-<div class="content-wrap">
-    <div id="intro">
-        <p class="main">
-            Hey! I'm Shekhar Khedekar.
-        </p>
+<div class="sk-content-wrap">
+    <div id="sk-intro">
+        <div class="sk-intro-content-wrap">
+            <h1 class="sk-intro-header">
+                <p>Hi there!</p>
+                <p>I'm Shekhar Khedekar.</p>
+            </h1>
+            <hr class="sk-hr"/>
 
-        <p class="main">
-            I'm a front-end engineer at <a href="http://corp.shocase.com/about-us/" target="_blank">Shocase</a> and a
-            home-brewer,
-            percussion teacher/player, and cyclist.
-        </p>
+            <p class="sk-intro-content">
+                I'm a front-end engineer at <a href="http://corp.shocase.com/about-us/" target="_blank">Shocase</a> and
+                a
+                percussionist, cyclist, and home-brewer.
+            </p>
 
-        <p class="main">
-            If you'd like to get in touch,
-            <a href="mailto:shekhar.khedekar+website@gmail.com?subject=Contacting you from shekharkhedekar.com"
-               title="email">email me,</a>
-            connect on <a href="http://www.linkedin.com/in/shekharkhedekar" title="linkedIn"
-                          target="_blank">LinkedIn,</a>
-            or find me on <a href="http://www.facebook.com/shekhar.khedekar" title="facebook"
-                             target="_blank">Facebook,</a>
-            <a href="https://twitter.com/shekhar" title="twitter" target="_blank">Twitter,</a> and
-            <a href="http://instagram.com/shekhark" title="instagram" target="_blank">Instagram</a>.
-        </p>
+            <p class="sk-intro-content">
+                If you'd like to get in touch,
+                <a href="mailto:shekhar.khedekar+website@gmail.com?subject=Contacting you from shekharkhedekar.com"
+                   title="email">email me,</a>
+                connect on <a href="http://www.linkedin.com/in/shekharkhedekar" title="linkedIn"
+                              target="_blank">LinkedIn,</a>
+                or find me on <a href="http://www.facebook.com/shekhar.khedekar" title="facebook"
+                                 target="_blank">Facebook,</a>
+                <a href="https://twitter.com/shekhar" title="twitter" target="_blank">Twitter,</a> and
+                <a href="http://instagram.com/shekhark" title="instagram" target="_blank">Instagram</a>.
+            </p>
+        </div>
     </div>
 
     <div id="work" class="main-section">
@@ -47,13 +51,13 @@
 
         <div class="work-timeline">
             {{#work}}
-            <div class="work-item-wrap">
-                <div class="work-item years-{{numYears}}">
-                    <div class="work-item-title">{{title}}</div>
-                    <div class="work-item-description">{{description}}</div>
-                    <div class="work-item-time">{{time}}</div>
+                <div class="work-item-wrap">
+                    <div class="work-item years-{{numYears}}">
+                        <div class="work-item-title">{{title}}</div>
+                        <div class="work-item-description">{{description}}</div>
+                        <div class="work-item-time">{{time}}</div>
+                    </div>
                 </div>
-            </div>
             {{/work}}
         </div>
     </div>
@@ -62,15 +66,15 @@
         <p class="main heading">Play</p>
 
         {{#play}}
-        <div class="play-item">
-            <div class="play-item-title">{{title}}</div>
-            <div class="play-item-description">
-                {{#description}}
+            <div class="play-item">
+                <div class="play-item-title">{{title}}</div>
+                <div class="play-item-description">
+                    {{#description}}
                         {{#href}}<a href="{{href}}" target="_blank">{{text}}</a>{{/href}}
                         {{^href}}{{.}}{{/href}}
 
-                {{/description}}
-            </div>
+                    {{/description}}
+                </div>
                 {{#teachingGroups}}
                     <div class="teaching-group">
                         <div class="teaching-group-title">
