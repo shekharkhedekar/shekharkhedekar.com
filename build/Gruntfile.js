@@ -44,9 +44,18 @@ module.exports = function (grunt) {
         },
         concat:          {
             options: {},
-            dist:    {
+            js:    {
                 src:  ['../js/lib/*.js', '../js/scripts.js'],
                 dest: '../www/scripts.js'
+            },
+            css:    {
+                src:  [
+                    '../www/css/base.css',
+                    '../www/css/intro.css',
+                    '../www/css/work.css'
+
+                ],
+                dest: '../www/styles.min.css'
             }
         },
         uglify:          {

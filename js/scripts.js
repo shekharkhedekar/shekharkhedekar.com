@@ -10,7 +10,7 @@
     var $document = $(document),
         $window = $(window),
         windowHeight = $window.height(),
-        $html = $('html'),
+        $htmlBody = $('html, body'),
         $workItems = $('.work-item');
 
     /**
@@ -50,9 +50,15 @@
 
         // TODO
     };
+    var _scrollToWork = function (e) {
+        $htmlBody.animate({
+            scrollTop: $window.height()
+        }, 218, 'linear');
+    };
     var _bindEvents = function () {
         var timeout;
         $document.on('scroll', _onScroll);
+        $('.sk-intro-down-arrow').on('click', _scrollToWork);
     };
     var _loadWebFonts = function (callback) {
         try {

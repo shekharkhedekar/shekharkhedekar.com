@@ -1,0 +1,29 @@
+@import "imports/imports";
+
+/**********
+* VARIABLES
+***********/
+
+
+/**********
+* WORK
+***********/
+#sk-work,
+.sk-work-wrap {
+    width: $maxWidth;
+    margin: 0 auto;
+}
+.sk-work-wrap {
+    display: table;
+}
+.sk-work-main-header {
+    color: $secondaryColor;
+    font-size: 38px;
+    font-family: $headerFontFamily;
+}
+.sk-work-category {
+    display: table-cell;
+}
+.sk-work-header {
+
+}

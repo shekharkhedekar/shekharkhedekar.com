@@ -6,10 +6,9 @@
           content="Shekhar, Khedekar, Shekhar Khedekar, Interaction Design, QA Engineer, Web Development, Front End Engineer, Front End Developer, HTML, CSS, Javascript, Mountain Biking, Road Biking, Beer Brewing, Percussion, Drum Corps, Snare Drum, Teaching, Arranging"/>
     <meta name="description" content="Shekhar Khedekar - Site and Resume"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+    <link href="styles.min.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-
 <div class="sk-font-loader">
     <div class="sk-font-loader-1"></div>
     <div class="sk-font-loader-2"></div>
@@ -20,6 +19,7 @@
         <div class="sk-intro-content-wrap">
             <h1 class="sk-intro-header">
                 <p>Hi there!</p>
+
                 <p>I'm Shekhar Khedekar.</p>
             </h1>
             <hr class="sk-hr"/>
@@ -42,21 +42,25 @@
                 <a href="http://instagram.com/shekhark" title="instagram" target="_blank">Instagram</a>.
             </p>
         </div>
+        <div class="sk-intro-down-arrow sk-arrow-down"></div>
     </div>
 
-    <div id="work" class="main-section">
-        <p class="main heading">Work (or view my <a href="Shekhar Khedekar.pdf" target="_blank"
-                                                    class="pdf fix-box">Resume</a>)</p>
+    <div id="sk-work">
+        <h2 class="sk-work-main-header">Work</h2>
+        <a href="Shekhar Khedekar.pdf" target="_blank" class="sk-work-resume">Download Resume</a>
 
 
-        <div class="work-timeline">
+        <div class="sk-work-wrap">
             {{#work}}
-                <div class="work-item-wrap">
-                    <div class="work-item years-{{numYears}}">
-                        <div class="work-item-title">{{title}}</div>
-                        <div class="work-item-description">{{description}}</div>
-                        <div class="work-item-time">{{time}}</div>
-                    </div>
+                <div class="sk-work-category">
+                    <h3 class="sk-work-header">{{name}}</h3>
+                    {{#items}}
+                        <div class="sk-work-item years-{{numYears}}">
+                            <div class="sk-work-item-title">{{title}}</div>
+                            <div class="sk-work-item-description">{{description}}</div>
+                            <div class="sk-work-item-time">{{time}}</div>
+                        </div>
+                    {{/items}}
                 </div>
             {{/work}}
         </div>
