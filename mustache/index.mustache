@@ -16,7 +16,7 @@
 </div>
 <div class="sk-content-wrap">
     <div id="sk-intro">
-        <div class="sk-intro-content-wrap">
+        <div class="sk-intro-content-wrap sk-font-dependency">
             <h1 class="sk-intro-header">
                 <p>Hi there!</p>
 
@@ -42,27 +42,30 @@
                 <a href="http://instagram.com/shekhark" title="instagram" target="_blank">Instagram</a>.
             </p>
         </div>
-        <div class="sk-intro-down-arrow sk-arrow-down"></div>
+        <div class="sk-intro-down-arrow sk-arrow-down2"></div>
     </div>
 
     <div id="sk-work">
-        <h2 class="sk-work-main-header">Work</h2>
-        <a href="Shekhar Khedekar.pdf" target="_blank" class="sk-work-resume">Download Resume</a>
+        <div class="sk-work-wrap sk-font-dependency">
+            <h2 class="sk-main-header">Work</h2>
+            <a href="Shekhar Khedekar.pdf" target="_blank" class="sk-work-resume sk-in">Download Resume</a>
 
-
-        <div class="sk-work-wrap">
-            {{#work}}
-                <div class="sk-work-category">
-                    <h3 class="sk-work-header">{{name}}</h3>
-                    {{#items}}
-                        <div class="sk-work-item years-{{numYears}}">
-                            <div class="sk-work-item-title">{{title}}</div>
-                            <div class="sk-work-item-description">{{description}}</div>
-                            <div class="sk-work-item-time">{{time}}</div>
-                        </div>
-                    {{/items}}
-                </div>
-            {{/work}}
+            <div class="sk-work-categories">
+                {{#work}}
+                    <div class="sk-work-category">
+                        <h3 class="sk-work-header">{{name}}</h3>
+                        <hr class="sk-hr-dark sk-work-hr"/>
+                        {{#items}}
+                            <div class="sk-work-item">
+                                <div class="sk-work-item-title">{{title}}</div>
+                                <div class="sk-work-item-description">{{description}}</div>
+                                <div class="sk-work-item-time">{{time}}</div>
+                                <div class="sk-work-item-content">{{content}}</div>
+                            </div>
+                        {{/items}}
+                    </div>
+                {{/work}}
+            </div>
         </div>
     </div>
 

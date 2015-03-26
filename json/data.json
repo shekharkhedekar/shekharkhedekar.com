@@ -7,7 +7,8 @@
           "title": "Shocase, Inc.",
           "description": "Front End Engineer",
           "time": "2013-Present",
-          "numYears": 2
+          "numYears": 2,
+          "content": "Building front-end user experiences for a brand new social network for marketers."
         }
       ]
     },
@@ -18,19 +19,22 @@
           "title": "Autodesk, Inc.",
           "description": "Front End Engineer",
           "time": "2012-2013",
-          "numYears": 1
+          "numYears": 1,
+          "content": "Building front-end user experiences in HTML5/ CSS3/ JavaScript/ jQuery."
         },
         {
           "title": "Autodesk, Inc.",
           "description": "Senior Interaction Designer",
           "time": "2007-2012",
-          "numYears": 5
+          "numYears": 5,
+          "content": "Designing user experiences for AutoCAD software."
         },
         {
           "title": "Autodesk, Inc.",
           "description": "QA Engineer/Lead",
           "time": "2004-2007",
-          "numYears": 3
+          "numYears": 3,
+          "content": "Black Box QA Engineer for AutoCAD software."
         }
       ]
     },
@@ -41,13 +45,15 @@
           "title": "University of California, Los Angeles",
           "description": "M.S., Mechanical Engineering",
           "time": "2003-2004",
-          "numYears": 1
+          "numYears": 1,
+          "content": "Focus on controls and dynamics of mechanical systems."
         },
         {
           "title": "University of California, Berkeley",
           "description": "B.S., Mechanical Engineering",
           "time": "1998-2003",
-          "numYears": 5
+          "numYears": 5,
+          "content": "Activities: Cal Band"
         }
       ]
     }

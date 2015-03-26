@@ -23,14 +23,18 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.sk-bike:before {
-    content: "\e600";
+.sk-in:before {
+    content: "\e602";
 }
 
 .sk-beer:before {
     content: "\e601";
 }
 
-.sk-arrow-down:before {
+.sk-arrow-down2:before {
     content: "\ea3e";
+}
+
+.sk-bike:before {
+    content: "\e600";
 }

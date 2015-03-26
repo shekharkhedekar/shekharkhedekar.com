@@ -24,7 +24,7 @@ html {
             display: none;
         }
 
-        .sk-intro-content-wrap {
+        .sk-font-dependency {
             @include opacity(1);
             @include transition(opacity $transitionTime $transitionEasing);
         }
@@ -35,7 +35,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: $bodyFontFamily;
-    .sk-intro-content-wrap {
+    .sk-font-dependency {
         @include opacity(0);
     }
 }
@@ -139,4 +139,17 @@ $loaderAnimationTime: 1s;
     border: 1px solid rgba(255,255,255,.3);
     height: 4px;
     border-width: 1px 0;
+    margin: 0;
+    padding: 0;
+}
+.sk-hr-dark {
+    @extend .sk-hr;
+    border-color:rgba(0,0,0,.3);
+}
+.sk-main-header {
+    color: $secondaryColor;
+    font-size: 38px;
+    font-family: $headerFontFamily;
+    padding: 75px 0 60px;
+    margin: 0;
 }

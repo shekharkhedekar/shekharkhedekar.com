@@ -24,7 +24,7 @@
 }
 .sk-intro-content-wrap {
     $introHeight: 316px;
-    $introWidth: 534px;
+    $introWidth: $maxWidth;
     width: $introWidth;
     height: $introHeight;
     position: absolute;
