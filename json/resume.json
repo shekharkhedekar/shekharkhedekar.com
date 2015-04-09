@@ -1,0 +1,79 @@
+{
+    "sections": [
+        {
+            "name": "Summary",
+            "description": "Educated as a Mechanical Engineer focused in Control Systems. 7 years of experience shipping industry leading software in both a QA Engineer and Interaction Design capacity. Currently building web application front ends with HTML5, CSS3, and Javascript."
+        },
+        {
+            "name": "Skills",
+            "description": "Proven ability to ship high quality, well-designed web and desktop products. Excellent collaboration, written and verbal communication, and leadership skills."
+        },
+        {
+            "name": "Experience",
+            "items": [
+                {
+                    "title": "Front End Engineer",
+                    "subtitle": "Shocase, Inc.",
+                    "time": "2013&mdash;present",
+                    "description": "Building Front End experiences for a brand new social network for advertising and marketing professionals."
+                },
+                {
+                    "title": "Web Design Engineer",
+                    "subtitle": "Autodesk, Inc.",
+                    "time": "2012&mdash;2013",
+                    "description": "Implementing dynamic, scalable, robust, responsive and cross-browser user experiences in HTML5, CSS3, and Javascript for the Autodesk Knowledge Network."
+                },
+                {
+                    "title": "Web Design Engineer (Rotation)",
+                    "subtitle": "Autodesk, Inc.",
+                    "time": "2011&mdash;2012",
+                    "description": "Developing a semantic, cross-browser user experience in HTML/CSS for the \"Locate a Reseller\" page on Autodesk.com."
+                },
+                {
+                    "title": "Principal Interaction Designer",
+                    "subtitle": "Autodesk, Inc.",
+                    "time": "2007&mdash;2012",
+                    "description": "Working with product managers, engineers, and user researchers to design and document features for the industry leading AutoCAD 2009-2013 (Windows) and AutoCAD 2011-2013 (Mac) products."
+                },
+                {
+                    "title": "Test Development Engineer/Lead",
+                    "subtitle": "Autodesk, Inc.",
+                    "time": "2004&mdash;2007",
+                    "description": "Responsible for the quality of multiple features over the course of three yearly AutoCAD releases (2006/2007/2008). Worked closely with other functional groups to help develop usable, high-quality, well documented AutoCAD features."
+                }
+            ]
+        },
+        {
+            "name": "Education",
+            "items": [
+                {
+                    "title": "University of California, Los Angeles",
+                    "subtitle": "M.S. Mechanical Engineering",
+                    "time": "2003&mdash;2004"
+                },
+                {
+                    "title": "University of California, Berkeley",
+                    "subtitle": "B.S. Mechanical Engineering",
+                    "time": "1998&mdash;2003"
+                }
+            ]
+        },
+        {
+            "name": "Proficiencies &amp; Interests",
+            "lists": [
+                {
+                    "name": "Code",
+                    "content": "HTML5, CSS3, Javascript, AngularJS, SASS, Grunt, Node.js, Git, PHP"
+                },
+                {
+                    "name": "Tools",
+                    "content": "Webstorm, Adobe Creative Suite, OmniGraffle, AutoCAD, Microsoft Office"
+                },
+                {
+                    "name": "Personal",
+                    "content": "Teaching/Playing Percussion, Beer Brewing, Mountain/Road Biking"
+                }
+            ]
+        }
+    ]
+}

@@ -9,12 +9,16 @@
 $baseColor: #000;
 $baseColorLight: $baseColor + #999;
 
+$pageWidth: 8.5in;
+$margin: 0.25in;
+$leftColWidth: 2in;
+$listNameWidth: .6in;
 
 /**********
 * GENERAL
 ***********/
 html {
-    width: 8.5in;
+    width: $pageWidth;
 }
 
 body {
@@ -22,7 +26,7 @@ body {
     color: $baseColor;
     font-family: Helvetica Neue, Helvetica, Sans-Serif;
     font-size: 10pt;
-    margin: 0px;
+    margin: $margin;
 }
 
 /* Roughly 12px font */
@@ -36,75 +40,65 @@ a {
     text-decoration: none;
 }
 
-section {
-    margin: 0;
+/**********
+* STRUCTURE
+***********/
+.sk-resume-left-col {
+    width: $leftColWidth;
+    position: absolute;
+    padding-top: 1.11in;
+    left: $margin;
 }
 
-h2 {
+.sk-resume-right-col {
+    width: $pageWidth - $leftColWidth - 4*$margin;
+    margin-left: $leftColWidth + $margin*2;
+}
+
+/**********
+* COMPONENTS
+***********/
+.sk-resume-header {
     border: 1px solid $baseColorLight;
     border-width: 1px 0 0 0;
     color: $baseColorLight;
     font-size: 14pt;
     font-weight: 400;
-    margin: 0;
-    padding: 0.5em 0 0 0;
+    margin-bottom: 0.5em;
+    padding-top: 0.25em;
 }
 
-h3 {
-    margin: 0.5em 0 0 0;
-}
-
-p {
-    margin: 0;
-}
-
-.name,
-.contact-box {
-    position: absolute;
-    left: 30px;
-    text-align: left;
-    width: 200px;
-}
-
-.name {
+.sk-resume-name {
     color: $baseColorLight;
     font-size: 24pt !important;
     font-weight: 400;
-    top: 367px;
+    margin-bottom: .5em;
 }
 
-.section-box {
+.sk-resume-section {
     display: block;
     width: 100%;
-    margin-bottom: 0.75em;
+    margin-bottom: 1em;
 }
 
-.contact-box {
-    overflow: hidden;
-    top: 459px;
-    width: 16em;
+.sk-resume-item-title {
+    font-weight: bold;
 }
 
-.category-box {
-    margin: 0 0 0 20em;
-    width: 39em;
+.sk-resume-item-time {
+    font-style: italic;
 }
 
-.summary-box p,
-.skills-box p {
-    margin-top: 0.5em;
+.sk-resume-item-description {
+    margin-bottom: .75em;
 }
 
-.proficiencies .section-box {
-    position: relative;
-    margin-top: 1em;
-}
-.proficiencies h3 {
-    margin: 0;
+.sk-resume-list-name {
+    font-weight: bold;
+    width: $listNameWidth;
     position: absolute;
-    top: 0;
-    left: 0;
 }
-.proficiencies p {
-    margin-left: 6em;
+.sk-resume-list-content {
+    margin-left: $listNameWidth + .1in;
+    margin-bottom: 1em;
 }

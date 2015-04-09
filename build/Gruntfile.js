@@ -81,6 +81,11 @@ module.exports = function (grunt) {
                         data:     '../json/data.json',
                         template: '../mustache/index.mustache',
                         dest:     '../www/index.html'
+                    },
+                    {
+                        data:     '../json/resume.json',
+                        template: '../mustache/resume.mustache',
+                        dest:     '../www/resume.html'
                     }
                 ]
             }
