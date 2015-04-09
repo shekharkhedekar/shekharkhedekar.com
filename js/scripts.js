@@ -16,24 +16,6 @@
     /**
      * Private Methods
      */
-    var _toggleWorkItems = function (scrollTop) {
-        // Set scrollTop if not passed
-        scrollTop = scrollTop || $document.scrollTop();
-
-        var buffer = 100,
-            pageBottom = scrollTop + windowHeight - buffer;
-
-        $workItems.each(function (i) {
-            var $self = $(this),
-                offsetTop = $self.offset().top;
-
-            if (offsetTop < pageBottom && !$self.is('.visible')) {
-                $self.addClass('visible');
-            } else if (offsetTop >= pageBottom && $self.is('.visible')) {
-                $self.removeClass('visible');
-            }
-        });
-    };
     var _debounce = function (callback, timeout, delay) {
         delay = delay || 20;
 
@@ -55,10 +37,24 @@
             scrollTop: $window.height()
         }, 218, 'linear');
     };
+    var _expandSection = function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $target = $(e.target);
+        var $expander = $target.closest('.sk-expander');
+
+        $expander.find('.sk-expander-content').toggleClass('expanded');
+        $expander.find('.sk-expander-title').toggleClass('sk-square-minus');
+    };
     var _bindEvents = function () {
-        var timeout;
         $document.on('scroll', _onScroll);
-        $('.sk-intro-down-arrow').on('click', _scrollToWork);
+        $(document).on('click', '.sk-intro-down-arrow', _scrollToWork);
+        $(document).on('click', '.sk-expander-title', _expandSection);
+    };
+    var _setIntroBG = function () {
+        var rand = 1 + Math.round(Math.random() * 9);
+
+        $('#sk-intro').css('background-image', 'url(css/img/' + rand + '.jpg)');
     };
     var _loadWebFonts = function (callback) {
         try {
@@ -77,10 +73,9 @@
         }
     };
     var _init = function () {
-        _loadWebFonts(function () {
-            _toggleWorkItems();
-            _bindEvents();
-        });
+        _setIntroBG();
+        _bindEvents();
+        _loadWebFonts(function () {});
     };
 
     /**

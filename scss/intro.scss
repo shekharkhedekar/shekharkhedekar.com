@@ -9,14 +9,18 @@
 ***********/
 #sk-intro {
     height: 100%;
-    @include background-image(
-            radial-gradient(circle, rgba(0,0,0,0.75) 0%, rgba(0,0,0,1) 75%,rgba(0,0,0,1) 100%),
-            url('css/img/mtb.jpg')
-    );
     background-repeat: no-repeat, no-repeat;
     background-size: cover, cover;
     background-position: center center;
     position: relative;
+
+    &:before {
+        content: ' ';
+        @include background-image(radial-gradient(circle, rgba(0,0,0,0.75) 0%, rgba(0,0,0,1) 75%,rgba(0,0,0,1) 100%));
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
 
     .sk-hr {
         width: 168px;

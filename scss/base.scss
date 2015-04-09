@@ -1,4 +1,4 @@
-@import "imports/normalize";
+//@import "imports/normalize";
 @import "imports/fonts";
 @import "imports/imports";
 
@@ -51,10 +51,20 @@ a:visited,
 a:focus,
 a:active {
     text-decoration: none;
-    color: $linkColorLight;
+    color: $secondaryColorLight;
 }
 a:hover {
     text-decoration: underline;
+}
+a.sk-link-dark {
+    &,
+    &:link,
+    &:hover,
+    &:visited,
+    &:focus,
+    &:active {
+        color: $linkColorLight;
+    }
 }
 
 ul,
@@ -139,7 +149,7 @@ $loaderAnimationTime: 1s;
     border: 1px solid rgba(255,255,255,.3);
     height: 4px;
     border-width: 1px 0;
-    margin: 0;
+    margin: 23px auto;
     padding: 0;
 }
 .sk-hr-dark {

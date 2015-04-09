@@ -25,7 +25,8 @@
             <hr class="sk-hr"/>
 
             <p class="sk-intro-content">
-                I'm a front-end engineer at <a href="http://corp.shocase.com/about-us/" target="_blank">Shocase</a> and
+                I'm a front-end engineer at <a href="http://corp.shocase.com/about-us/" target="_blank"
+                                               class="sk-link-dark">Shocase</a> and
                 a
                 percussionist, cyclist, and home-brewer.
             </p>
@@ -33,13 +34,15 @@
             <p class="sk-intro-content">
                 If you'd like to get in touch,
                 <a href="mailto:shekhar.khedekar+website@gmail.com?subject=Contacting you from shekharkhedekar.com"
-                   title="email">email me,</a>
+                   title="email" class="sk-link-dark">email me,</a>
                 connect on <a href="http://www.linkedin.com/in/shekharkhedekar" title="linkedIn"
-                              target="_blank">LinkedIn,</a>
+                              target="_blank" class="sk-link-dark">LinkedIn,</a>
                 or find me on <a href="http://www.facebook.com/shekhar.khedekar" title="facebook"
-                                 target="_blank">Facebook,</a>
-                <a href="https://twitter.com/shekhar" title="twitter" target="_blank">Twitter,</a> and
-                <a href="http://instagram.com/shekhark" title="instagram" target="_blank">Instagram</a>.
+                                 target="_blank" class="sk-link-dark">Facebook,</a>
+                <a href="https://twitter.com/shekhar" title="twitter" target="_blank" class="sk-link-dark">Twitter,</a>
+                and
+                <a href="http://instagram.com/shekhark" title="instagram" target="_blank"
+                   class="sk-link-dark">Instagram</a>.
             </p>
         </div>
         <div class="sk-intro-down-arrow sk-arrow-down2"></div>
@@ -69,48 +72,46 @@
         </div>
     </div>
 
-    <div id="play" class="main-section">
-        <p class="main heading">Play</p>
+    <div id="sk-play">
+        <div class="sk-work-wrap sk-font-dependency">
+            <h2 class="sk-main-header">Play</h2>
 
-        {{#play}}
-            <div class="play-item">
-                <div class="play-item-title">{{title}}</div>
-                <div class="play-item-description">
-                    {{#description}}
-                        {{#href}}<a href="{{href}}" target="_blank">{{text}}</a>{{/href}}
-                        {{^href}}{{.}}{{/href}}
-
-                    {{/description}}
-                </div>
-                {{#teachingGroups}}
-                    <div class="teaching-group">
-                        <div class="teaching-group-title">
-                            {{#href}}<a href="{{href}}" target="_blank">{{title}}</a>{{/href}}
-                            {{^href}}{{.}}{{/href}}
-                            {{#location}}({{location}}){{/location}}
+            <div class="sk-work-categories">
+                {{#play}}
+                    <div class="sk-work-category">
+                        <h3 class="sk-work-item-title">{{title}}</h3>
+                        <hr class="sk-hr-dark sk-work-hr"/>
+                        <div class="sk-work-item-content">
+                            {{#description}}
+                                {{#href}}<a href="{{href}}" target="_blank">{{text}}</a>{{/href}}{{^href}}{{.}}{{/href}}
+                            {{/description}}
                         </div>
-
-                        {{#subtitle}}
-                            <div class="teaching-group-subtitle">{{title}}
-                                <ul class="teaching-group-accolades">
-                                    {{#accolades}}
-                                        <li>{{.}}</li>
-                                    {{/accolades}}
-                                </ul>
+                        {{#teachingGroups}}
+                            <div class="sk-expander">
+                                <div class="sk-work-item-title sk-expander-title sk-square-plus">{{title}} {{#location}}
+                                    ({{location}}){{/location}}</div>
+                                <div class="sk-expander-content">
+                                    {{#subtitle}}
+                                        <div class="sk-work-item-description">{{title}}</div>
+                                        <ul class="sk-work-item-content">
+                                            {{#accolades}}
+                                                <li>{{.}}</li>
+                                            {{/accolades}}
+                                        </ul>
+                                    {{/subtitle}}
+                                    {{#href}}<a href="{{href}}" target="_blank">website&raquo;</a>{{/href}}
+                                </div>
                             </div>
-                        {{/subtitle}}
-
-
+                        {{/teachingGroups}}
                     </div>
-
-                {{/teachingGroups}}
+                {{/play}}
             </div>
-        {{/play}}
+        </div>
     </div>
 </div>
 
 
-<script src="scripts.min.js" type="text/javascript"></script>
+<!--<script src="scripts.min.js" type="text/javascript"></script>-->
 <script src="scripts.js" type="text/javascript"></script>
 <script type="text/javascript">
     // Google Analytics

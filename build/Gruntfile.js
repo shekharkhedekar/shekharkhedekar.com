@@ -52,8 +52,8 @@ module.exports = function (grunt) {
                 src:  [
                     '../www/css/base.css',
                     '../www/css/intro.css',
-                    '../www/css/work.css'
-
+                    '../www/css/work.css',
+                    '../www/css/play.css'
                 ],
                 dest: '../www/styles.min.css'
             }

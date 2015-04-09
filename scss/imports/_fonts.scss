@@ -9,7 +9,7 @@
     font-style: normal;
 }
 
-[class^="sk-"], [class*=" sk-"] {
+[class^="sk-"]:before, [class*=" sk-"]:before {
     font-family: 'sk';
     speak: none;
     font-style: normal;
@@ -37,4 +37,12 @@
 
 .sk-bike:before {
     content: "\e600";
+}
+
+.sk-square-plus:before {
+    content: "\e604";
+}
+
+.sk-square-minus:before {
+    content: "\e603";
 }
