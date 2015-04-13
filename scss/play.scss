@@ -40,3 +40,15 @@
         font-style: normal;
     }
 }
+
+@media screen and (max-width:$maxWidth) {
+    .sk-expander-title {
+        margin-left: 0;
+    }
+    .sk-play-category {
+        margin-top: 2*$gridHeight;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+}

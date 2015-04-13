@@ -75,3 +75,18 @@ a.sk-work-resume {
     font-style: italic;
     color: $primaryColorLight;
 }
+
+@media screen and (max-width:$maxWidth) {
+    .sk-work-wrap {
+        width: 90%;
+        margin: 0 5%;
+        position: relative;
+    }
+    .sk-work-category {
+        display: block;
+        width: 100%;
+    }
+    a.sk-work-resume {
+        right: 10px;
+    }
+}

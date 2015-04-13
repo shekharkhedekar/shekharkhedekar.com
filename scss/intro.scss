@@ -9,6 +9,7 @@
 ***********/
 #sk-intro {
     height: 100%;
+    min-height: 380px;
     background-repeat: no-repeat, no-repeat;
     background-size: cover, cover;
     background-position: center center;
@@ -59,4 +60,17 @@
     left: 50%;
     font-size: 25px;
     cursor: pointer;
+}
+
+@media screen and (max-width:$maxWidth) {
+    .sk-intro-content-wrap {
+        width: 90%;
+        height: auto;
+        margin: 0 5%;
+        top: 0;
+        left: 0;
+    }
+    .sk-intro-down-arrow {
+        bottom: 10px;
+    }
 }
