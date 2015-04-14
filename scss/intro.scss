@@ -9,7 +9,6 @@
 ***********/
 #sk-intro {
     height: 100%;
-    min-height: 380px;
     background-repeat: no-repeat, no-repeat;
     background-size: cover, cover;
     background-position: center center;
@@ -72,5 +71,15 @@
     }
     .sk-intro-down-arrow {
         bottom: 10px;
+    }
+}
+@media screen and (orientation:portrait) {
+    #sk-intro {
+        min-height: 568px;
+    }
+}
+@media screen and (orientation:landscape) {
+    #sk-intro {
+        min-height: 380px;
     }
 }
