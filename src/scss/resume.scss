@@ -1,0 +1,98 @@
+@import "./variables";
+
+/**********
+* VARIABLES
+***********/
+$baseColor: #000;
+$baseColorLight: #999;
+
+$pageWidth: 8.5in;
+$margin: 0.25in;
+$leftColWidth: 2in;
+$listNameWidth: 0.6in;
+
+/**********
+* GENERAL
+***********/
+
+.resume {
+  background: white;
+  color: $baseColor;
+  font-family: Helvetica Neue, Helvetica, Sans-Serif;
+  font-size: 10pt;
+  margin: $margin;
+}
+
+/* Roughly 12px font */
+@page {
+  size: auto;
+  margin: 0mm;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/**********
+* STRUCTURE
+***********/
+.sk-resume-left-col {
+  width: $leftColWidth;
+  position: absolute;
+  padding-top: 1.11in;
+  left: $margin;
+}
+
+.sk-resume-right-col {
+  width: $pageWidth - $leftColWidth - 4 * $margin;
+  margin-left: $leftColWidth + $margin * 2;
+}
+
+/**********
+* COMPONENTS
+***********/
+.sk-resume-header {
+  border: 1px solid $baseColorLight;
+  border-width: 1px 0 0 0;
+  color: $baseColorLight;
+  font-size: 14pt;
+  font-weight: 400;
+  margin-bottom: 0.5em;
+  padding-top: 0.25em;
+}
+
+.sk-resume-name {
+  color: $baseColorLight;
+  font-size: 24pt !important;
+  font-weight: 400;
+  margin-bottom: 0.5em;
+}
+
+.sk-resume-section {
+  display: block;
+  width: 100%;
+  margin-bottom: 3em;
+}
+
+.sk-resume-item-title {
+  font-weight: bold;
+}
+
+.sk-resume-item-time {
+  font-style: italic;
+}
+
+.sk-resume-item-description {
+  margin-bottom: 0.75em;
+}
+
+.sk-resume-list-name {
+  font-weight: bold;
+  width: $listNameWidth;
+  position: absolute;
+}
+.sk-resume-list-content {
+  margin-left: $listNameWidth + 0.1in;
+  margin-bottom: 1em;
+}

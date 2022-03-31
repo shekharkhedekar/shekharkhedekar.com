@@ -1,0 +1,50 @@
+@import "./variables";
+
+/**********
+* WORK
+***********/
+#sk-play {
+  // background-image: url("css/img/play_bg.jpg");
+}
+.sk-expander {
+  margin-bottom: $gridHeight;
+}
+.sk-expander-title {
+  padding-left: 24px;
+  margin-left: -24px;
+  position: relative;
+  cursor: pointer;
+  &:before {
+    position: absolute;
+    left: 0;
+    top: 3px;
+  }
+}
+.sk-expander-content {
+  // height: 0;
+  // opacity: 0;
+  overflow: hidden;
+
+  transition: opacity $transitionTime $transitionEasing $transitionTime;
+
+  &.expanded {
+    height: auto;
+    opacity: 1;
+  }
+
+  .sk-work-item-content {
+    font-style: normal;
+  }
+}
+
+@media screen and (max-width: $maxWidth) {
+  .sk-expander-title {
+    margin-left: 0;
+  }
+  .sk-play-category {
+    margin-top: 2 * $gridHeight;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

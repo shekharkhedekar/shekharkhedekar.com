@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Shekhar Khedekar</title>
+    <meta name="keywords"
+          content="Shekhar, Khedekar, Shekhar Khedekar, Interaction Design, QA Engineer, Web Development, Front End Engineer, Front End Developer, HTML, CSS, Javascript, Mountain Biking, Road Biking, Beer Brewing, Percussion, Drum Corps, Snare Drum, Teaching, Arranging"/>
+    <meta name="description" content="Shekhar Khedekar - Site and Resume"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
+<body>
+  <div id="app"></div>
+  <div class="sk-font-loader">
+    <div class="sk-font-loader-1"></div>
+    <div class="sk-font-loader-2"></div>
+    <div class="sk-font-loader-3"></div>
+</div>
+<div class="sk-content-wrap">
+    <div id="sk-intro">
+        <div class="sk-intro-content-wrap sk-font-dependency">
+            <h1 class="sk-intro-header">
+                <p>Hi there!</p>
+
+                <p>I'm Shekhar Khedekar.</p>
+            </h1>
+            <hr class="sk-hr"/>
+
+            <p class="sk-intro-content">
+                I'm a front-end engineer at <a href="http://corp.shocase.com/about-us/" target="_blank"
+                                               class="sk-link-dark">Shocase</a> and
+                a
+                percussionist, cyclist, and home-brewer.
+            </p>
+
+            <p class="sk-intro-content">
+                If you'd like to get in touch,
+                <a href="mailto:shekhar.khedekar+website@gmail.com?subject=Contacting you from shekharkhedekar.com"
+                   title="email" class="sk-link-dark">email me,</a>
+                connect on <a href="http://www.linkedin.com/in/shekharkhedekar" title="linkedIn"
+                              target="_blank" rel="noopener noreferrer"lass="sk-link-dark">LinkedIn,</a>
+                or find me on <a href="http://www.facebook.com/shekhar.khedekar" title="facebook"
+                                 target="_blank" rel="noopener noreferrer"lass="sk-link-dark">Facebook,</a>
+                <a href="https://twitter.com/shekhar" title="twitter" target="_blank" rel="noopener noreferrer"lass="sk-link-dark">Twitter,</a>
+                and
+                <a href="http://instagram.com/shekhark" title="instagram" target="_blank"
+                   class="sk-link-dark">Instagram</a>.
+            </p>
+        </div>
+        <div class="sk-intro-down-arrow sk-arrow-down2"></div>
+    </div>
+
+    <div id="sk-work">
+        <div class="sk-work-wrap sk-font-dependency">
+            <h2 class="sk-main-header">Work</h2>
+            <a href="Shekhar Khedekar.pdf" target="_blank" rel="noopener noreferrer"lass="sk-work-resume sk-in">Download Resume</a>
+
+            <div class="sk-work-categories">
+                {{#work}}
+                    <div class="sk-work-category">
+                        <h3 class="sk-work-header">{{name}}</h3>
+                        <hr class="sk-hr-dark sk-work-hr"/>
+                        {{#items}}
+                            <div class="sk-work-item">
+                                <div class="sk-work-item-title">{{title}}</div>
+                                <div class="sk-work-item-description">{{description}}</div>
+                                <div class="sk-work-item-time">{{time}}</div>
+                                <div class="sk-work-item-content">{{content}}</div>
+                            </div>
+                        {{/items}}
+                    </div>
+                {{/work}}
+            </div>
+        </div>
+    </div>
+
+    <div id="sk-play">
+        <div class="sk-work-wrap sk-font-dependency">
+            <h2 class="sk-main-header">Play</h2>
+
+            <div class="sk-work-categories">
+                {{#play}}
+                    <div class="sk-work-category sk-play-category">
+                        <h3 class="sk-work-item-title sk-play-title">{{title}}</h3>
+                        <hr class="sk-hr-dark sk-work-hr"/>
+                        <div class="sk-work-item-content">
+                            {{#description}}
+                                {{#href}}<a href="{{href}}" target="_blank">{{text}}</a>{{/href}}{{^href}}{{.}}{{/href}}
+                            {{/description}}
+                        </div>
+                        {{#teachingGroups}}
+                            <div class="sk-expander">
+                                <div class="sk-work-item-title sk-expander-title sk-square-plus">{{title}} {{#location}}
+                                    ({{location}}){{/location}}</div>
+                                <div class="sk-expander-content">
+                                    {{#subtitle}}
+                                        <div class="sk-work-item-description">{{title}}</div>
+                                        <ul class="sk-work-item-content">
+                                            {{#accolades}}
+                                                <li>{{.}}</li>
+                                            {{/accolades}}
+                                        </ul>
+                                    {{/subtitle}}
+                                    {{#href}}<a href="{{href}}" target="_blank">website&raquo;</a>{{/href}}
+                                </div>
+                            </div>
+                        {{/teachingGroups}}
+                    </div>
+                {{/play}}
+            </div>
+        </div>
+    </div>
+</div>
+  <script>
+      (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r;
+          i[r] = i[r] || function () {
+              (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date();
+          a = s.createElement(o),
+                  m = s.getElementsByTagName(o)[0];
+          a.async = 1;
+          a.src = g;
+          m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-39767976-1', 'wgirankings.com');
+      ga('send', 'pageview');
+  </script>
+</body>
+</html>
