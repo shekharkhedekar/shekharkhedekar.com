@@ -1,9 +1,16 @@
+import React from "react";
+import { Helmet } from "react-helmet";
+
 import data from "./data.json";
 import "../../scss/resume.scss";
 
 export const Resume = () => {
   return (
     <div className="resume">
+      <Helmet>
+        <title>Shekhar Khedekar - Resume</title>
+        <meta name="viewport" content="width=8.5in"></meta>
+      </Helmet>
       <div className="sk-resume-left-col">
         <div className="sk-resume-name">Shekhar Khedekar</div>
         <div className="sk-resume-contact">

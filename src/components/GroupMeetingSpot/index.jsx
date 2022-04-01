@@ -6,6 +6,7 @@ import {
   Marker,
 } from "@react-google-maps/api";
 
+import secrets from "../../secrets.json";
 const containerStyle = {
   width: "100%",
   height: "100%",
@@ -20,7 +21,7 @@ const LocationChip = ({ location, idx }) => (
 function GroupMeetingSpot() {
   const { isLoaded } = useLoadScript({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyD8v44QgYABN-WTXCTGRwQ-vhwW5ITIUkQ",
+    googleMapsApiKey: secrets.GOOGLE_MAPS_API_KEY,
     libraries: ["places"],
   });
 

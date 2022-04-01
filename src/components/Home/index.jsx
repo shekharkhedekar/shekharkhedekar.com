@@ -3,6 +3,7 @@ import WebFont from "webfontloader";
 import { FaArrowDown } from "react-icons/fa";
 import { scroller, Element as ScrollElement } from "react-scroll";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import data from "./data.json";
 import { Expander } from "../Expander";
@@ -32,6 +33,10 @@ export const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Shekhar Khedekar</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Helmet>
       <div className="sk-content-wrap">
         <div id="sk-intro">
           <div className="sk-intro-content-wrap sk-font-dependency">
