@@ -64,14 +64,17 @@ a.sk-work-resume {
 .sk-work-item-description,
 .sk-work-item-time {
   font-weight: bold;
+  font-style: italic;
+  color: $primaryColor;
 }
 
 .sk-work-item-title {
+  font-style: normal;
   color: $secondaryColorLight;
 }
 
 .sk-work-item-content {
-  margin: 15px 0 30px;
+  margin: 1rem 0;
   font-style: italic;
   color: $primaryColorLight;
 }

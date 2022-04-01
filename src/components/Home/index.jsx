@@ -5,6 +5,7 @@ import { scroller, Element as ScrollElement } from "react-scroll";
 import { Link } from "react-router-dom";
 
 import data from "./data.json";
+import { Expander } from "../Expander";
 
 import "../../scss/base.scss";
 import "../../scss/intro.scss";
@@ -54,7 +55,7 @@ export const Home = () => {
               </a>
               connect on{" "}
               <a
-                href="http://www.linkedin.com/in/shekharkhedekar"
+                href="https://www.linkedin.com/in/shekharkhedekar"
                 title="linkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -64,7 +65,7 @@ export const Home = () => {
               </a>
               or find me on{" "}
               <a
-                href="http://www.facebook.com/shekhar.khedekar"
+                href="https://www.facebook.com/shekhar.khedekar"
                 title="facebook"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -83,7 +84,7 @@ export const Home = () => {
               </a>
               and{" "}
               <a
-                href="http://instagram.com/shekhark"
+                href="https://www.instagram.com/shekhark"
                 title="instagram"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -97,7 +98,6 @@ export const Home = () => {
           <div
             className="sk-intro-down-arrow"
             onClick={() => {
-              console.log("scroll click");
               scroller.scrollTo("sk-work", { smooth: true });
             }}
           >
@@ -164,32 +164,36 @@ export const Home = () => {
                   </div>
                   {p.teachingGroups &&
                     p.teachingGroups.map((t) => (
-                      <div className="sk-expander">
-                        <div className="sk-work-item-title sk-expander-title sk-square-plus">
-                          {t.title} ({t.location})
-                        </div>
-                        <div className="sk-expander-content">
-                          {t.subtitle &&
-                            t.subtitle.map((s) => (
-                              <>
-                                <div className="sk-work-item-description">
-                                  {s.title}
-                                </div>
-                                <ul className="sk-work-item-content">
-                                  {s.accolades &&
-                                    s.accolades.map((a) => <li>{a}</li>)}
-                                </ul>
-                              </>
-                            ))}
-                          <a
-                            href={t.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            website&raquo;
-                          </a>
-                        </div>
-                      </div>
+                      <Expander label={`${t.title} (${t.location})`}>
+                        {t.subtitle &&
+                          t.subtitle.map((s) => (
+                            <>
+                              <div className="sk-work-item-description">
+                                {s.title}
+                              </div>
+
+                              <div className="sk-work-item-content">
+                                {s.accolades && (
+                                  <>
+                                    <div className="sk-work-item-description">
+                                      Achievements
+                                    </div>
+                                    {s.accolades.map((a) => (
+                                      <li>{a}</li>
+                                    ))}
+                                  </>
+                                )}
+                              </div>
+                            </>
+                          ))}
+                        <a
+                          href={t.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          website&raquo;
+                        </a>
+                      </Expander>
                     ))}
                 </div>
               ))}
