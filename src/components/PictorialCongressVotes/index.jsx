@@ -76,7 +76,8 @@ const PictorialCongressVotes = () => {
                             width: 150,
                             height: 150,
                             borderRadius: "50%",
-                            borderColor: vote.party === "D" ? "blue" : "red",
+                            borderColor:
+                              vote.party === "D" ? "#0015BC" : "#E9141D",
                             borderWidth: "10px",
                             borderStyle: "solid",
                           }}

@@ -68,9 +68,11 @@ export const Resume = () => {
                       {item.subtitle}
                     </div>
                     <div className="sk-resume-item-time">{item.time}</div>
-                    <div className="sk-resume-item-description">
-                      {item.description}
-                    </div>
+                    {"description" in item && (
+                      <div className="sk-resume-item-description">
+                        {item.description}
+                      </div>
+                    )}
                   </>
                 ))}
 

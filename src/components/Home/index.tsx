@@ -14,7 +14,7 @@ import "../../scss/play.scss";
 import "../../scss/work.scss";
 
 export const Home = () => {
-  const loadWebFonts = (cb) => {
+  const loadWebFonts = (cb: () => void) => {
     try {
       WebFont.load({
         google: {
@@ -152,7 +152,7 @@ export const Home = () => {
                   <div className="sk-work-item-content">
                     {p.description &&
                       p.description.map((d) =>
-                        d.href ? (
+                        typeof d === "object" ? (
                           <>
                             <a
                               href={d.href}
@@ -170,34 +170,36 @@ export const Home = () => {
                   {p.teachingGroups &&
                     p.teachingGroups.map((t) => (
                       <Expander label={`${t.title} (${t.location})`}>
-                        {t.subtitle &&
-                          t.subtitle.map((s) => (
-                            <>
-                              <div className="sk-work-item-description">
-                                {s.title}
-                              </div>
+                        <>
+                          {t.subtitle &&
+                            t.subtitle.map((s) => (
+                              <>
+                                <div className="sk-work-item-description">
+                                  {s.title}
+                                </div>
 
-                              <div className="sk-work-item-content">
-                                {s.accolades && (
-                                  <>
-                                    <div className="sk-work-item-description">
-                                      Achievements
-                                    </div>
-                                    {s.accolades.map((a) => (
-                                      <li>{a}</li>
-                                    ))}
-                                  </>
-                                )}
-                              </div>
-                            </>
-                          ))}
-                        <a
-                          href={t.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          website&raquo;
-                        </a>
+                                <div className="sk-work-item-content">
+                                  {s.accolades && (
+                                    <>
+                                      <div className="sk-work-item-description">
+                                        Achievements
+                                      </div>
+                                      {s.accolades.map((a) => (
+                                        <li>{a}</li>
+                                      ))}
+                                    </>
+                                  )}
+                                </div>
+                              </>
+                            ))}
+                          <a
+                            href={t.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            website&raquo;
+                          </a>
+                        </>
                       </Expander>
                     ))}
                 </div>

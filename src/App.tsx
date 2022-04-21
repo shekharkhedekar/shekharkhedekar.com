@@ -8,9 +8,8 @@ import { Resume } from "./components/Resume";
 const App = () => {
   return (
     <Router>
-      {" "}
       <Routes>
-        <Route index path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/resume" element={<Resume />}></Route>
         <Route
           path="/group-meeting-spot"

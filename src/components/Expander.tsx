@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
 
-export const Expander = ({ label, children }) => {
+export interface ExpanderProps {
+  label: string;
+  children: React.ReactChild;
+}
+export const Expander: React.FC<ExpanderProps> = ({ label, children }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import {
   GoogleMap,
   useLoadScript,
@@ -27,7 +27,6 @@ function GroupMeetingSpot() {
 
   const [map, setMap] = useState(null);
   const [autocomplete, setAutocomplete] = useState(null);
-  const [center, setCenter] = useState(null);
   const [locations, setLocations] = useState([]);
   const [bounds, setBounds] = useState();
   const [meetingSpot, setMeeetingSpot] = useState();

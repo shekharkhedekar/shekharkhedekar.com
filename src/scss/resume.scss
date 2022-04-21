@@ -7,7 +7,7 @@ $baseColor: #000;
 $baseColorLight: #999;
 
 $pageWidth: 8.5in;
-$margin: 0.25in;
+$margin: 0.33in;
 $leftColWidth: 2in;
 $listNameWidth: 0.6in;
 
@@ -15,18 +15,25 @@ $listNameWidth: 0.6in;
 * GENERAL
 ***********/
 
+@page {
+  size: auto;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
 .resume {
   background: white;
   color: $baseColor;
   font-family: Helvetica Neue, Helvetica, Sans-Serif;
   font-size: 10pt;
   margin: $margin;
-}
-
-/* Roughly 12px font */
-@page {
-  // size: auto;
-  // margin: 0mm;
 }
 
 a {
@@ -40,13 +47,14 @@ a {
 .sk-resume-left-col {
   width: $leftColWidth;
   position: absolute;
-  padding-top: 1.11in;
+  padding-top: 3in;
   left: $margin;
 }
 
 .sk-resume-right-col {
   width: $pageWidth - $leftColWidth - 4 * $margin;
-  margin-left: $leftColWidth + $margin * 2;
+  margin-left: $leftColWidth + $margin * 1;
+  padding-bottom: $margin/4;
 }
 
 /**********
