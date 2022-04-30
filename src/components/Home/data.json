@@ -128,7 +128,11 @@
             {
               "title": "2012-2013 - Battery Arranger",
               "accolades": [
-                "2012 - Promoted from WGI Independent Open to World Class"
+                "2012 - Promoted from WGI Independent Open to World Class",
+                {
+                  "href": "https://drive.google.com/file/d/1LRbTo-O4reYIiXY8h_K7t-_lIAXCEcjP/view?usp=sharing",
+                  "title": "2013 Finals Day Run Recording"
+                }
               ]
             }
           ]
@@ -147,7 +151,7 @@
         "I love",
         {
           "href": "http://www.strava.com/athletes/12286",
-          "text": "mountain & road biking, as well as commuting by bike"
+          "title": "mountain & road biking, as well as commuting by bike"
         },
         ". ",
         "All in all, I'm more comfortable on 2 wheels than anything else (skates, skateboards, skis etc.)."

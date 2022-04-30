@@ -1,4 +1,4 @@
-const Deploy = require("../../deploy-base/deployBase").default;
+const Deploy = require("../../deploy-base/build/deployBase").default;
 
 const deployClient = new Deploy({
   localRoot: `${__dirname}/../build`,

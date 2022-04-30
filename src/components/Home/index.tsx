@@ -31,6 +31,19 @@ export const Home = () => {
     loadWebFonts(() => {});
   }, []);
 
+  const StringOrLink: React.FC<{
+    content: string | { href: string; title: string };
+  }> = ({ content }) => {
+    if (typeof content === "string") {
+      return <> {content}</>;
+    }
+
+    const newTabProps = { target: "_blank", rel: "noopener noreferrer" };
+    const props = { href: content.href, ...newTabProps };
+
+    return <a {...props}> {content.title}</a>;
+  };
+
   return (
     <>
       <Helmet>
@@ -113,7 +126,7 @@ export const Home = () => {
         <ScrollElement id="sk-work" name="sk-work">
           <div className="sk-work-wrap sk-font-dependency">
             <h2 className="sk-main-header">Work</h2>
-            <Link to="/resume" className="sk-work-resume sk-in">
+            <Link to="/resume" className="sk-work-resume">
               View Resume
             </Link>
 
@@ -151,21 +164,7 @@ export const Home = () => {
                   <hr className="sk-hr-dark sk-work-hr" />
                   <div className="sk-work-item-content">
                     {p.description &&
-                      p.description.map((d) =>
-                        typeof d === "object" ? (
-                          <>
-                            <a
-                              href={d.href}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {d.text}
-                            </a>
-                          </>
-                        ) : (
-                          d + " "
-                        )
-                      )}
+                      p.description.map((d) => <StringOrLink content={d} />)}
                   </div>
                   {p.teachingGroups &&
                     p.teachingGroups.map((t) => (
@@ -185,7 +184,9 @@ export const Home = () => {
                                         Achievements
                                       </div>
                                       {s.accolades.map((a) => (
-                                        <li>{a}</li>
+                                        <li>
+                                          <StringOrLink content={a} />
+                                        </li>
                                       ))}
                                     </>
                                   )}

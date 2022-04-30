@@ -65,7 +65,6 @@
     ]
   },
   "devDependencies": {
-    "consola": "^2.15.3",
-    "ftp-deploy": "^2.4.1"
+    "consola": "^2.15.3"
   }
 }
