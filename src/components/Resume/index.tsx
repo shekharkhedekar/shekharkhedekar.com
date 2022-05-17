@@ -1,52 +1,57 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { animateScroll } from "react-scroll";
 
 import data from "./data.json";
 import "../../scss/resume.scss";
 
 export const Resume = () => {
+  useEffect(() => {
+    animateScroll.scrollToTop({ duration: 0 });
+  }, []);
   return (
     <div className="resume">
       <Helmet>
         <title>Shekhar Khedekar - Resume</title>
-        <meta name="viewport" content="width=8.5in"></meta>
       </Helmet>
       <div className="sk-resume-left-col">
-        <div className="sk-resume-name">Shekhar Khedekar</div>
-        <div className="sk-resume-contact">
-          <div className="sk-resume-header">Contact</div>
-          <div>
-            <a
-              href="mailto:shekhar.khedekar@gmail.com"
-              className="sk-resume-contact"
-            >
-              shekhar.khedekar@gmail.com
-            </a>
-          </div>
-          <div>
-            <a href="tel:510.220.9106" className="sk-resume-contact">
-              510.220.9106
-            </a>
-          </div>
-          <div>
-            <a
-              href="http://www.linkedin.com/in/shekharkhedekar"
-              className="sk-resume-contact"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              linkedin.com/in/shekharkhedekar
-            </a>
-          </div>
-          <div>
-            <a
-              href="http://www.facebook.com/shekhar.khedekar"
-              className="sk-resume-contact"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              facebook.com/shekhar.khedekar
-            </a>
+        <div>
+          <div className="sk-resume-name">Shekhar Khedekar</div>
+          <div className="sk-resume-contact">
+            <div className="sk-resume-header">Contact</div>
+            <div>
+              <a
+                href="mailto:shekhar.khedekar@gmail.com"
+                className="sk-resume-contact"
+              >
+                shekhar.khedekar@gmail.com
+              </a>
+            </div>
+            <div>
+              <a href="tel:510.220.9106" className="sk-resume-contact">
+                510.220.9106
+              </a>
+            </div>
+            <div>
+              <a
+                href="http://www.linkedin.com/in/shekharkhedekar"
+                className="sk-resume-contact"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                linkedin.com/in/shekharkhedekar
+              </a>
+            </div>
+            <div>
+              <a
+                href="http://www.facebook.com/shekhar.khedekar"
+                className="sk-resume-contact"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                facebook.com/shekhar.khedekar
+              </a>
+            </div>
           </div>
         </div>
       </div>

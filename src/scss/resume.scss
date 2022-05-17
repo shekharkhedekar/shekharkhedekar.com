@@ -6,10 +6,8 @@
 $baseColor: #000;
 $baseColorLight: #999;
 
-$pageWidth: 8.5in;
-$margin: 0.33in;
-$leftColWidth: 2in;
-$listNameWidth: 0.6in;
+$margin: 1rem;
+$listNameWidth: 2rem;
 
 /**********
 * GENERAL
@@ -34,6 +32,7 @@ $listNameWidth: 0.6in;
   font-family: Helvetica Neue, Helvetica, Sans-Serif;
   font-size: 10pt;
   margin: $margin;
+  display: flex;
 }
 
 a {
@@ -45,16 +44,25 @@ a {
 * STRUCTURE
 ***********/
 .sk-resume-left-col {
-  width: $leftColWidth;
-  position: absolute;
-  padding-top: 3in;
-  left: $margin;
+  flex: 1;
+  margin: 15rem 2rem 0;
 }
 
 .sk-resume-right-col {
-  width: $pageWidth - $leftColWidth - 4 * $margin;
-  margin-left: $leftColWidth + $margin * 1;
-  padding-bottom: $margin/4;
+  flex: 4;
+  margin-right: 2rem;
+  padding-top: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .resume {
+    display: block;
+    padding-bottom: 1rem;
+  }
+
+  .sk-resume-left-col {
+    margin: 1rem 0;
+  }
 }
 
 /**********
@@ -101,6 +109,6 @@ a {
   position: absolute;
 }
 .sk-resume-list-content {
-  margin-left: $listNameWidth + 0.1in;
+  margin-left: $listNameWidth + $listNameWidth/2;
   margin-bottom: 1em;
 }

@@ -23,12 +23,14 @@ const inputStyle = {
   boxShadow: "0 0 10px rgba(0,0,0,0.3)",
   marginBottom: "0.5rem",
 };
+const libraries = ["places"];
 
 function GroupMeetingSpot() {
   const { isLoaded } = useLoadScript({
     id: "google-map-script",
     googleMapsApiKey: secrets.GOOGLE_MAPS_API_KEY,
-    libraries: ["places"],
+    // @ts-ignore
+    libraries,
   });
   const [onLoadComplete, setOnLoadComplete] = useState(false);
   const [map, setMap] = useState<google.maps.Map>();
@@ -36,7 +38,8 @@ function GroupMeetingSpot() {
     useState<google.maps.places.Autocomplete>();
   const [locations, setLocations] = useState<LatLngWithPlace[]>([]);
   const [bounds, setBounds] = useState<google.maps.LatLngBounds>();
-  const [center, setCenter] = useState<LatLngWithPlace>();
+  const [meetingSpot, setMeetingSpot] = useState<LatLngWithPlace>();
+  const [mapCenter, setMapCenter] = useState<LatLngWithPlace>();
   const [placeType, setPlaceType] = useState("");
   const [value] = useDebounce(placeType, 250);
 
@@ -44,49 +47,45 @@ function GroupMeetingSpot() {
 
   const onLoad = useCallback(function callback(map: google.maps.Map) {
     setBounds(new window.google.maps.LatLngBounds());
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const { latitude: lat, longitude: lng } = position.coords;
-        map.setCenter({ lat, lng });
-        setMap(map);
-      });
-    } else {
-      setMap(map);
-    }
+    setMap(map);
   }, []);
 
-  const getDirections = useCallback(() => {
-    if (!map || !center) return;
+  const getDirections = async () => {
+    if (!map) return;
     let directionsService = new google.maps.DirectionsService();
 
-    locations.forEach((location) => {
-      location.directionsRenderer =
-        location.directionsRenderer ||
-        new google.maps.DirectionsRenderer({
+    for (const location of locations) {
+      if (!location.directionsRenderer) {
+        location.directionsRenderer = new google.maps.DirectionsRenderer({
           markerOptions: { visible: false },
           preserveViewport: true,
         });
+        location.directionsRenderer.setMap(map);
+      }
 
-      location.directionsRenderer.setMap(map);
-      location.directionsRenderer.setDirections(null);
+      location.directionsRenderer.setDirections({ routes: [] });
+
+      if (!meetingSpot) {
+        return;
+      }
+
       const route: google.maps.DirectionsRequest = {
         origin: location,
-        destination: center,
+        destination: meetingSpot,
         travelMode: google.maps.TravelMode.DRIVING,
       };
-      directionsService.route(route, (response, status) => {
-        if (status !== "OK") {
-          console.error(response);
-          return;
-        }
+      const response = await directionsService.route(route);
+      if (!response) {
+        return;
+      }
 
-        location.directionsRenderer?.setDirections(response);
-        var directionsData = response?.routes[0].legs[0];
-        location.distance = directionsData?.distance?.text;
-      });
+      location.directionsRenderer?.setDirections(response);
+      var directionsData = response?.routes[0].legs[0];
+      location.distance = directionsData?.distance?.text;
+
       setLocations(locations);
-    });
-  }, [center, locations, map]);
+    }
+  };
 
   useEffect(() => {
     if (locations.length > 1) {
@@ -113,7 +112,7 @@ function GroupMeetingSpot() {
             const lng = place.geometry?.location?.lng();
 
             if (lat && lng) {
-              setCenter({ lat, lng, place });
+              setMeetingSpot({ lat, lng, place });
             }
           }
         );
@@ -124,13 +123,30 @@ function GroupMeetingSpot() {
         map.fitBounds(bounds);
       }
     } else {
-      setCenter(undefined);
+      setMeetingSpot(undefined);
     }
-  }, [locations, map, bounds, value]);
+  }, [locations, map, bounds, value, placeType]);
 
   useEffect(() => {
     getDirections();
-  }, [getDirections, center]);
+  }, [meetingSpot]);
+
+  useEffect(() => {
+    try {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude: lat, longitude: lng } = position.coords;
+
+          setMapCenter({ lat, lng });
+        },
+        (error) => {
+          throw error;
+        }
+      );
+    } catch (e) {
+      console.error("navigator.geolocation error", e);
+    }
+  }, [mapCenter?.lat, mapCenter?.lng]);
 
   const onUnmount = useCallback(function callback(map: google.maps.Map) {
     setMap(undefined);
@@ -174,11 +190,11 @@ function GroupMeetingSpot() {
     }
   };
   const onRemove = (idx: number) => {
-    locations[idx].directionsRenderer?.setDirections(null);
+    locations[idx].directionsRenderer?.setDirections({ routes: [] });
     locations.splice(idx, 1);
     setLocations([...locations]);
   };
-  const onTilesLoaded = () => {
+  const onComplete = () => {
     if (!onLoadComplete) {
       setOnLoadComplete(true);
     }
@@ -188,15 +204,20 @@ function GroupMeetingSpot() {
     <>
       <GoogleMap
         mapContainerStyle={containerStyle}
+        center={mapCenter}
         zoom={10}
         onLoad={onLoad}
         onUnmount={onUnmount}
-        onTilesLoaded={onTilesLoaded}
+        onTilesLoaded={onComplete}
       >
         <>
-          {center && <Marker position={center} label="C" />}
+          {meetingSpot && <Marker position={meetingSpot} label="C" />}
           {locations.map((location, idx) => (
-            <Marker position={location} label={`${idx + 1}`} />
+            <Marker
+              position={location}
+              label={`${idx + 1}`}
+              key={location.place?.place_id}
+            />
           ))}
         </>
       </GoogleMap>
@@ -219,14 +240,15 @@ function GroupMeetingSpot() {
             onChange={({ target: { value } }) => setPlaceType(value)}
           />
           <div>
-            {center && (
-              <LocationChip location={center} idx={"C"} isMeetingSpot />
+            {meetingSpot && (
+              <LocationChip location={meetingSpot} idx={"M"} isMeetingSpot />
             )}
             {locations.map((location, idx) => (
               <LocationChip
                 location={location}
                 idx={`${idx + 1}`}
                 onRemove={() => onRemove(idx)}
+                key={location.place?.place_id}
               />
             ))}
           </div>

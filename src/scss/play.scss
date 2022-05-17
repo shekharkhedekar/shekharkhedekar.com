@@ -3,9 +3,6 @@
 /**********
 * WORK
 ***********/
-#sk-play {
-  // background-image: url("css/img/play_bg.jpg");
-}
 .sk-expander {
   margin-bottom: $gridHeight;
 }
@@ -21,9 +18,8 @@
   }
 }
 .sk-expander-content {
-  // height: 0;
-  // opacity: 0;
   overflow: hidden;
+  margin: 1rem;
 
   transition: opacity $transitionTime $transitionEasing $transitionTime;
 
@@ -34,9 +30,6 @@
 }
 
 @media screen and (max-width: $maxWidth) {
-  .sk-expander-title {
-    margin-left: 0;
-  }
   .sk-play-category {
     margin-top: 2 * $gridHeight;
     &:first-child {

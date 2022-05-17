@@ -3,7 +3,7 @@ const Deploy = require("../../deploy-base/build/deployBase").default;
 const deployClient = new Deploy({
   localRoot: `${__dirname}/../build`,
   remoteRoot: "/shekharkhedekar/",
-  url: "http://shekharkhedekar.com",
+  url: "https://shekharkhedekar.com",
 });
 
 deployClient.deploy();
