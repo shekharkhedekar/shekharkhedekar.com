@@ -10,14 +10,12 @@ export interface LocationChipProps {
   location?: LatLngWithPlace;
   idx: string;
   onRemove?: () => void;
-  isMeetingSpot?: boolean;
 }
 
 export const LocationChip: React.FC<LocationChipProps> = ({
   location,
   idx,
   onRemove,
-  isMeetingSpot,
 }) =>
   location ? (
     <div
@@ -26,9 +24,9 @@ export const LocationChip: React.FC<LocationChipProps> = ({
         background: "white",
         color: "#444",
         padding: "1rem",
-        border: "1px solid #ccc",
+        border: "1px solid #aaa",
         borderRadius: "10px",
-        boxShadow: "0 0 10px rgba(0,0,0,0.2)",
+
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -53,8 +51,17 @@ export const LocationChip: React.FC<LocationChipProps> = ({
         </div>
         <div>
           <div>
-            {isMeetingSpot && <strong>Meeting Spot:</strong>}
-            {location.place?.name}
+            <a
+              style={{ color: "rgb(112,112,255" }}
+              href={`https://www.google.com/maps/search/?api=1&query=${
+                location.place?.formatted_address &&
+                encodeURIComponent(location.place?.formatted_address)
+              }&query_place_id=${location.place?.place_id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {location.place?.name}
+            </a>
           </div>
           <div style={{ color: "#aaa", fontSize: ".8rem" }}>
             {location.place?.formatted_address}
@@ -62,7 +69,7 @@ export const LocationChip: React.FC<LocationChipProps> = ({
           </div>
         </div>
       </div>
-      {!isMeetingSpot && (
+      {idx !== "M" && (
         <button
           style={{ border: 0, background: "transparent", cursor: "pointer" }}
           onClick={onRemove}

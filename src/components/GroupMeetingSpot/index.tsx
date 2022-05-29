@@ -1,28 +1,15 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import {
-  GoogleMap,
-  useLoadScript,
-  Autocomplete,
-  Marker,
-} from "@react-google-maps/api";
+import React, { useCallback, useEffect, useState } from "react";
+import { useLoadScript } from "@react-google-maps/api";
 
 import secrets from "../../secrets.json";
-import { LatLngWithPlace, LocationChip } from "./LocationChip";
+import { LatLngWithPlace } from "./LocationChip";
+import { Map } from "./Map";
 import { useDebounce } from "use-debounce";
+import { ControlCard } from "./ControlCard";
+import { useMediaQuery } from "@react-hook/media-query";
+import { Header } from "./Header";
+import { GroupMeetingContextProvider } from "./context";
 
-const containerStyle = {
-  width: "100%",
-  height: "100%",
-};
-
-const inputStyle = {
-  padding: "1rem",
-  width: "20rem",
-  borderRadius: "10px",
-  border: "1px solid #ccc",
-  boxShadow: "0 0 10px rgba(0,0,0,0.3)",
-  marginBottom: "0.5rem",
-};
 const libraries = ["places"];
 
 function GroupMeetingSpot() {
@@ -32,25 +19,18 @@ function GroupMeetingSpot() {
     // @ts-ignore
     libraries,
   });
-  const [onLoadComplete, setOnLoadComplete] = useState(false);
+
+  const isMobile = useMediaQuery("screen and (max-width: 600px)");
   const [map, setMap] = useState<google.maps.Map>();
-  const [autocomplete, setAutocomplete] =
-    useState<google.maps.places.Autocomplete>();
+
   const [locations, setLocations] = useState<LatLngWithPlace[]>([]);
   const [bounds, setBounds] = useState<google.maps.LatLngBounds>();
   const [meetingSpot, setMeetingSpot] = useState<LatLngWithPlace>();
   const [mapCenter, setMapCenter] = useState<LatLngWithPlace>();
-  const [placeType, setPlaceType] = useState("");
-  const [value] = useDebounce(placeType, 250);
+  const [placeType, setPlaceType] = useState("Restaurant");
+  const [debouncedPlaceType] = useDebounce(placeType, 250);
 
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const onLoad = useCallback(function callback(map: google.maps.Map) {
-    setBounds(new window.google.maps.LatLngBounds());
-    setMap(map);
-  }, []);
-
-  const getDirections = async () => {
+  const getDirections = useCallback(async () => {
     if (!map) return;
     let directionsService = new google.maps.DirectionsService();
 
@@ -85,9 +65,8 @@ function GroupMeetingSpot() {
 
       setLocations(locations);
     }
-  };
-
-  useEffect(() => {
+  }, [locations, map, meetingSpot]);
+  const getMeetingSpot = useCallback(() => {
     if (locations.length > 1) {
       const newCenter: google.maps.LatLngLiteral = locations.reduce(
         (acc, location) => {
@@ -103,7 +82,7 @@ function GroupMeetingSpot() {
           {
             locationBias: newCenter,
             fields: ["formatted_address", "name", "geometry"],
-            query: placeType || "restaurant",
+            query: debouncedPlaceType,
           },
           (res) => {
             if (!res) return;
@@ -118,6 +97,7 @@ function GroupMeetingSpot() {
         );
       }
 
+      console.log({ map, bounds });
       if (map && bounds) {
         locations.forEach((location) => bounds?.extend(location));
         map.fitBounds(bounds);
@@ -125,11 +105,17 @@ function GroupMeetingSpot() {
     } else {
       setMeetingSpot(undefined);
     }
-  }, [locations, map, bounds, value, placeType]);
+  }, [bounds, debouncedPlaceType, locations, map]);
 
   useEffect(() => {
-    getDirections();
-  }, [meetingSpot]);
+    getMeetingSpot();
+  }, [getMeetingSpot]);
+
+  useEffect(() => {
+    if (meetingSpot) {
+      getDirections();
+    }
+  }, [meetingSpot, getDirections]);
 
   useEffect(() => {
     try {
@@ -147,130 +133,51 @@ function GroupMeetingSpot() {
       console.error("navigator.geolocation error", e);
     }
   }, [mapCenter?.lat, mapCenter?.lng]);
-
-  const onUnmount = useCallback(function callback(map: google.maps.Map) {
-    setMap(undefined);
-  }, []);
-
-  const onAutocompleteLoad = (
-    autocomplete: google.maps.places.Autocomplete
-  ) => {
-    setAutocomplete(autocomplete);
+  const value = {
+    locations,
+    setLocations,
+    meetingSpot,
+    setMeetingSpot,
+    placeType,
+    setPlaceType,
+    isMobile,
+    map,
+    setMap,
+    setBounds,
   };
 
-  const onPlaceChanged = () => {
-    if (!autocomplete) {
-      console.error("autocomplete not defined");
-      return;
-    }
+  if (!isLoaded) {
+    return null;
+  }
 
-    const place = autocomplete.getPlace();
-    const { geometry } = place;
-
-    if (!geometry) {
-      console.error("place.geometry not defined", place);
-      return;
-    }
-
-    const { location } = geometry;
-
-    if (!location) {
-      console.error("place.geometry.location is not defined");
-      return;
-    }
-    const newLocation: LatLngWithPlace = {
-      lat: location.lat(),
-      lng: location.lng(),
-      place,
-    };
-
-    setLocations([...locations, newLocation]);
-    if (inputRef.current) {
-      inputRef.current.value = "";
-    }
-  };
-  const onRemove = (idx: number) => {
-    locations[idx].directionsRenderer?.setDirections({ routes: [] });
-    locations.splice(idx, 1);
-    setLocations([...locations]);
-  };
-  const onComplete = () => {
-    if (!onLoadComplete) {
-      setOnLoadComplete(true);
-    }
-  };
-
-  return isLoaded ? (
-    <>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={mapCenter}
-        zoom={10}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-        onTilesLoaded={onComplete}
-      >
-        <>
-          {meetingSpot && <Marker position={meetingSpot} label="C" />}
-          {locations.map((location, idx) => (
-            <Marker
-              position={location}
-              label={`${idx + 1}`}
-              key={location.place?.place_id}
-            />
-          ))}
-        </>
-      </GoogleMap>
-      {onLoadComplete ? (
-        <div style={{ position: "absolute", top: 75, left: 10 }}>
-          <Autocomplete
-            onLoad={onAutocompleteLoad}
-            onPlaceChanged={onPlaceChanged}
-          >
-            <input
-              placeholder="Add address"
-              style={inputStyle}
-              ref={inputRef}
-            />
-          </Autocomplete>
-          <input
-            placeholder="Type (e.g. 'restaurant', 'bar', 'coffee')"
-            style={inputStyle}
-            value={placeType}
-            onChange={({ target: { value } }) => setPlaceType(value)}
-          />
-          <div>
-            {meetingSpot && (
-              <LocationChip location={meetingSpot} idx={"M"} isMeetingSpot />
-            )}
-            {locations.map((location, idx) => (
-              <LocationChip
-                location={location}
-                idx={`${idx + 1}`}
-                onRemove={() => onRemove(idx)}
-                key={location.place?.place_id}
-              />
-            ))}
-          </div>
+  return (
+    <GroupMeetingContextProvider value={value}>
+      {isMobile ? (
+        <div
+          style={{ display: "flex", flexDirection: "column", height: "100vh" }}
+        >
+          <Header />
+          <Map />
+          <ControlCard />
         </div>
       ) : (
-        <div
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            height: "100%",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div style={{ color: "#666", fontSize: "2rem" }}>Loading map...</div>
+        <div style={{ height: "100vh", width: "100%", position: "relative" }}>
+          <Header />
+          <div
+            style={{
+              display: "flex",
+              height: "100%",
+              width: "100%",
+              flexDirection: isMobile ? "column-reverse" : "row",
+            }}
+          >
+            <ControlCard />
+            <Map />
+          </div>
         </div>
       )}
-    </>
-  ) : null;
+    </GroupMeetingContextProvider>
+  );
 }
 
 export default React.memo(GroupMeetingSpot);
