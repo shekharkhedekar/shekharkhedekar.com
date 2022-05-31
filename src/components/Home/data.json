@@ -76,9 +76,20 @@
     {
       "title": "Playing/Teaching Percussion",
       "description": [
-        "I'm currently focusing on playing drumset, currently with The Butterfly Knives. I've also taught and arranged for marching/rudimental percussion at the High School, University, Drum Corps (DCI) and WGI levels. Here are some of the groups I have taught and their accomplishments:"
+        "I'm currently focusing on playing drumset, currently with ",
+        {
+          "title": "The Butterfly Knives",
+          "href": "https://www.facebook.com/the.butterfly.knives"
+        },
+        ". I've also taught and arranged for marching/rudimental percussion at the High School, University, Drum Corps (DCI) and WGI levels. Here are some of the groups I have taught and their accomplishments:"
       ],
       "teachingGroups": [
+        {
+          "href": "http://calband.berkeley.edu/percussion/",
+          "title": "Cal Percussion - UC Drumline",
+          "location": "Berkeley, Ca",
+          "subtitle": [{ "title": "2004-2007 - Battery Tech" }]
+        },
         {
           "href": "http://www.beyerband.org/",
           "title": "Beyer High School",
