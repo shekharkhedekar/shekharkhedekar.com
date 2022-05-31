@@ -3,6 +3,8 @@ import { GoogleMap, Marker } from "@react-google-maps/api";
 
 import { LatLngWithPlace } from "./LocationChip";
 import { useGroupMeetingSpotContext } from "./context/GroupMeetingSpot";
+import { useColorThemeContext } from "./context/ColorTheme";
+import { FaSpinner } from "react-icons/fa";
 
 const containerStyle = {
   width: "100%",
@@ -13,6 +15,7 @@ export const Map: React.FC = () => {
   // Context
   const { locations, meetingSpot, setMap, setBounds } =
     useGroupMeetingSpotContext();
+  const { theme } = useColorThemeContext();
 
   // State
   const [onLoadComplete, setOnLoadComplete] = useState(false);
@@ -87,9 +90,19 @@ export const Map: React.FC = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            background: "#9cc0f9",
           }}
         >
-          <div style={{ color: "#666", fontSize: "2rem" }}>Loading map...</div>
+          <div
+            style={{
+              color: "#000",
+              fontSize: "1.5rem",
+              textShadow: "0 0 2px white, 0 0 2px white, 0 0 2px white",
+            }}
+          >
+            <FaSpinner className="fa-spin" />
+            Loading map
+          </div>
         </div>
       )}
     </div>
