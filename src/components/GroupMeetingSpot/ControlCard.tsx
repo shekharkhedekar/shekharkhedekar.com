@@ -1,22 +1,15 @@
 import { Autocomplete } from "@react-google-maps/api";
 import { useRef, useState } from "react";
+import pluralize from "pluralize";
+import { FaInfoCircle } from "react-icons/fa";
+
 import { LatLngWithPlace, LocationChip } from "./LocationChip";
 import styled from "styled-components";
 import { boxShadow, boxShadowNoTop } from "./constants";
 import { Expander } from "./Expander";
-import { useGroupMeetingSpotContext } from "./context";
+import { useGroupMeetingSpotContext } from "./context/GroupMeetingSpot";
+import { useColorThemeContext } from "./context/ColorTheme";
 
-const inputStyle = {
-  padding: "1rem",
-  width: "100%",
-  borderRadius: "10px",
-  border: "1px solid #ccc",
-  marginBottom: "0.5rem",
-};
-
-const Label = styled.label`
-  font-weight: bold;
-`;
 export const ControlCard: React.FC = () => {
   // Context
   const {
@@ -27,6 +20,7 @@ export const ControlCard: React.FC = () => {
     setPlaceType,
     meetingSpot,
   } = useGroupMeetingSpotContext();
+  const { theme } = useColorThemeContext();
 
   // State
   const [autocomplete, setAutocomplete] =
@@ -76,46 +70,84 @@ export const ControlCard: React.FC = () => {
     setLocations([...locations]);
   };
 
+  // Styled Components
+  const Label = styled.label`
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    display: block;
+  `;
+
+  const Helper = styled.div`
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: ${theme.textColorSecondary};
+    font-size: 0.75rem;
+  `;
+  const inputStyle = {
+    padding: "1rem",
+    width: "100%",
+    borderRadius: "10px",
+    border: `1px solid ${theme.borderColorPrimary}`,
+    marginBottom: "0.5rem",
+    background: theme.backgroundColorPrimary,
+    color: theme.textColorPrimary,
+  };
+  const Divider = styled.div`
+    border-bottom: 1px solid ${theme.borderColorPrimary};
+  `;
+
   return (
     <div
       style={{
         width: isMobile ? "auto" : "35rem",
-        background: "white",
+        background: theme.backgroundColorPrimary,
+        color: theme.textColorPrimary,
         boxShadow: isMobile ? boxShadow : boxShadowNoTop,
         zIndex: 1,
+        padding: "1rem 0",
       }}
     >
       <div style={{ padding: "0.25rem 1rem" }}>
-        <Label>
-          Add at least two addresses
-          <Autocomplete
-            onLoad={onAutocompleteLoad}
-            onPlaceChanged={onPlaceChanged}
-          >
-            <input
-              placeholder="Add address"
-              style={inputStyle}
-              ref={inputRef}
-            />
-          </Autocomplete>
-        </Label>
-        <Label>
-          Meeting Spot Search
+        <Label htmlFor="address">Add at least two addresses</Label>
+        <Autocomplete
+          onLoad={onAutocompleteLoad}
+          onPlaceChanged={onPlaceChanged}
+        >
           <input
-            placeholder="e.g. restaurant, bar, coffee"
             style={inputStyle}
-            value={placeType}
-            onChange={({ target: { value } }) => setPlaceType(value)}
+            placeholder="Add address"
+            ref={inputRef}
+            id="address"
+            type="text"
           />
-        </Label>
+        </Autocomplete>
+        <Label htmlFor="meetingSpot">Type of Meeting Spot</Label>
+        <input
+          style={inputStyle}
+          placeholder="e.g. restaurant, bar, coffee"
+          value={placeType}
+          onChange={({ target: { value } }) => setPlaceType(value)}
+          id="meetingSpot"
+        />
       </div>
+      {locations.length < 2 ? (
+        <Helper>
+          <FaInfoCircle />
+          <div>
+            Enter at least {2 - locations.length} more{" "}
+            {pluralize("addresses", 2 - locations.length)}
+          </div>
+        </Helper>
+      ) : null}
       {meetingSpot && (
         <>
-          <div style={{ borderBottom: "1px solid #ccc" }} />
+          <Divider />
           <div style={{ padding: "0.25rem 1rem" }}>
             <Expander
               label={
-                <h3 style={{ color: "green" }}>
+                <h3 style={{ color: theme.textColorSuccess }}>
                   Meet at {meetingSpot.place?.name}!
                 </h3>
               }
@@ -128,9 +160,12 @@ export const ControlCard: React.FC = () => {
       )}
       {Boolean(locations.length) && (
         <>
-          <div style={{ borderBottom: "1px solid #ccc" }} />
+          <Divider />
           <div style={{ padding: "0.25rem 1rem" }}>
-            <Expander label={<h3>Addresses</h3>} isMobile={isMobile}>
+            <Expander
+              label={<h3>Addresses ({locations.length})</h3>}
+              isMobile={isMobile}
+            >
               <>
                 {locations.map((location, idx) => (
                   <LocationChip

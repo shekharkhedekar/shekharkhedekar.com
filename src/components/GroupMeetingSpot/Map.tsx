@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
 
 import { LatLngWithPlace } from "./LocationChip";
-import { useGroupMeetingSpotContext } from "./context";
+import { useGroupMeetingSpotContext } from "./context/GroupMeetingSpot";
 
 const containerStyle = {
   width: "100%",

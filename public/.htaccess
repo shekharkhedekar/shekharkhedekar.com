@@ -1,6 +1,24 @@
 <IfModule mod_rewrite.c>
 
 RewriteEngine On
+
+### WWW & HTTPS
+
+# ensure www.
+
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ensure https
+
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+### WWW & HTTPS
+
+### React Router
+
 RewriteBase /
 RewriteRule ^index\.html$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -8,8 +26,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule . /index.html [L]
 
-RewriteEngine On
-RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.\*)$ https://www.shekharkhedekar.com/$1 [R,L]
+### React Router
 
 </IfModule>

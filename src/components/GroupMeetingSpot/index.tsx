@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useLoadScript } from "@react-google-maps/api";
+import styled from "styled-components";
 
 import secrets from "../../secrets.json";
 import { LatLngWithPlace } from "./LocationChip";
@@ -8,9 +9,18 @@ import { useDebounce } from "use-debounce";
 import { ControlCard } from "./ControlCard";
 import { useMediaQuery } from "@react-hook/media-query";
 import { Header } from "./Header";
-import { GroupMeetingContextProvider } from "./context";
+import { GroupMeetingContextProvider } from "./context/GroupMeetingSpot";
+import { Helmet } from "react-helmet";
+import { ColorThemeContextProvider } from "./context/ColorTheme";
 
 const libraries = ["places"];
+
+const MobileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-height: -webkit-fill-available;
+`;
 
 function GroupMeetingSpot() {
   const { isLoaded } = useLoadScript({
@@ -85,8 +95,12 @@ function GroupMeetingSpot() {
             query: debouncedPlaceType,
           },
           (res) => {
-            if (!res) return;
+            if (!res) {
+              setMeetingSpot(undefined);
+              return;
+            }
             const place = res[0];
+
             const lat = place.geometry?.location?.lat();
             const lng = place.geometry?.location?.lng();
 
@@ -97,7 +111,6 @@ function GroupMeetingSpot() {
         );
       }
 
-      console.log({ map, bounds });
       if (map && bounds) {
         locations.forEach((location) => bounds?.extend(location));
         map.fitBounds(bounds);
@@ -151,32 +164,45 @@ function GroupMeetingSpot() {
   }
 
   return (
-    <GroupMeetingContextProvider value={value}>
-      {isMobile ? (
-        <div
-          style={{ display: "flex", flexDirection: "column", height: "100vh" }}
-        >
-          <Header />
-          <Map />
-          <ControlCard />
-        </div>
-      ) : (
-        <div style={{ height: "100vh", width: "100%", position: "relative" }}>
-          <Header />
-          <div
-            style={{
-              display: "flex",
-              height: "100%",
-              width: "100%",
-              flexDirection: isMobile ? "column-reverse" : "row",
-            }}
-          >
-            <ControlCard />
+    <ColorThemeContextProvider>
+      <GroupMeetingContextProvider value={value}>
+        <Helmet>
+          <title>Find a Group Meeting Spot</title>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=no, user-scalable=0"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            href="groupMeetingSpot.png"
+            sizes="16x16"
+          />
+        </Helmet>
+        {isMobile ? (
+          <MobileContainer>
+            <Header />
             <Map />
+            <ControlCard />
+          </MobileContainer>
+        ) : (
+          <div style={{ height: "100vh", width: "100%", position: "relative" }}>
+            <Header />
+            <div
+              style={{
+                display: "flex",
+                height: "100%",
+                width: "100%",
+                flexDirection: isMobile ? "column-reverse" : "row",
+              }}
+            >
+              <ControlCard />
+              <Map />
+            </div>
           </div>
-        </div>
-      )}
-    </GroupMeetingContextProvider>
+        )}
+      </GroupMeetingContextProvider>
+    </ColorThemeContextProvider>
   );
 }
 

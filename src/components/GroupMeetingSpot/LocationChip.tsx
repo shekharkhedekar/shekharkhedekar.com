@@ -1,5 +1,6 @@
 import React from "react";
 import { FaTimes } from "react-icons/fa";
+import { useColorThemeContext } from "./context/ColorTheme";
 export interface LatLngWithPlace extends google.maps.LatLngLiteral {
   place?: google.maps.places.PlaceResult;
   distance?: string;
@@ -16,17 +17,17 @@ export const LocationChip: React.FC<LocationChipProps> = ({
   location,
   idx,
   onRemove,
-}) =>
-  location ? (
+}) => {
+  const { theme } = useColorThemeContext();
+  return location ? (
     <div
       style={{
         margin: "0.5rem 0",
-        background: "white",
-        color: "#444",
+        background: theme.backgroundColorPrimary,
+        color: theme.textColorPrimary,
         padding: "1rem",
-        border: "1px solid #aaa",
+        border: `1px solid ${theme.borderColorPrimary}`,
         borderRadius: "10px",
-
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
@@ -37,7 +38,7 @@ export const LocationChip: React.FC<LocationChipProps> = ({
       >
         <div
           style={{
-            background: "#f40",
+            background: "#ea4335",
             borderRadius: "50%",
             width: "2rem",
             height: "2rem",
@@ -52,7 +53,7 @@ export const LocationChip: React.FC<LocationChipProps> = ({
         <div>
           <div>
             <a
-              style={{ color: "rgb(112,112,255" }}
+              style={{ color: theme.textLinkPrimary }}
               href={`https://www.google.com/maps/search/?api=1&query=${
                 location.place?.formatted_address &&
                 encodeURIComponent(location.place?.formatted_address)
@@ -63,7 +64,7 @@ export const LocationChip: React.FC<LocationChipProps> = ({
               {location.place?.name}
             </a>
           </div>
-          <div style={{ color: "#aaa", fontSize: ".8rem" }}>
+          <div style={{ color: theme.textColorPrimary, fontSize: ".8rem" }}>
             {location.place?.formatted_address}
             <div>{location.distance}</div>
           </div>
@@ -71,7 +72,12 @@ export const LocationChip: React.FC<LocationChipProps> = ({
       </div>
       {idx !== "M" && (
         <button
-          style={{ border: 0, background: "transparent", cursor: "pointer" }}
+          style={{
+            color: theme.textColorPrimary,
+            border: 0,
+            background: "transparent",
+            cursor: "pointer",
+          }}
           onClick={onRemove}
           type="button"
         >
@@ -80,3 +86,4 @@ export const LocationChip: React.FC<LocationChipProps> = ({
       )}
     </div>
   ) : null;
+};

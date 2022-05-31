@@ -1,5 +1,5 @@
 import React, { createContext, ReactNode, useContext } from "react";
-import { LatLngWithPlace } from "./LocationChip";
+import { LatLngWithPlace } from "../LocationChip";
 
 export interface GroupMeetingSpotContextType {
   locations: LatLngWithPlace[];
