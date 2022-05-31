@@ -166,33 +166,38 @@ export const Home = () => {
                     {p.description &&
                       p.description.map((d) => <StringOrLink content={d} />)}
                   </div>
-                  {p.teachingGroups &&
-                    p.teachingGroups.map((t) => (
-                      <Expander label={`${t.title} (${t.location})`}>
-                        <>
-                          {t.subtitle &&
-                            t.subtitle.map((s) => (
-                              <>
-                                <div className="sk-work-item-description">
-                                  {s.title}
-                                </div>
+                  {p.subItems?.map((t) => (
+                    <Expander
+                      label={
+                        `${t.title} ` +
+                        ("location" in t ? `(${t.location})` : "")
+                      }
+                    >
+                      <>
+                        {"subtitle" in t &&
+                          t.subtitle.map((s) => (
+                            <>
+                              <div className="sk-work-item-description">
+                                {s.title}
+                              </div>
 
-                                <div className="sk-work-item-content">
-                                  {s.accolades && (
-                                    <>
-                                      <div className="sk-work-item-description">
-                                        Achievements
-                                      </div>
-                                      {s.accolades.map((a) => (
-                                        <li>
-                                          <StringOrLink content={a} />
-                                        </li>
-                                      ))}
-                                    </>
-                                  )}
-                                </div>
-                              </>
-                            ))}
+                              <div className="sk-work-item-content">
+                                {"accolades" in s && (
+                                  <>
+                                    <div className="sk-work-item-description">
+                                      Achievements
+                                    </div>
+                                    {s.accolades?.map((a) => (
+                                      <li>
+                                        <StringOrLink content={a} />
+                                      </li>
+                                    ))}
+                                  </>
+                                )}
+                              </div>
+                            </>
+                          ))}
+                        {"href" in t && (
                           <a
                             href={t.href}
                             target="_blank"
@@ -200,9 +205,10 @@ export const Home = () => {
                           >
                             website&raquo;
                           </a>
-                        </>
-                      </Expander>
-                    ))}
+                        )}
+                      </>
+                    </Expander>
+                  ))}
                 </div>
               ))}
             </div>

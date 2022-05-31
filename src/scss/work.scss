@@ -29,17 +29,12 @@ a.sk-work-resume {
 }
 
 .sk-work-categories {
-  display: table;
-  width: 100%;
+  display: flex;
+  gap: 60px;
 }
 
 .sk-work-category {
-  display: table-cell;
-  width: 33%;
-  padding-right: 60px;
-  &:last-child {
-    padding-right: 0;
-  }
+  flex: 1;
 }
 
 .sk-work-header {

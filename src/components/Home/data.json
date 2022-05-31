@@ -83,7 +83,7 @@
         },
         ". I've also taught and arranged for marching/rudimental percussion at the High School, University, Drum Corps (DCI) and WGI levels. Here are some of the groups I have taught and their accomplishments:"
       ],
-      "teachingGroups": [
+      "subItems": [
         {
           "href": "http://calband.berkeley.edu/percussion/",
           "title": "Cal Percussion - UC Drumline",
@@ -166,6 +166,21 @@
         },
         ". ",
         "All in all, I'm more comfortable on 2 wheels than anything else (skates, skateboards, skis etc.)."
+      ]
+    },
+    {
+      "title": "Projects",
+      "description": ["Some hobby web projects I'm working on...."],
+      "subItems": [
+        {
+          "title": "Find a Meeting Spot!",
+          "href": "/group-meeting-spot",
+          "subtitle": [
+            {
+              "title": "Search for locations to meet close to various addresses"
+            }
+          ]
+        }
       ]
     }
   ]
