@@ -9,7 +9,10 @@ import { useDebounce } from "use-debounce";
 import { ControlCard } from "./ControlCard";
 import { useMediaQuery } from "@react-hook/media-query";
 import { Header } from "./Header";
-import { GroupMeetingContextProvider } from "./context/GroupMeetingSpot";
+import {
+  GroupMeetingContextProvider,
+  GroupMeetingSpotContextType,
+} from "./context/GroupMeetingSpot";
 import { Helmet } from "react-helmet";
 import { ColorThemeContextProvider } from "./context/ColorTheme";
 
@@ -39,6 +42,7 @@ function GroupMeetingSpot() {
   const [mapCenter, setMapCenter] = useState<LatLngWithPlace>();
   const [placeType, setPlaceType] = useState("Restaurant");
   const [debouncedPlaceType] = useDebounce(placeType, 250);
+  const [isMeetingSpotLoading, setIsMeetingSpotLoading] = useState(true);
 
   const getDirections = useCallback(async () => {
     if (!map) return;
@@ -88,6 +92,7 @@ function GroupMeetingSpot() {
       );
       if (map) {
         const placesService = new google.maps.places.PlacesService(map);
+        setIsMeetingSpotLoading(true);
         placesService.findPlaceFromQuery(
           {
             locationBias: newCenter,
@@ -95,6 +100,7 @@ function GroupMeetingSpot() {
             query: debouncedPlaceType,
           },
           (res) => {
+            setIsMeetingSpotLoading(false);
             if (!res) {
               setMeetingSpot(undefined);
               return;
@@ -106,6 +112,8 @@ function GroupMeetingSpot() {
 
             if (lat && lng) {
               setMeetingSpot({ lat, lng, place });
+            } else {
+              setMeetingSpot(undefined);
             }
           }
         );
@@ -146,11 +154,12 @@ function GroupMeetingSpot() {
       console.error("navigator.geolocation error", e);
     }
   }, [mapCenter?.lat, mapCenter?.lng]);
-  const value = {
+  const value: GroupMeetingSpotContextType = {
     locations,
     setLocations,
     meetingSpot,
     setMeetingSpot,
+    isMeetingSpotLoading,
     placeType,
     setPlaceType,
     isMobile,
@@ -167,11 +176,12 @@ function GroupMeetingSpot() {
     <ColorThemeContextProvider>
       <GroupMeetingContextProvider value={value}>
         <Helmet>
-          <title>Find a Group Meeting Spot</title>
+          <title>Find a Meeting Spot!</title>
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no, user-scalable=0"
           />
+          <meta name="keywords" content="Group, Meeting, Spot, Map, meetup" />
           <link
             rel="icon"
             type="image/png"

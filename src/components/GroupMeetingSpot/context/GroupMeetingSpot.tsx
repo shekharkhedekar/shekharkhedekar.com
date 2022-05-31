@@ -6,6 +6,7 @@ export interface GroupMeetingSpotContextType {
   setLocations: (locations: LatLngWithPlace[]) => void;
   meetingSpot?: LatLngWithPlace;
   setMeetingSpot: (meetingSpot?: LatLngWithPlace) => void;
+  isMeetingSpotLoading: boolean;
   placeType?: string;
   setPlaceType: (placeType: string) => void;
   isMobile: boolean;
@@ -22,6 +23,7 @@ export const GroupMeetingSpotContext =
     locations: [],
     setLocations: notInitializedFunc,
     setMeetingSpot: notInitializedFunc,
+    isMeetingSpotLoading: false,
     setPlaceType: notInitializedFunc,
     isMobile: false,
     setMap: notInitializedFunc,

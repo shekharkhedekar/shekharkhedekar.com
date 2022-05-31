@@ -85,3 +85,20 @@ $loaderAnimationTime: 1s;
   padding: 75px 0 60px;
   margin: 0;
 }
+
+.fa-spin {
+  animation: spin infinite 1s linear;
+  margin-right: 1rem;
+
+  /*You can increase or decrease the timer (5s) to 
+     increase or decrease the speed of the spinner*/
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

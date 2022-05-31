@@ -1,7 +1,7 @@
 import { Autocomplete } from "@react-google-maps/api";
 import { useRef, useState } from "react";
 import pluralize from "pluralize";
-import { FaInfoCircle } from "react-icons/fa";
+import { FaInfoCircle, FaSpinner } from "react-icons/fa";
 
 import { LatLngWithPlace, LocationChip } from "./LocationChip";
 import styled from "styled-components";
@@ -19,6 +19,7 @@ export const ControlCard: React.FC = () => {
     placeType,
     setPlaceType,
     meetingSpot,
+    isMeetingSpotLoading,
   } = useGroupMeetingSpotContext();
   const { theme } = useColorThemeContext();
 
@@ -107,6 +108,8 @@ export const ControlCard: React.FC = () => {
         boxShadow: isMobile ? boxShadow : boxShadowNoTop,
         zIndex: 1,
         padding: "1rem 0",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <div style={{ padding: "0.25rem 1rem" }}>
@@ -132,54 +135,63 @@ export const ControlCard: React.FC = () => {
           id="meetingSpot"
         />
       </div>
-      {locations.length < 2 ? (
-        <Helper>
-          <FaInfoCircle />
-          <div>
-            Enter at least {2 - locations.length} more{" "}
-            {pluralize("addresses", 2 - locations.length)}
-          </div>
-        </Helper>
-      ) : null}
-      {meetingSpot && (
-        <>
-          <Divider />
-          <div style={{ padding: "0.25rem 1rem" }}>
-            <Expander
-              label={
-                <h3 style={{ color: theme.textColorSuccess }}>
-                  Meet at {meetingSpot.place?.name}!
+      <div style={{ overflowY: "auto" }}>
+        {locations.length < 2 ? (
+          <Helper>
+            <FaInfoCircle />
+            <div>
+              Enter at least {2 - locations.length} more{" "}
+              {pluralize("addresses", 2 - locations.length)}
+            </div>
+          </Helper>
+        ) : null}
+        {meetingSpot && (
+          <>
+            <Divider />
+            <div style={{ padding: "0.25rem 1rem" }}>
+              {isMeetingSpotLoading ? (
+                <h3>
+                  <FaSpinner className="fa-spin" />
+                  Finding a spot...
                 </h3>
-              }
-              isMobile={isMobile}
-            >
-              <LocationChip location={meetingSpot} idx={"M"} />
-            </Expander>
-          </div>
-        </>
-      )}
-      {Boolean(locations.length) && (
-        <>
-          <Divider />
-          <div style={{ padding: "0.25rem 1rem" }}>
-            <Expander
-              label={<h3>Addresses ({locations.length})</h3>}
-              isMobile={isMobile}
-            >
-              <>
-                {locations.map((location, idx) => (
-                  <LocationChip
-                    location={location}
-                    idx={`${idx + 1}`}
-                    onRemove={() => onRemove(idx)}
-                    key={location.place?.place_id}
-                  />
-                ))}
-              </>
-            </Expander>
-          </div>
-        </>
-      )}
+              ) : (
+                <Expander
+                  label={
+                    <h3 style={{ color: theme.textColorSuccess }}>
+                      Meet at {meetingSpot.place?.name}!
+                    </h3>
+                  }
+                  isMobile={isMobile}
+                >
+                  <LocationChip location={meetingSpot} idx={"M"} />
+                </Expander>
+              )}
+            </div>
+          </>
+        )}
+        {Boolean(locations.length) && (
+          <>
+            <Divider />
+            <div style={{ padding: "0.25rem 1rem" }}>
+              <Expander
+                label={<h3>Addresses ({locations.length})</h3>}
+                isMobile={isMobile}
+              >
+                <>
+                  {locations.map((location, idx) => (
+                    <LocationChip
+                      location={location}
+                      idx={`${idx + 1}`}
+                      onRemove={() => onRemove(idx)}
+                      key={location.place?.place_id}
+                    />
+                  ))}
+                </>
+              </Expander>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 };
