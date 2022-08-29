@@ -30,7 +30,8 @@ a.sk-work-resume {
 
 .sk-work-categories {
   display: flex;
-  gap: 60px;
+  gap: 10%;
+  flex-wrap: wrap;
 }
 
 .sk-work-category {
