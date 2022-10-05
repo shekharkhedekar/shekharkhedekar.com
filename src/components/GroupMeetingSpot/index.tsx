@@ -15,6 +15,7 @@ import {
 } from "./context/GroupMeetingSpot";
 import { Helmet } from "react-helmet";
 import { ColorThemeContextProvider } from "./context/ColorTheme";
+import { GlobalStyle } from "../GlobalStyle";
 
 const libraries = ["places"];
 
@@ -23,6 +24,19 @@ const MobileContainer = styled.div`
   flex-direction: column;
   height: 100vh;
   max-height: -webkit-fill-available;
+`;
+
+const DesktopWrapper = styled.div`
+  height: 100vh;
+  width: 100%;
+  position: relative;
+`;
+
+const DesktopContainer = styled.div<{ isMobile: boolean }>`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flexdirection: ${(isMobile) => (isMobile ? "column-reverse" : "row")};
 `;
 
 function GroupMeetingSpot() {
@@ -38,10 +52,11 @@ function GroupMeetingSpot() {
 
   const [locations, setLocations] = useState<LatLngWithPlace[]>([]);
   const [bounds, setBounds] = useState<google.maps.LatLngBounds>();
-  const [meetingSpot, setMeetingSpot] = useState<LatLngWithPlace>();
   const [mapCenter, setMapCenter] = useState<LatLngWithPlace>();
   const [placeType, setPlaceType] = useState("Restaurant");
   const [debouncedPlaceType] = useDebounce(placeType, 250);
+
+  const [meetingSpot, setMeetingSpot] = useState<LatLngWithPlace>();
   const [isMeetingSpotLoading, setIsMeetingSpotLoading] = useState(true);
 
   const getDirections = useCallback(async () => {
@@ -90,36 +105,39 @@ function GroupMeetingSpot() {
           };
         }
       );
-      if (map) {
-        const placesService = new google.maps.places.PlacesService(map);
-        setIsMeetingSpotLoading(true);
-        placesService.findPlaceFromQuery(
-          {
-            locationBias: newCenter,
-            fields: ["formatted_address", "name", "geometry"],
-            query: debouncedPlaceType,
-          },
-          (res) => {
-            setIsMeetingSpotLoading(false);
-            if (!res) {
-              setMeetingSpot(undefined);
-              return;
-            }
-            const place = res[0];
 
-            const lat = place.geometry?.location?.lat();
-            const lng = place.geometry?.location?.lng();
-
-            if (lat && lng) {
-              setMeetingSpot({ lat, lng, place });
-            } else {
-              setMeetingSpot(undefined);
-            }
-          }
-        );
+      if (!map) {
+        return;
       }
 
-      if (map && bounds) {
+      const placesService = new google.maps.places.PlacesService(map);
+      setIsMeetingSpotLoading(true);
+      placesService.findPlaceFromQuery(
+        {
+          locationBias: newCenter,
+          fields: ["formatted_address", "name", "geometry"],
+          query: debouncedPlaceType,
+        },
+        (res) => {
+          setIsMeetingSpotLoading(false);
+          if (!res) {
+            setMeetingSpot(undefined);
+            return;
+          }
+          const place = res[0];
+
+          const lat = place.geometry?.location?.lat();
+          const lng = place.geometry?.location?.lng();
+
+          if (lat && lng) {
+            setMeetingSpot({ lat, lng, place });
+          } else {
+            setMeetingSpot(undefined);
+          }
+        }
+      );
+
+      if (bounds) {
         locations.forEach((location) => bounds?.extend(location));
         map.fitBounds(bounds);
       }
@@ -175,6 +193,7 @@ function GroupMeetingSpot() {
   return (
     <ColorThemeContextProvider>
       <GroupMeetingContextProvider value={value}>
+        <GlobalStyle />
         <Helmet>
           <title>Find a Meeting Spot!</title>
           <meta
@@ -196,20 +215,13 @@ function GroupMeetingSpot() {
             <ControlCard />
           </MobileContainer>
         ) : (
-          <div style={{ height: "100vh", width: "100%", position: "relative" }}>
+          <DesktopWrapper>
             <Header />
-            <div
-              style={{
-                display: "flex",
-                height: "100%",
-                width: "100%",
-                flexDirection: isMobile ? "column-reverse" : "row",
-              }}
-            >
+            <DesktopContainer isMobile={isMobile}>
               <ControlCard />
               <Map />
-            </div>
-          </div>
+            </DesktopContainer>
+          </DesktopWrapper>
         )}
       </GroupMeetingContextProvider>
     </ColorThemeContextProvider>

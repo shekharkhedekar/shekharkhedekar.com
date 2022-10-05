@@ -4,6 +4,7 @@ import GroupMeetingSpot from "./components/GroupMeetingSpot";
 import PictorialCongressVotes from "./components/PictorialCongressVotes";
 import { Home } from "./components/Home";
 import { Resume } from "./components/Resume";
+import FindMyBart from "./components/FindMyBart";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           path="/pictorial-congress-votes"
           element={<PictorialCongressVotes />}
         ></Route>
+        <Route path="/find-my-bart" element={<FindMyBart />}></Route>
       </Routes>
     </Router>
   );

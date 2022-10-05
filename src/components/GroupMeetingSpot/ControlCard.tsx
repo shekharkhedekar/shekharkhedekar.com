@@ -8,7 +8,27 @@ import styled from "styled-components";
 import { boxShadow, boxShadowNoTop } from "./constants";
 import { Expander } from "./Expander";
 import { useGroupMeetingSpotContext } from "./context/GroupMeetingSpot";
-import { useColorThemeContext } from "./context/ColorTheme";
+import { ColorTheme, useColorThemeContext } from "./context/ColorTheme";
+
+// Styled Components
+const Label = styled.label`
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  display: block;
+`;
+
+const Helper = styled.div<{ theme: ColorTheme }>`
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: ${({ theme }) => theme.textColorAlert};
+  font-size: 0.75rem;
+`;
+
+const Divider = styled.div<{ theme: ColorTheme }>`
+  border-bottom: 1px solid ${({ theme }) => theme.borderColorPrimary};
+`;
 
 export const ControlCard: React.FC = () => {
   // Context
@@ -22,6 +42,15 @@ export const ControlCard: React.FC = () => {
     isMeetingSpotLoading,
   } = useGroupMeetingSpotContext();
   const { theme } = useColorThemeContext();
+  const inputStyle = {
+    padding: "1rem",
+    width: "100%",
+    borderRadius: "10px",
+    border: `1px solid ${theme.borderColorPrimary}`,
+    marginBottom: "0.5rem",
+    background: theme.backgroundColorPrimary,
+    color: theme.textColorPrimary,
+  };
 
   // State
   const [autocomplete, setAutocomplete] =
@@ -71,34 +100,6 @@ export const ControlCard: React.FC = () => {
     setLocations([...locations]);
   };
 
-  // Styled Components
-  const Label = styled.label`
-    font-weight: bold;
-    margin-bottom: 0.25rem;
-    display: block;
-  `;
-
-  const Helper = styled.div`
-    padding: 0.5rem 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: ${theme.textColorSecondary};
-    font-size: 0.75rem;
-  `;
-  const inputStyle = {
-    padding: "1rem",
-    width: "100%",
-    borderRadius: "10px",
-    border: `1px solid ${theme.borderColorPrimary}`,
-    marginBottom: "0.5rem",
-    background: theme.backgroundColorPrimary,
-    color: theme.textColorPrimary,
-  };
-  const Divider = styled.div`
-    border-bottom: 1px solid ${theme.borderColorPrimary};
-  `;
-
   return (
     <div
       style={{
@@ -120,34 +121,35 @@ export const ControlCard: React.FC = () => {
         >
           <input
             style={inputStyle}
+            autoComplete="off"
             placeholder="Add address"
             ref={inputRef}
             id="address"
             type="text"
           />
         </Autocomplete>
-        <Label htmlFor="meetingSpot">Type of Meeting Spot</Label>
-        <input
-          style={inputStyle}
-          placeholder="e.g. restaurant, bar, coffee"
-          value={placeType}
-          onChange={({ target: { value } }) => setPlaceType(value)}
-          id="meetingSpot"
-        />
-      </div>
-      <div style={{ overflowY: "auto" }}>
-        {locations.length < 2 ? (
-          <Helper>
-            <FaInfoCircle />
-            <div>
-              Enter at least {2 - locations.length} more{" "}
-              {pluralize("addresses", 2 - locations.length)}
-            </div>
-          </Helper>
-        ) : null}
+        <div style={{ overflowY: "auto" }}>
+          {locations.length < 2 ? (
+            <Helper theme={theme}>
+              <FaInfoCircle />
+              <div>
+                Enter at least {2 - locations.length} more{" "}
+                {pluralize("addresses", 2 - locations.length)}
+              </div>
+            </Helper>
+          ) : null}
+          <Label htmlFor="meetingSpot">Type of Meeting Spot</Label>
+          <input
+            style={inputStyle}
+            placeholder="e.g. restaurant, bar, coffee"
+            value={placeType}
+            onChange={({ target: { value } }) => setPlaceType(value)}
+            id="meetingSpot"
+          />
+        </div>
         {meetingSpot && (
           <>
-            <Divider />
+            <Divider theme={theme} />
             <div style={{ padding: "0.25rem 1rem" }}>
               {isMeetingSpotLoading ? (
                 <h3>
@@ -171,7 +173,7 @@ export const ControlCard: React.FC = () => {
         )}
         {Boolean(locations.length) && (
           <>
-            <Divider />
+            <Divider theme={theme} />
             <div style={{ padding: "0.25rem 1rem" }}>
               <Expander
                 label={<h3>Addresses ({locations.length})</h3>}

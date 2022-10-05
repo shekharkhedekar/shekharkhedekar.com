@@ -1,33 +1,5 @@
 @import "./variables";
 
-/**********
-* VARIABLES
-***********/
-
-/**********
-* WORK
-***********/
-#sk-work {
-  //   background-image: url("./work_bg.jpg");
-}
-
-.sk-work-wrap {
-  width: $maxWidth;
-  margin: 0 auto;
-  position: relative;
-}
-
-a.sk-work-resume {
-  position: absolute;
-  top: 75px;
-  right: 0;
-
-  &:before {
-    position: absolute;
-    right: -20px;
-  }
-}
-
 .sk-work-categories {
   display: flex;
   gap: 10%;
@@ -41,11 +13,6 @@ a.sk-work-resume {
 .sk-work-header {
   font-size: 23px;
   font-weight: 100;
-}
-
-.sk-work-hr {
-  width: 25px;
-  margin: 23px 0;
 }
 
 .sk-work-item-title,

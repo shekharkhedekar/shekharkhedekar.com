@@ -1,10 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
 import { GoogleMap, Marker } from "@react-google-maps/api";
+import React, { useCallback, useEffect, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 
 import { LatLngWithPlace } from "./LocationChip";
 import { useGroupMeetingSpotContext } from "./context/GroupMeetingSpot";
-import { useColorThemeContext } from "./context/ColorTheme";
-import { FaSpinner } from "react-icons/fa";
+import { useLocationParams } from "./hooks/useLocationParams";
+import { hydrate } from "react-dom";
 
 const containerStyle = {
   width: "100%",
@@ -13,13 +14,15 @@ const containerStyle = {
 
 export const Map: React.FC = () => {
   // Context
-  const { locations, meetingSpot, setMap, setBounds } =
+  const { map, locations, meetingSpot, setMap, setBounds } =
     useGroupMeetingSpotContext();
-  const { theme } = useColorThemeContext();
 
   // State
   const [onLoadComplete, setOnLoadComplete] = useState(false);
   const [mapCenter, setMapCenter] = useState<LatLngWithPlace>();
+
+  // Hooks
+  const { hydrateFromParams } = useLocationParams();
 
   const onLoad = useCallback(
     function callback(map: google.maps.Map) {
@@ -29,6 +32,26 @@ export const Map: React.FC = () => {
     [setMap, setBounds]
   );
 
+  const onUnmount = useCallback(
+    function callback(map: google.maps.Map) {
+      setMap(undefined);
+    },
+    [setMap]
+  );
+
+  const onComplete = () => {
+    if (!onLoadComplete) {
+      setOnLoadComplete(true);
+    }
+  };
+
+  useEffect(() => {
+    if (map) {
+      hydrateFromParams();
+    }
+  }, [map]);
+
+  // Effects
   useEffect(() => {
     try {
       navigator.geolocation.getCurrentPosition(
@@ -44,19 +67,6 @@ export const Map: React.FC = () => {
       console.error("navigator.geolocation error", e);
     }
   }, [mapCenter?.lat, mapCenter?.lng]);
-
-  const onUnmount = useCallback(
-    function callback(map: google.maps.Map) {
-      setMap(undefined);
-    },
-    [setMap]
-  );
-
-  const onComplete = () => {
-    if (!onLoadComplete) {
-      setOnLoadComplete(true);
-    }
-  };
 
   return (
     <div style={{ position: "relative", height: "100%", width: "100%" }}>
