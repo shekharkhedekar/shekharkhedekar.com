@@ -51,6 +51,10 @@
       "react-app/jest"
     ],
     "rules": {
+      "indent": [
+        "error",
+        4
+      ],
       "id-blacklist": [
         "error",
         "fixture"
