@@ -8,23 +8,23 @@ export interface StationMarkerProps {
 }
 
 export const StationMarker: React.FC<StationMarkerProps> = ({
-  position,
-  text,
+    position,
+    text,
 }) => {
-  return (
-    <Marker
-      position={position}
-      label={{ text, color: "#fff" }}
-      key={text}
-      icon={{
-        path: google.maps.SymbolPath.CIRCLE,
-        scale: 25,
-        fillColor: "#06F",
-        fillOpacity: 0.75,
-        strokeColor: "#fff",
-        strokeOpacity: 1,
-        strokeWeight: 3,
-      }}
-    />
-  );
+    return (
+        <Marker
+            position={position}
+            label={{ text, color: "#fff" }}
+            key={text}
+            icon={{
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 25,
+                fillColor: "#06F",
+                fillOpacity: 0.75,
+                strokeColor: "#fff",
+                strokeOpacity: 1,
+                strokeWeight: 3,
+            }}
+        />
+    );
 };

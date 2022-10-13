@@ -1,24 +1,31 @@
-import React, { useState } from "react";
-import { FaPlusCircle, FaMinusCircle } from "react-icons/fa";
+import React, { useState } from 'react';
+import { FaPlusCircle, FaMinusCircle } from 'react-icons/fa';
+import styled from 'styled-components';
+import { CategoryTitle } from './Home/components/Common';
 
 export interface ExpanderProps {
-  label: string;
-  children: React.ReactChild;
+    label: string;
+    children: React.ReactChild;
 }
-export const Expander: React.FC<ExpanderProps> = ({ label, children }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
 
-  return (
-    <div className="sk-expander">
-      <div
-        className="sk-work-item-title sk-expander-title"
-        onClick={() => setIsExpanded(!isExpanded)}
-      >
-        {isExpanded ? <FaMinusCircle /> : <FaPlusCircle />} {label}
-      </div>
-      {isExpanded ? (
-        <div className="sk-expander-content">{children}</div>
-      ) : null}
-    </div>
-  );
+const ExpanderTitle = styled(CategoryTitle)`
+    cursor: pointer;
+`;
+
+const ExpanderWrap = styled.div`
+    margin-bottom: 1rem;
+`;
+export const Expander: React.FC<ExpanderProps> = ({ label, children }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    return (
+        <ExpanderWrap>
+            <ExpanderTitle onClick={() => setIsExpanded(!isExpanded)}>
+                {isExpanded ? <FaMinusCircle /> : <FaPlusCircle />} {label}
+            </ExpanderTitle>
+            {isExpanded ? (
+                <div className="sk-expander-content">{children}</div>
+            ) : null}
+        </ExpanderWrap>
+    );
 };

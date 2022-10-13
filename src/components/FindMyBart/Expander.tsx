@@ -8,26 +8,26 @@ export interface ExpanderProps {
   isMobile: boolean;
 }
 export const Expander: React.FC<ExpanderProps> = ({
-  label,
-  children,
-  isMobile,
+    label,
+    children,
+    isMobile,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(!isMobile);
+    const [isExpanded, setIsExpanded] = useState(!isMobile);
 
-  return (
-    <div>
-      <div
-        onClick={() => setIsExpanded(!isExpanded)}
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        {label}
-        {isExpanded ? <FaChevronDown /> : <FaChevronRight />}
-      </div>
-      {isExpanded ? <div>{children}</div> : null}
-    </div>
-  );
+    return (
+        <div>
+            <div
+                onClick={() => setIsExpanded(!isExpanded)}
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                }}
+            >
+                {label}
+                {isExpanded ? <FaChevronDown /> : <FaChevronRight />}
+            </div>
+            {isExpanded ? <div>{children}</div> : null}
+        </div>
+    );
 };

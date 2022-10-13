@@ -21,18 +21,18 @@ export interface StationsResponse {
 }
 
 export const useStations = () => {
-  const [stations, setStations] = useState<Station[]>([]);
-  const getStations = async () => {
-    const {
-      data: {
-        root: {
-          stations: { station },
-        },
-      },
-    } = await axios.get<null, StationsResponse>(
-      `https://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V&json=y`
-    );
-    setStations(station);
-  };
-  return { getStations, stations };
+    const [stations, setStations] = useState<Station[]>([]);
+    const getStations = async () => {
+        const {
+            data: {
+                root: {
+                    stations: { station },
+                },
+            },
+        } = await axios.get<null, StationsResponse>(
+            `https://api.bart.gov/api/stn.aspx?cmd=stns&key=MW9S-E7SL-26DU-VV8V&json=y`
+        );
+        setStations(station);
+    };
+    return { getStations, stations };
 };

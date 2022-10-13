@@ -16,28 +16,28 @@ export interface GroupMeetingSpotContextType {
 }
 
 const notInitializedFunc = () => {
-  console.error("CONTEXT NOT INITIALIZED");
+    console.error("CONTEXT NOT INITIALIZED");
 };
 export const GroupMeetingSpotContext =
   createContext<GroupMeetingSpotContextType>({
-    locations: [],
-    setLocations: notInitializedFunc,
-    setMeetingSpot: notInitializedFunc,
-    isMeetingSpotLoading: false,
-    setPlaceType: notInitializedFunc,
-    isMobile: false,
-    setMap: notInitializedFunc,
-    setBounds: notInitializedFunc,
+      locations: [],
+      setLocations: notInitializedFunc,
+      setMeetingSpot: notInitializedFunc,
+      isMeetingSpotLoading: false,
+      setPlaceType: notInitializedFunc,
+      isMobile: false,
+      setMap: notInitializedFunc,
+      setBounds: notInitializedFunc,
   });
 
 export const GroupMeetingContextProvider: React.FC<{
   value: GroupMeetingSpotContextType;
   children: ReactNode;
 }> = ({ value, children }) => (
-  <GroupMeetingSpotContext.Provider value={value}>
-    {children}
-  </GroupMeetingSpotContext.Provider>
+    <GroupMeetingSpotContext.Provider value={value}>
+        {children}
+    </GroupMeetingSpotContext.Provider>
 );
 
 export const useGroupMeetingSpotContext = () =>
-  useContext(GroupMeetingSpotContext);
+    useContext(GroupMeetingSpotContext);
