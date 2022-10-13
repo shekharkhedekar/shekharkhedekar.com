@@ -19,7 +19,7 @@ import { Link } from './Link';
 
 const ResumeLink = styled(Link)`
     position: absolute;
-    top: 75px;
+    top: 1.5rem;
     right: 0;
 `;
 
