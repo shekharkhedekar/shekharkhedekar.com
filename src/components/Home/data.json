@@ -1,187 +1,198 @@
 {
-  "work": [
-    {
-      "name": "Current",
-      "items": [
+    "work": [
         {
-          "title": "Stay-at-home Dad",
-          "description": "Chef, Chauffer, Event Planner",
-          "time": "2022-Present",
-          "numYears": 1,
-          "content": "Childcare, participating at my son's pre-school (ECPC)"
-        }
-      ]
-    },
-    {
-      "name": "Past",
-      "items": [
-        {
-          "title": "Lyft",
-          "description": "Staff Front End Engineer",
-          "time": "2015-2021",
-          "numYears": 6,
-          "content": "Front-end, Full Stack, Tech Lead for internal and external projects. Led company-wide front-end initiatives."
-        },
-        {
-          "title": "Shocase, Inc.",
-          "description": "Front End Engineer",
-          "time": "2013-2015",
-          "numYears": 2,
-          "content": "Building front-end user experiences for a brand new social network for marketers."
-        },
-        {
-          "title": "Autodesk, Inc.",
-          "description": "Front End Engineer",
-          "time": "2012-2013",
-          "numYears": 1,
-          "content": "Building front-end user experiences in HTML5/ CSS3/ JavaScript/ jQuery."
-        },
-        {
-          "title": "Autodesk, Inc.",
-          "description": "Senior Interaction Designer",
-          "time": "2007-2012",
-          "numYears": 5,
-          "content": "Designing user experiences for AutoCAD software."
-        },
-        {
-          "title": "Autodesk, Inc.",
-          "description": "QA Engineer/Lead",
-          "time": "2004-2007",
-          "numYears": 3,
-          "content": "Black Box QA Engineer for AutoCAD software."
-        }
-      ]
-    },
-    {
-      "name": "Education",
-      "items": [
-        {
-          "title": "University of California, Los Angeles",
-          "description": "M.S., Mechanical Engineering",
-          "time": "2003-2004",
-          "numYears": 1,
-          "content": "Focus on controls and dynamics of mechanical systems."
-        },
-        {
-          "title": "University of California, Berkeley",
-          "description": "B.S., Mechanical Engineering",
-          "time": "1998-2003",
-          "numYears": 5,
-          "content": "Activities: Cal Band"
-        }
-      ]
-    }
-  ],
-  "play": [
-    {
-      "title": "Playing/Teaching Percussion",
-      "description": [
-        "I'm currently focusing on playing drumset, currently with ",
-        {
-          "title": "The Butterfly Knives",
-          "href": "https://www.facebook.com/the.butterfly.knives"
-        },
-        ". I've also taught and arranged for marching/rudimental percussion at the High School, University, Drum Corps (DCI) and WGI levels. Here are some of the groups I have taught and their accomplishments:"
-      ],
-      "subItems": [
-        {
-          "href": "http://calband.berkeley.edu/percussion/",
-          "title": "Cal Percussion - UC Drumline",
-          "location": "Berkeley, Ca",
-          "subtitle": [{ "title": "2004-2007 - Battery Tech" }]
-        },
-        {
-          "href": "http://www.beyerband.org/",
-          "title": "Beyer High School",
-          "location": "Modesto, CA",
-          "subtitle": [
-            {
-              "title": "2004-2005 - Battery Tech",
-              "accolades": ["2005 - WBA AAA Champion"]
-            },
-            {
-              "title": "2006-2007 - Caption Head/Fall Battery Arranger",
-              "accolades": [
-                "2006 - WBA AAA Champion",
-                "2007 - WBA AAA Champion",
-                "2007 - WGI Scholastic Open Class Bronze Medalist"
-              ]
-            },
-            {
-              "title": "2008-2009 - Fall Battery Arranger",
-              "accolades": ["2008 - WBA AAA Champion"]
-            },
-            {
-              "title": "2010-2012 - Fall/Winter Battery Arranger"
-            }
-          ]
-        },
-        {
-          "href": "https://www.scvanguard.org/programs/vanguard_cadets/",
-          "title": "Santa Clara Vanguard Cadets",
-          "location": "Santa Clara, CA",
-          "subtitle": [
-            {
-              "title": "2006, 2008, 2010 - Guest Tech",
-              "accolades": ["2008 - DCI Open Class Champions, High Drums"]
-            }
-          ]
-        },
-        {
-          "href": "https://www.scvanguard.org/programs/winter_percussion/",
-          "title": "Vanguard Winter Percussion",
-          "location": "Santa Clara, CA",
-          "subtitle": [
-            {
-              "title": "2010-2011, 2014 - Battery Tech/Consultant",
-              "accolades": ["2011 - WGI Independent Open Class Champions"]
-            },
-            {
-              "title": "2012-2013 - Battery Arranger",
-              "accolades": [
-                "2012 - Promoted from WGI Independent Open to World Class",
+            "name": "Current",
+            "items": [
                 {
-                  "href": "https://drive.google.com/file/d/1LRbTo-O4reYIiXY8h_K7t-_lIAXCEcjP/view?usp=sharing",
-                  "title": "2013 Finals Day Run Recording"
+                    "title": "Eleos LLC",
+                    "description": "Front End Consulting",
+                    "time": "2022-Present",
+                    "numYears": 1,
+                    "content": "Working with technology companies to lead front-end architecture and projects"
                 }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "Homebrewing Beer",
-      "description": [
-        "I'm a homebrewer (less so now as a parent), and love to try new recipes and build some of my own. Really though, I love sharing something I've proudly created with friends."
-      ]
-    },
-    {
-      "title": "2 Wheels!",
-      "description": [
-        "I love",
-        {
-          "href": "http://www.strava.com/athletes/12286",
-          "title": "mountain & road biking, as well as commuting by bike"
+            ]
         },
-        ". ",
-        "All in all, I'm more comfortable on 2 wheels than anything else (skates, skateboards, skis etc.)."
-      ]
-    },
-    {
-      "title": "Projects",
-      "description": ["Some hobby web projects I'm working on...."],
-      "subItems": [
         {
-          "title": "Find a Meeting Spot!",
-          "href": "/group-meeting-spot",
-          "subtitle": [
-            {
-              "title": "Search for locations to meet close to various addresses"
-            }
-          ]
+            "name": "Past",
+            "items": [
+                {
+                    "title": "Stay-at-home Dad",
+                    "description": "Chef, Chauffer, Event Planner",
+                    "time": "2021-2022",
+                    "numYears": 1,
+                    "content": "Dadding, participating at my son's pre-school (ECPC)"
+                },
+                {
+                    "title": "Lyft",
+                    "description": "Staff Front End Engineer",
+                    "time": "2015-2021",
+                    "numYears": 6,
+                    "content": "Front-end, Full Stack, Tech Lead for internal and external projects. Led company-wide front-end initiatives."
+                },
+                {
+                    "title": "Shocase, Inc.",
+                    "description": "Front End Engineer",
+                    "time": "2013-2015",
+                    "numYears": 2,
+                    "content": "Building front-end user experiences for a brand new social network for marketers."
+                },
+                {
+                    "title": "Autodesk, Inc.",
+                    "description": "Front End Engineer",
+                    "time": "2012-2013",
+                    "numYears": 1,
+                    "content": "Building front-end user experiences in HTML5/ CSS3/ JavaScript/ jQuery."
+                },
+                {
+                    "title": "Autodesk, Inc.",
+                    "description": "Senior Interaction Designer",
+                    "time": "2007-2012",
+                    "numYears": 5,
+                    "content": "Designing user experiences for AutoCAD software."
+                },
+                {
+                    "title": "Autodesk, Inc.",
+                    "description": "QA Engineer/Lead",
+                    "time": "2004-2007",
+                    "numYears": 3,
+                    "content": "Black Box QA Engineer for AutoCAD software."
+                }
+            ]
+        },
+        {
+            "name": "Education",
+            "items": [
+                {
+                    "title": "University of California, Los Angeles",
+                    "description": "M.S., Mechanical Engineering",
+                    "time": "2003-2004",
+                    "numYears": 1,
+                    "content": "Focus on controls and dynamics of mechanical systems."
+                },
+                {
+                    "title": "University of California, Berkeley",
+                    "description": "B.S., Mechanical Engineering",
+                    "time": "1998-2003",
+                    "numYears": 5,
+                    "content": "Activities: Cal Band"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ],
+    "play": [
+        {
+            "title": "Playing/Teaching Percussion",
+            "description": [
+                "I'm currently focusing on playing drumset, currently with ",
+                {
+                    "title": "The Butterfly Knives",
+                    "href": "https://www.facebook.com/the.butterfly.knives"
+                },
+                ". I've also taught and arranged for marching/rudimental percussion at the High School, University, Drum Corps (DCI) and WGI levels. Here are some of the groups I have taught and their accomplishments:"
+            ],
+            "subItems": [
+                {
+                    "href": "http://calband.berkeley.edu/percussion/",
+                    "title": "Cal Percussion - UC Drumline",
+                    "location": "Berkeley, Ca",
+                    "subtitle": [{ "title": "2004-2007 - Battery Tech" }]
+                },
+                {
+                    "href": "http://www.beyerband.org/",
+                    "title": "Beyer High School",
+                    "location": "Modesto, CA",
+                    "subtitle": [
+                        {
+                            "title": "2004-2005 - Battery Tech",
+                            "accolades": ["2005 - WBA AAA Champion"]
+                        },
+                        {
+                            "title": "2006-2007 - Caption Head/Fall Battery Arranger",
+                            "accolades": [
+                                "2006 - WBA AAA Champion",
+                                "2007 - WBA AAA Champion",
+                                "2007 - WGI Scholastic Open Class Bronze Medalist"
+                            ]
+                        },
+                        {
+                            "title": "2008-2009 - Fall Battery Arranger",
+                            "accolades": ["2008 - WBA AAA Champion"]
+                        },
+                        {
+                            "title": "2010-2012 - Fall/Winter Battery Arranger"
+                        }
+                    ]
+                },
+                {
+                    "href": "https://www.scvanguard.org/programs/vanguard_cadets/",
+                    "title": "Santa Clara Vanguard Cadets",
+                    "location": "Santa Clara, CA",
+                    "subtitle": [
+                        {
+                            "title": "2006, 2008, 2010 - Guest Tech",
+                            "accolades": [
+                                "2008 - DCI Open Class Champions, High Drums"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "href": "https://www.scvanguard.org/programs/winter_percussion/",
+                    "title": "Vanguard Winter Percussion",
+                    "location": "Santa Clara, CA",
+                    "subtitle": [
+                        {
+                            "title": "2010-2011, 2014 - Battery Tech/Consultant",
+                            "accolades": [
+                                "2011 - WGI Independent Open Class Champions"
+                            ]
+                        },
+                        {
+                            "title": "2012-2013 - Battery Arranger",
+                            "accolades": [
+                                "2012 - Promoted from WGI Independent Open to World Class",
+                                {
+                                    "href": "https://drive.google.com/file/d/1LRbTo-O4reYIiXY8h_K7t-_lIAXCEcjP/view?usp=sharing",
+                                    "title": "2013 Finals Day Run Recording"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Homebrewing Beer",
+            "description": [
+                "I'm a homebrewer (less so now as a parent), and love to try new recipes and build some of my own. Really though, I love sharing something I've proudly created with friends."
+            ]
+        },
+        {
+            "title": "2 Wheels!",
+            "description": [
+                "I love",
+                {
+                    "href": "http://www.strava.com/athletes/12286",
+                    "title": "mountain & road biking, as well as commuting by bike"
+                },
+                ". ",
+                "All in all, I'm more comfortable on 2 wheels than anything else (skates, skateboards, skis etc.)."
+            ]
+        },
+        {
+            "title": "Projects",
+            "description": ["Some hobby web projects I'm working on...."],
+            "subItems": [
+                {
+                    "title": "Find a Meeting Spot!",
+                    "href": "/group-meeting-spot",
+                    "subtitle": [
+                        {
+                            "title": "Search for locations to meet close to various addresses"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }

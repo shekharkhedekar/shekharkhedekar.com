@@ -19,17 +19,10 @@ export const Wrap = styled.div`
 export const MainHeader = styled.h2``;
 
 export const Categories = styled.div`
-    display: flex;
-    gap: 10%;
-    flex-wrap: wrap;
-    @media screen and (max-width: 600px) {
-        display: block;
-        padding-bottom: 1rem;
-    }
+    padding-bottom: 1rem;
 `;
 
 export const Category = styled.div`
-    flex: 1;
     font-size: 18px;
     line-height: 24px;
 `;
@@ -37,6 +30,20 @@ export const Category = styled.div`
 export const CategoryHeader = styled.h3`
     font-size: 23px;
     font-weight: 100;
+`;
+export const CategoryItems = styled.div`
+    display: flex;
+    gap: 10%;
+    flex-wrap: wrap;
+`;
+
+export const CategoryItem = styled.div`
+    width: 26%;
+    margin-bottom: 2rem;
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
 `;
 
 export const CategoryMeta = styled.div`

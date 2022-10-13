@@ -8,6 +8,8 @@ import {
     Category,
     CategoryContent,
     CategoryHeader,
+    CategoryItem,
+    CategoryItems,
     CategoryMeta,
     CategoryTitle,
     FlexCenterContent,
@@ -38,18 +40,24 @@ export const Work: React.FC = () => {
                             <Category>
                                 <CategoryHeader>{w.name}</CategoryHeader>
                                 <Divider />
-                                {w.items.map((i) => (
-                                    <>
-                                        <CategoryTitle>{i.title}</CategoryTitle>
-                                        <CategoryMeta>
-                                            {i.description}
-                                        </CategoryMeta>
-                                        <CategoryMeta>{i.time}</CategoryMeta>
-                                        <CategoryContent>
-                                            {i.content}
-                                        </CategoryContent>
-                                    </>
-                                ))}
+                                <CategoryItems>
+                                    {w.items.map((i) => (
+                                        <CategoryItem>
+                                            <CategoryTitle>
+                                                {i.title}
+                                            </CategoryTitle>
+                                            <CategoryMeta>
+                                                {i.description}
+                                            </CategoryMeta>
+                                            <CategoryMeta>
+                                                {i.time}
+                                            </CategoryMeta>
+                                            <CategoryContent>
+                                                {i.content}
+                                            </CategoryContent>
+                                        </CategoryItem>
+                                    ))}
+                                </CategoryItems>
                             </Category>
                         ))}
                     </Categories>

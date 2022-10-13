@@ -6,6 +6,8 @@ import {
     Categories,
     Category,
     CategoryContent,
+    CategoryItem,
+    CategoryItems,
     CategoryMeta,
     CategoryTitle,
     FlexCenterContent,
@@ -21,68 +23,67 @@ export const Play = () => {
         <FlexCenterContent>
             <Wrap>
                 <MainHeader>Play</MainHeader>
+                <Category>
+                    <CategoryItems>
+                        {data.play.map((p) => (
+                            <CategoryItem>
+                                <CategoryTitle>{p.title}</CategoryTitle>
+                                <Divider />
+                                <CategoryContent>
+                                    {p.description &&
+                                        p.description.map((d) => (
+                                            <StringOrLink content={d} />
+                                        ))}
+                                </CategoryContent>
+                                {p.subItems?.map((t) => (
+                                    <Expander label={`${t.title} `}>
+                                        <>
+                                            <>{'location' in t && t.location}</>
+                                            {'subtitle' in t &&
+                                                t.subtitle.map((s) => (
+                                                    <>
+                                                        <CategoryMeta>
+                                                            {s.title}
+                                                        </CategoryMeta>
 
-                <Categories>
-                    {data.play.map((p) => (
-                        <Category>
-                            <CategoryTitle>{p.title}</CategoryTitle>
-                            <Divider />
-                            <CategoryContent>
-                                {p.description &&
-                                    p.description.map((d) => (
-                                        <StringOrLink content={d} />
-                                    ))}
-                            </CategoryContent>
-                            {p.subItems?.map((t) => (
-                                <Expander
-                                    label={
-                                        `${t.title} ` +
-                                        ('location' in t
-                                            ? `(${t.location})`
-                                            : '')
-                                    }
-                                >
-                                    <>
-                                        {'subtitle' in t &&
-                                            t.subtitle.map((s) => (
-                                                <>
-                                                    <CategoryMeta>
-                                                        {s.title}
-                                                    </CategoryMeta>
-
-                                                    <CategoryContent>
-                                                        {'accolades' in s && (
-                                                            <>
-                                                                <CategoryMeta>
-                                                                    Achievements
-                                                                </CategoryMeta>
-                                                                {s.accolades?.map(
-                                                                    (a) => (
-                                                                        <li>
-                                                                            <StringOrLink
-                                                                                content={
-                                                                                    a
-                                                                                }
-                                                                            />
-                                                                        </li>
-                                                                    )
-                                                                )}
-                                                            </>
-                                                        )}
-                                                    </CategoryContent>
-                                                </>
-                                            ))}
-                                        {'href' in t && (
-                                            <Link href={t.href} title={t.title}>
-                                                website&raquo;
-                                            </Link>
-                                        )}
-                                    </>
-                                </Expander>
-                            ))}
-                        </Category>
-                    ))}
-                </Categories>
+                                                        <CategoryContent>
+                                                            {'accolades' in
+                                                                s && (
+                                                                <>
+                                                                    <CategoryMeta>
+                                                                        Achievements
+                                                                    </CategoryMeta>
+                                                                    {s.accolades?.map(
+                                                                        (a) => (
+                                                                            <li>
+                                                                                <StringOrLink
+                                                                                    content={
+                                                                                        a
+                                                                                    }
+                                                                                />
+                                                                            </li>
+                                                                        )
+                                                                    )}
+                                                                </>
+                                                            )}
+                                                        </CategoryContent>
+                                                    </>
+                                                ))}
+                                            {'href' in t && (
+                                                <Link
+                                                    href={t.href}
+                                                    title={t.title}
+                                                >
+                                                    website&raquo;
+                                                </Link>
+                                            )}
+                                        </>
+                                    </Expander>
+                                ))}
+                            </CategoryItem>
+                        ))}
+                    </CategoryItems>
+                </Category>
             </Wrap>
         </FlexCenterContent>
     );
