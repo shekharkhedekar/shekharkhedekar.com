@@ -1,11 +1,10 @@
-import { useMediaQuery } from "@react-hook/media-query";
-import React, { useState } from "react";
-import { FaChevronDown, FaChevronRight } from "react-icons/fa";
+import React, { useState } from 'react';
+import { FaChevronDown, FaChevronRight } from 'react-icons/fa';
 
 export interface ExpanderProps {
-  label: React.ReactNode;
-  children: React.ReactNode;
-  isMobile: boolean;
+    label: React.ReactNode;
+    children: React.ReactNode;
+    isMobile: boolean;
 }
 export const Expander: React.FC<ExpanderProps> = ({
     label,
@@ -19,9 +18,9 @@ export const Expander: React.FC<ExpanderProps> = ({
             <div
                 onClick={() => setIsExpanded(!isExpanded)}
                 style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
                 }}
             >
                 {label}

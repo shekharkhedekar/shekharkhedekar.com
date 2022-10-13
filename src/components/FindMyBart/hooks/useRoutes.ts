@@ -1,20 +1,20 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import axios from 'axios';
+import { useState } from 'react';
 
 export interface Route {
-  abbr: string;
-  color: string;
-  direction: string;
-  hexcolor: string;
-  name: string;
-  number: string;
-  routeID: string;
+    abbr: string;
+    color: string;
+    direction: string;
+    hexcolor: string;
+    name: string;
+    number: string;
+    routeID: string;
 }
 export interface RoutesResponse {
-  data: { root: { routes: { route: Route[] } } };
+    data: { root: { routes: { route: Route[] } } };
 }
 export interface RouteResponse {
-  data: { root: { routes: { route: Route } } };
+    data: { root: { routes: { route: Route } } };
 }
 export type RouteMap = Record<string, Route>;
 
@@ -29,7 +29,7 @@ export const useRoutes = () => {
                 },
             },
         } = await axios.get<null, RoutesResponse>(
-            "https://api.bart.gov/api/route.aspx?cmd=routes&key=MW9S-E7SL-26DU-VV8V&json=y"
+            'https://api.bart.gov/api/route.aspx?cmd=routes&key=MW9S-E7SL-26DU-VV8V&json=y'
         );
         const routeMap: RouteMap = route.reduce((acc, r) => {
             const k = `${r.color}-${r.direction}`;

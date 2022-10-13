@@ -1,20 +1,20 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Station } from "./useStations";
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Station } from './useStations';
 
 export interface Estimate {
-  color: string;
-  hexcolor: string;
-  minutes: string;
-  direction: "North" | "South";
+    color: string;
+    hexcolor: string;
+    minutes: string;
+    direction: 'North' | 'South';
 }
 export interface Etd {
-  abbreviation: string;
-  destination: string;
-  estimate: Estimate[];
+    abbreviation: string;
+    destination: string;
+    estimate: Estimate[];
 }
 export interface EtdResponse {
-  data: { root: { station: { etd: Etd[] }[] } };
+    data: { root: { station: { etd: Etd[] }[] } };
 }
 export const useEtd = () => {
     const [etds, setEtds] = useState<Record<string, Etd[]>>({});
@@ -35,12 +35,12 @@ export const useEtd = () => {
     };
 
     const startEtdPolling = (stations: Station[]) => {
-    // Update state to call memoized getEtds
+        // Update state to call memoized getEtds
         setStations(stations);
     };
 
     useEffect(() => {
-    // Clear existing poll
+        // Clear existing poll
         clearInterval(intervalId);
 
         const newEtds: Record<string, Etd[]> = {};
@@ -53,7 +53,7 @@ export const useEtd = () => {
             setEtds({ ...newEtds });
         }, 1000);
         setIntervalId(id);
-    }, [stations]);
+    }, [stations, intervalId]);
 
     return { etds, startEtdPolling };
 };

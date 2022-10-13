@@ -1,16 +1,15 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import { Party, Position } from "../types";
+import { Party, Position } from '../types';
 
 export interface PictureCardProps {
-  vote: Position;
+    vote: Position;
 }
 
 const PARTY_COLORS: Record<Party, string> = {
-    D: "#0015BC",
-    R: "#E9141D",
-    ID: "#000",
+    D: '#0015BC',
+    R: '#E9141D',
+    ID: '#000',
 };
 export const PictureCard: React.FC<PictureCardProps> = ({ vote }) => {
     const url = `https://theunitedstates.io/images/congress/original/${vote.member_id}.jpg`;
@@ -37,28 +36,30 @@ export const PictureCard: React.FC<PictureCardProps> = ({ vote }) => {
     return (
         <div
             style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                margin: "0 1rem 1rem 0",
-                width: "10rem",
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                margin: '0 1rem 1rem 0',
+                width: '10rem',
             }}
         >
             <div
                 style={{
                     backgroundImage,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
                     width: 150,
                     height: 150,
-                    borderRadius: "50%",
+                    borderRadius: '50%',
                     borderColor: PARTY_COLORS[vote.party],
-                    borderWidth: "5px",
-                    borderStyle: "solid",
+                    borderWidth: '5px',
+                    borderStyle: 'solid',
                 }}
                 title={vote.name}
             />
-            <div style={{ maxWidth: "10rem", textAlign: "center" }}>{vote.name}</div>
+            <div style={{ maxWidth: '10rem', textAlign: 'center' }}>
+                {vote.name}
+            </div>
             <div>
                 ({vote.party} - {vote.state})
             </div>

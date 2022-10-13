@@ -1,17 +1,17 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { GoogleMap, Marker } from "@react-google-maps/api";
+import React, { useCallback, useEffect, useState } from 'react';
+import { GoogleMap, Marker } from '@react-google-maps/api';
 
-import { LatLngWithPlace } from "./LocationChip";
-import { Station, useStations } from "./hooks/useStations";
-import { useEtd } from "./hooks/useEtds";
-import { useRoutes } from "./hooks/useRoutes";
-import { StationMarker } from "./StationMarker";
-import { Loading } from "./Loading";
-import { useGtfsRT } from "./hooks/useGtfsRT";
+import { LatLngWithPlace } from './LocationChip';
+import { Station, useStations } from './hooks/useStations';
+import { useEtd } from './hooks/useEtds';
+import { useRoutes } from './hooks/useRoutes';
+import { StationMarker } from './StationMarker';
+import { Loading } from './Loading';
+import { useGtfsRT } from './hooks/useGtfsRT';
 
 const containerStyle = {
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
 };
 
 export const Map: React.FC = () => {
@@ -53,17 +53,7 @@ export const Map: React.FC = () => {
             }
 
             etd.forEach((e) => {
-                const { abbreviation } = e;
-                const trainMarkers = { abbreviation };
-                e.estimate.forEach((estimate) => {
-                    const routeKey = `${estimate.color}-${estimate.direction}`;
-                    const previousStation = {
-                        estimate,
-                        routeKey,
-                        route: routes[routeKey],
-                    };
-                });
-                // console.log(trainMarkers);
+                // TODO render trains
             });
         });
     }, [filteredStations, etds, routes]);
@@ -87,7 +77,7 @@ export const Map: React.FC = () => {
                 }
             );
         } catch (e) {
-            console.error("navigator.geolocation error", e);
+            console.error('navigator.geolocation error', e);
         }
     }, [mapCenter?.lat, mapCenter?.lng]);
 
@@ -110,7 +100,7 @@ export const Map: React.FC = () => {
     };
 
     return (
-        <div style={{ position: "relative", height: "100%", width: "100%" }}>
+        <div style={{ position: 'relative', height: '100%', width: '100%' }}>
             <GoogleMap
                 center={mapCenter}
                 mapContainerStyle={containerStyle}
@@ -128,10 +118,17 @@ export const Map: React.FC = () => {
                             lng: parseFloat(station.gtfs_longitude),
                         };
 
-                        return <StationMarker position={position} text={station.abbr} />;
+                        return (
+                            <StationMarker
+                                position={position}
+                                text={station.abbr}
+                            />
+                        );
                     })}
                     {/* Current Location */}
-                    {currentLocation && <Marker position={currentLocation} label={"★"} />}
+                    {currentLocation && (
+                        <Marker position={currentLocation} label={'★'} />
+                    )}
                 </>
             </GoogleMap>
             {/* Loading Screen */}

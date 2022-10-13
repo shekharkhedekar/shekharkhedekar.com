@@ -1,21 +1,20 @@
-import { GoogleMap, Marker } from "@react-google-maps/api";
-import React, { useCallback, useEffect, useState } from "react";
-import { FaSpinner } from "react-icons/fa";
+import { GoogleMap, Marker } from '@react-google-maps/api';
+import React, { useCallback, useEffect, useState } from 'react';
+import { FaSpinner } from 'react-icons/fa';
 
-import { LatLngWithPlace } from "./LocationChip";
-import { useGroupMeetingSpotContext } from "./context/GroupMeetingSpot";
-import { useLocationParams } from "./hooks/useLocationParams";
-import { hydrate } from "react-dom";
+import { LatLngWithPlace } from './LocationChip';
+import { useGroupMeetingSpotContext } from './context/GroupMeetingSpot';
+import { useLocationParams } from './hooks/useLocationParams';
 
 const containerStyle = {
-    width: "100%",
-    height: "100%",
+    width: '100%',
+    height: '100%',
 };
 
 export const Map: React.FC = () => {
     // Context
     const { map, locations, meetingSpot, setMap, setBounds } =
-    useGroupMeetingSpotContext();
+        useGroupMeetingSpotContext();
 
     // State
     const [onLoadComplete, setOnLoadComplete] = useState(false);
@@ -64,12 +63,12 @@ export const Map: React.FC = () => {
                 }
             );
         } catch (e) {
-            console.error("navigator.geolocation error", e);
+            console.error('navigator.geolocation error', e);
         }
     }, [mapCenter?.lat, mapCenter?.lng]);
 
     return (
-        <div style={{ position: "relative", height: "100%", width: "100%" }}>
+        <div style={{ position: 'relative', height: '100%', width: '100%' }}>
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={mapCenter}
@@ -92,22 +91,23 @@ export const Map: React.FC = () => {
             {!onLoadComplete && (
                 <div
                     style={{
-                        position: "absolute",
+                        position: 'absolute',
                         top: 0,
                         left: 0,
-                        height: "100%",
-                        width: "100%",
-                        display: "flex",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        background: "#9cc0f9",
+                        height: '100%',
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        background: '#9cc0f9',
                     }}
                 >
                     <div
                         style={{
-                            color: "#000",
-                            fontSize: "1.5rem",
-                            textShadow: "0 0 2px white, 0 0 2px white, 0 0 2px white",
+                            color: '#000',
+                            fontSize: '1.5rem',
+                            textShadow:
+                                '0 0 2px white, 0 0 2px white, 0 0 2px white',
                         }}
                     >
                         <FaSpinner className="fa-spin" />

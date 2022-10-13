@@ -3,7 +3,6 @@ import { Expander } from '../../Expander';
 
 import data from '../data.json';
 import {
-    Categories,
     Category,
     CategoryContent,
     CategoryItem,
