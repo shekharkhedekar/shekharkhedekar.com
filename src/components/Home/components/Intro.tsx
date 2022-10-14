@@ -74,10 +74,8 @@ export const Intro: React.FC = () => {
                 <Divider />
 
                 <IntroContent>
-                    I'm a front-end engineering leader, currently on a break
-                    from working to stay at home with my son. I'm also a
-                    drummer, cyclist, and home-brewer. If you'd like to get in
-                    touch,{' '}
+                    I'm a front end engineering leader and a drummer, cyclist,
+                    and home-brewer. If you'd like to get in touch,{' '}
                     <Link
                         href="mailto:shekhar.khedekar+website@gmail.com?subject=Contacting you from shekharkhedekar.com"
                         title="email"
