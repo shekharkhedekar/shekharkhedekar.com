@@ -15,6 +15,7 @@ const ResumeGlobalStyle = createGlobalStyle`
 @media print {
   html,
   body {
+    width: 8.5in;
     height: 100%;
     overflow: hidden;
   }
@@ -30,7 +31,7 @@ const ResumeWrap = styled.div`
     color: ${COLORS.resume.primaryColor};
     font-family: Helvetica Neue, Helvetica, Sans-Serif;
     font-size: 10pt;
-    margin: 1rem;
+    padding: 1rem;
     display: flex;
     @media screen and (max-width: 600px) {
         display: block;
@@ -101,42 +102,23 @@ export const Resume = () => {
             <ResumeLeftColumn>
                 <div>
                     <ResumeName>Shekhar Khedekar</ResumeName>
-                    <div className="sk-resume-contact">
+                    <div>
                         <ResumeHeader>Contact</ResumeHeader>
                         <div>
-                            <a
-                                href="mailto:shekhar.khedekar@gmail.com"
-                                className="sk-resume-contact"
-                            >
+                            <a href="mailto:shekhar.khedekar@gmail.com">
                                 shekhar.khedekar@gmail.com
                             </a>
                         </div>
                         <div>
-                            <a
-                                href="tel:510.220.9106"
-                                className="sk-resume-contact"
-                            >
-                                510.220.9106
-                            </a>
+                            <a href="tel:510.220.9106">510.220.9106</a>
                         </div>
                         <div>
                             <a
                                 href="http://www.linkedin.com/in/shekharkhedekar"
-                                className="sk-resume-contact"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 linkedin.com/in/shekharkhedekar
-                            </a>
-                        </div>
-                        <div>
-                            <a
-                                href="http://www.facebook.com/shekhar.khedekar"
-                                className="sk-resume-contact"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                facebook.com/shekhar.khedekar
                             </a>
                         </div>
                     </div>
@@ -148,9 +130,7 @@ export const Resume = () => {
                     data.sections.map((section) => (
                         <ResumeSection>
                             <ResumeHeader>{section.name}</ResumeHeader>
-                            <div className="sk-resume-section-content">
-                                {section.description}
-                            </div>
+                            <div>{section.description}</div>
 
                             {section.items &&
                                 section.items.map((item) => (
