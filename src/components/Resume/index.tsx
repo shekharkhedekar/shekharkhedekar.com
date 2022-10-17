@@ -35,7 +35,10 @@ const ResumeWrap = styled.div`
     display: flex;
     @media screen and (max-width: 600px) {
         display: block;
-        padding-bottom: 1rem;
+    }
+
+    @media print {
+        padding: 0rem;
     }
 `;
 const ResumeLeftColumn = styled.div`
@@ -50,18 +53,20 @@ const ResumeRightColumn = styled.div`
     margin-right: 2rem;
     padding-top: 2rem;
 `;
-const ResumeHeader = styled.div`
+const ResumeHeader = styled.h1`
     border: 1px solid ${COLORS.resume.primaryColorLight};
     border-width: 1px 0 0 0;
     color: ${COLORS.resume.primaryColorLight};
-    font-size: 14pt;
+    font-size: 18pt;
     font-weight: 400;
-    margin-bottom: 0.5em;
-    padding-top: 0.25em;
+    padding: 0.25em 0;
+    @media print {
+        font-size: 16pt;
+    }
 `;
 const ResumeName = styled.div`
     color: ${COLORS.resume.primaryColorLight};
-    font-size: 24pt !important;
+    font-size: 27pt;
     font-weight: 400;
     margin-bottom: 0.5em;
 `;
@@ -69,6 +74,10 @@ const ResumeSection = styled.div`
     display: block;
     width: 100%;
     margin-bottom: 3em;
+    line-height: 20px;
+    @media print {
+        line-height: 16px;
+    }
 `;
 const ResumeItemTitle = styled.div`
     font-weight: bold;
