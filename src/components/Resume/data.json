@@ -1,71 +1,80 @@
 {
-  "sections": [
-    {
-      "name": "Summary",
-      "description": "Front End Engineering Leader with experience in both internal and external applications and company-wide initiatives. Mechanical Engineer by training, previously a QA Engineer and UX Designer."
-    },
-    {
-      "name": "Experience",
-      "items": [
+    "sections": [
         {
-          "title": "Staff Front End Engineer",
-          "subtitle": "Lyft",
-          "time": "2015—2021",
-          "description": "Front End Engineering Leader"
+            "name": "Summary",
+            "description": "Front End Engineering Leader with experience in both internal and external applications and company-wide initiatives. Mechanical Engineer by training, previously a QA Engineer and UX Designer."
         },
         {
-          "title": "Front End Engineer",
-          "subtitle": "Shocase, Inc.",
-          "time": "2013—2015",
-          "description": "Building Front End experiences for a brand new social network for advertising and marketing professionals."
+            "name": "Experience",
+            "items": [
+                {
+                    "title": "Front End Engineer - Part Time Contract",
+                    "time": "2022-present"
+                },
+                {
+                    "title": "Stay at Home Dad",
+                    "time": "2021—2022",
+                    "description": "Chef, Chauffeur, Chaperone"
+                },
+                {
+                    "title": "Staff Front End Engineer",
+                    "subtitle": "Lyft",
+                    "time": "2015—2021",
+                    "description": "Front End Engineering Leader"
+                },
+                {
+                    "title": "Front End Engineer",
+                    "subtitle": "Shocase, Inc.",
+                    "time": "2013—2015",
+                    "description": "Building Front End experiences for a brand new social network for advertising and marketing professionals."
+                },
+                {
+                    "title": "Web Design Engineer",
+                    "subtitle": "Autodesk, Inc.",
+                    "time": "2011-2012, 2012—2013",
+                    "description": "Implementing dynamic, scalable, robust, responsive and cross—browser user experiences in HTML5, CSS3, and Javascript for the Autodesk Knowledge Network."
+                },
+                {
+                    "title": "Principal Interaction Designer",
+                    "subtitle": "Autodesk, Inc.",
+                    "time": "2007—2012",
+                    "description": "Working with product managers, engineers, and user researchers to design and document features for the industry leading AutoCAD 2009—2013 (Windows) and AutoCAD 2011—2013 (Mac) products."
+                },
+                {
+                    "title": "Senior Test Development Engineer/Lead",
+                    "subtitle": "Autodesk, Inc.",
+                    "time": "2004—2007",
+                    "description": "Responsible for the quality of multiple features over the course of three yearly AutoCAD releases (2006/2007/2008). Worked closely with other functional groups to help develop usable, high—quality, well documented AutoCAD features."
+                }
+            ]
         },
         {
-          "title": "Web Design Engineer",
-          "subtitle": "Autodesk, Inc.",
-          "time": "2011-2012, 2012—2013",
-          "description": "Implementing dynamic, scalable, robust, responsive and cross—browser user experiences in HTML5, CSS3, and Javascript for the Autodesk Knowledge Network."
+            "name": "Education",
+            "items": [
+                {
+                    "title": "University of California, Los Angeles",
+                    "subtitle": "M.S. Mechanical Engineering",
+                    "time": "2003—2004"
+                },
+                {
+                    "title": "University of California, Berkeley",
+                    "subtitle": "B.S. Mechanical Engineering",
+                    "time": "1998—2003"
+                }
+            ]
         },
         {
-          "title": "Principal Interaction Designer",
-          "subtitle": "Autodesk, Inc.",
-          "time": "2007—2012",
-          "description": "Working with product managers, engineers, and user researchers to design and document features for the industry leading AutoCAD 2009—2013 (Windows) and AutoCAD 2011—2013 (Mac) products."
-        },
-        {
-          "title": "Senior Test Development Engineer/Lead",
-          "subtitle": "Autodesk, Inc.",
-          "time": "2004—2007",
-          "description": "Responsible for the quality of multiple features over the course of three yearly AutoCAD releases (2006/2007/2008). Worked closely with other functional groups to help develop usable, high—quality, well documented AutoCAD features."
+            "name": "Proficiencies & Interests",
+            "lists": [
+                {
+                    "name": "Work",
+                    "content": "HTML5, CSS3, Javascript, React, TypeScript, NextJS, NodeJS, Python"
+                },
+                {
+                    "name": "Play",
+                    "content": "Teaching/Playing Percussion, Beer Brewing, Mountain/Road Biking, Parenting"
+                }
+            ]
         }
-      ]
-    },
-    {
-      "name": "Education",
-      "items": [
-        {
-          "title": "University of California, Los Angeles",
-          "subtitle": "M.S. Mechanical Engineering",
-          "time": "2003—2004"
-        },
-        {
-          "title": "University of California, Berkeley",
-          "subtitle": "B.S. Mechanical Engineering",
-          "time": "1998—2003"
-        }
-      ]
-    },
-    {
-      "name": "Proficiencies & Interests",
-      "lists": [
-        {
-          "name": "Work",
-          "content": "HTML5, CSS3, Javascript, React, TypeScript, NextJS, NodeJS, Python"
-        },
-        {
-          "name": "Play",
-          "content": "Teaching/Playing Percussion, Beer Brewing, Mountain/Road Biking, Parenting"
-        }
-      ]
-    }
-  ]
+    ]
 }

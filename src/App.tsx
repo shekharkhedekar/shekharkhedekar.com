@@ -6,6 +6,7 @@ import { Home } from './components/Home';
 import { Resume } from './components/Resume';
 import FindMyBart from './components/FindMyBart';
 import { GlobalStyle } from './components/GlobalStyle';
+import { Snake } from './components/Snake';
 
 const App = () => {
     return (
@@ -27,6 +28,7 @@ const App = () => {
                         path="/find-my-bart"
                         element={<FindMyBart />}
                     ></Route>
+                    <Route path="/snake" element={<Snake />}></Route>
                 </Routes>
             </Router>
         </>
