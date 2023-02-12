@@ -19,8 +19,8 @@ const generateVCard = (row: Row) => {
         rowOutput.push(`EMAIL:${row.email}`);
     }
 
-    if (row.tel) {
-        rowOutput.push(`EMAIL:${row.tel}`);
+    if (row.phone) {
+        rowOutput.push(`TEL:${row.phone}`);
     }
 
     rowOutput.push('END:VCARD');
