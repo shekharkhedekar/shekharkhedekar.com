@@ -8,7 +8,7 @@ import { Map } from './Map';
 import { useDebounce } from 'use-debounce';
 import { ControlCard } from './ControlCard';
 import { useMediaQuery } from '@react-hook/media-query';
-import { Header } from './Header';
+import { Header } from '../common/Header';
 import {
     GroupMeetingContextProvider,
     GroupMeetingSpotContextType,
@@ -199,10 +199,7 @@ function GroupMeetingSpot() {
             <GroupMeetingContextProvider value={value}>
                 <Helmet>
                     <title>Find a Meeting Spot!</title>
-                    <meta
-                        name="viewport"
-                        content="width=device-width, initial-scale=1, user-scalable=no, user-scalable=0"
-                    />
+
                     <meta
                         name="keywords"
                         content="Group, Meeting, Spot, Map, meetup"
@@ -216,13 +213,13 @@ function GroupMeetingSpot() {
                 </Helmet>
                 {isMobile ? (
                     <MobileContainer>
-                        <Header />
+                        <Header>Find a Meeting Spot!</Header>
                         <Map />
                         <ControlCard />
                     </MobileContainer>
                 ) : (
                     <DesktopWrapper>
-                        <Header />
+                        <Header>Find a Meeting Spot!</Header>
                         <DesktopContainer isMobile={isMobile}>
                             <ControlCard />
                             <Map />

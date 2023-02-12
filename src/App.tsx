@@ -7,10 +7,18 @@ import { Resume } from './components/Resume';
 import FindMyBart from './components/FindMyBart';
 import { GlobalStyle } from './components/GlobalStyle';
 import { Snake } from './components/Snake';
+import { VCardGenerator } from './components/VCardGenerator';
+import { Helmet } from 'react-helmet';
 
 const App = () => {
     return (
         <>
+            <Helmet>
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1, user-scalable=no, user-scalable=0"
+                />
+            </Helmet>
             <GlobalStyle />
             <Router>
                 <Routes>
@@ -29,6 +37,10 @@ const App = () => {
                         element={<FindMyBart />}
                     ></Route>
                     <Route path="/snake" element={<Snake />}></Route>
+                    <Route
+                        path="/vcard-generator"
+                        element={<VCardGenerator />}
+                    ></Route>
                 </Routes>
             </Router>
         </>
