@@ -7,7 +7,7 @@ import { Helmet } from 'react-helmet';
 
 export type Row = Record<string, string>;
 
-const generateVCard = (row: Row) => {
+const generateVCard = (row: Row, additionalInfo: string) => {
     const rowOutput = [
         'BEGIN:VCARD',
         'VERSION:4.0',
@@ -23,12 +23,19 @@ const generateVCard = (row: Row) => {
         rowOutput.push(`TEL:${row.phone}`);
     }
 
+    if (additionalInfo || row.info) {
+        const info = [];
+        if (additionalInfo) info.push(additionalInfo);
+        if (row.info) info.push(row.info);
+        rowOutput.push(`ORG:${info.join(' - ')}`);
+    }
+
     rowOutput.push('END:VCARD');
 
     return rowOutput.join('\n');
 };
 
-const jsonArraysToObjects = (input: string[][]) => {
+const jsonArraysToObjects = (input: string[][], additionalInfo: string) => {
     const [keys, ...rows] = input;
     const output: Row[] = [];
 
@@ -37,7 +44,7 @@ const jsonArraysToObjects = (input: string[][]) => {
         row.forEach((value, i) => {
             rowObj[keys[i]] = value;
         });
-        rowObj.vcard = generateVCard(rowObj);
+        rowObj.vcard = generateVCard(rowObj, additionalInfo);
         output.push(rowObj);
     });
 
@@ -47,9 +54,11 @@ const jsonArraysToObjects = (input: string[][]) => {
 export const VCardGenerator: FC = () => {
     // TODO validation
     const [json, setJson] = useState<Row[]>([]);
-    const [value, setValue] = useState<string>(`firstName,lastName,email,phone
-Bob,Loblaw,bob.loblaw@gmail.com,510-555-9999
+    const [value, setValue] =
+        useState<string>(`firstName,lastName,email,phone,info
+Bob,Loblaw,bob.loblaw@gmail.com,510-555-9999,My Lawyer
 `);
+    const [additionalInfo, setAdditionalInfo] = useState('');
 
     const parseCsv = useCallback(() => {
         csv({
@@ -58,34 +67,24 @@ Bob,Loblaw,bob.loblaw@gmail.com,510-555-9999
         })
             .fromString(value)
             .then((output) => {
-                const jsonObject = jsonArraysToObjects(output);
+                const jsonObject = jsonArraysToObjects(output, additionalInfo);
                 setJson(jsonObject);
             });
-    }, [value]);
+    }, [value, additionalInfo]);
 
     const onTextAreaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        const input = e.target.value;
-        setValue(input);
+        setValue(e.target.value);
     };
 
-    const downloadAll = () => {
-        json.forEach((row) => {
-            const a = document.createElement('a');
-            a.href = `data:text/plain;charset=utf-8,${encodeURIComponent(
-                row.vcard
-            )}`;
-            a.download = `${row.firstName} ${row.lastName}.vcf`;
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-        });
+    const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setAdditionalInfo(e.target.value);
     };
 
     useEffect(() => {
         if (value) {
             parseCsv();
         }
-    }, [value, parseCsv]);
+    }, [value, parseCsv, additionalInfo]);
 
     return (
         <>
@@ -115,8 +114,10 @@ Bob,Loblaw,bob.loblaw@gmail.com,510-555-9999
                     Have a contact list that you want to convert into contacts
                     for your phone? Paste a CSV file below with the{' '}
                     <strong>firstName</strong>, <strong>lastName</strong>,{' '}
-                    <strong>email</strong>, and <strong>phone</strong> headers,
-                    and download the VCards below.
+                    <strong>email</strong>, <strong>phone</strong>, and{' '}
+                    <strong>info</strong> headers, and download the VCards
+                    below. After downloading them, opening the VCF file will add
+                    them to your contacts.
                 </p>
                 <p>
                     This site does not store any of your information, it's all
@@ -124,28 +125,39 @@ Bob,Loblaw,bob.loblaw@gmail.com,510-555-9999
                     See the source code here.
                 </p>
                 <h2>CSV Input</h2>
-                <div>Paste your CSV below</div>
+                <div>Paste or type your CSV here:</div>
                 <textarea
                     value={value}
                     rows={25}
                     style={{ width: '100%' }}
                     onChange={onTextAreaChange}
                 />
+                <label>
+                    Additional Info to add to all contacts:
+                    <input
+                        placeholder="E.g. name of your child's school etc"
+                        type="text"
+                        style={{ marginLeft: '0.5rem' }}
+                        value={additionalInfo}
+                        onChange={onInputChange}
+                    />
+                </label>
 
                 <h2>VCards</h2>
-                <button
+                <a
                     style={{
                         color: 'blue',
-                        marginBottom: '1rem',
                         display: 'block',
-                        background: 'transparent',
-                        border: 'none',
-                        fontSize: '1rem',
+                        marginBottom: '1rem',
                     }}
-                    onClick={downloadAll}
+                    href={`data:text/plain;charset=utf-8,${encodeURIComponent(
+                        json.map((row) => row.vcard).join('\n\n')
+                    )}`}
+                    download={`contacts.vcf`}
                 >
                     Download All
-                </button>
+                </a>
+
                 <div
                     style={{
                         display: 'flex',
