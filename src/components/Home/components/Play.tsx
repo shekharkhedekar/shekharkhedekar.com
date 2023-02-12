@@ -73,7 +73,7 @@ export const Play = () => {
                                                     href={t.href}
                                                     title={t.title}
                                                 >
-                                                    website&raquo;
+                                                    Check it out&raquo;
                                                 </Link>
                                             )}
                                         </>

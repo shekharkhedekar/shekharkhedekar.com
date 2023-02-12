@@ -122,7 +122,15 @@ Bob,Loblaw,bob.loblaw@gmail.com,510-555-9999,My Lawyer
                 <p>
                     This site does not store any of your information, it's all
                     handled in the browser without making any network requests.
-                    See the source code here.
+                    See the source code{' '}
+                    <a
+                        href="https://github.com/shekharkhedekar/shekharkhedekar.com/tree/master/src/components/VCardGenerator"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        here
+                    </a>
+                    .
                 </p>
                 <h2>CSV Input</h2>
                 <div>Paste or type your CSV here:</div>

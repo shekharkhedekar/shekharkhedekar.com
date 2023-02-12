@@ -1,26 +1,26 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const COLORS = {
-    primaryColor: ' #1a1a1a',
-    primaryColorLight: ' #7f7f7f',
-    secondaryColor: ' #c3c180',
-    secondaryColorLight: ' #818c22',
-    linkColor: ' #c3c180',
-    linkColorLight: ' #ffffff',
-    backgroundColor: ' white',
+    primaryColor: '#1a1a1a',
+    primaryColorLight: '#7f7f7f',
+    secondaryColor: '#c3c180',
+    secondaryColorLight: '#818c22',
+    linkColor: '#c3c180',
+    linkColorLight: '#ffffff',
+    backgroundColor: 'white',
     resume: {
         primaryColor: '#000',
         primaryColorLight: '#999',
     },
 };
 export const SIZES = {
-    maxWidth: ' 960px',
-    gridHeight: ' 18px',
-    gridWidth: ' 18px',
+    maxWidth: '960px',
+    gridHeight: '18px',
+    gridWidth: '18px',
 };
 export const ANIMATIONS = {
-    transitionTime: ' 0.2s',
-    transitionEasing: ' ease',
+    transitionTime: '0.2s',
+    transitionEasing: 'ease',
 };
 export const FONTS = {
     headerFontFamily: 'Arvo, serif',
