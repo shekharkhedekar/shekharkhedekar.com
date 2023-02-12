@@ -116,8 +116,8 @@ Bob,Loblaw,bob.loblaw@gmail.com,510-555-9999,My Lawyer
                     <strong>firstName</strong>, <strong>lastName</strong>,{' '}
                     <strong>email</strong>, <strong>phone</strong>, and{' '}
                     <strong>info</strong> headers, and download the VCards
-                    below. After downloading them, opening the VCF file will add
-                    them to your contacts.
+                    below. After downloading them, open the VCF file with your
+                    contacts app.
                 </p>
                 <p>
                     This site does not store any of your information, it's all
