@@ -138,6 +138,9 @@ Bob,Loblaw,bob.loblaw@gmail.com,510-555-9999
                         color: 'blue',
                         marginBottom: '1rem',
                         display: 'block',
+                        background: 'transparent',
+                        border: 'none',
+                        fontSize: '1rem',
                     }}
                     onClick={downloadAll}
                 >
