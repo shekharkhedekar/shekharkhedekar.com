@@ -191,6 +191,15 @@
                             "title": "Search for locations to meet close to various addresses"
                         }
                     ]
+                },
+                {
+                    "title": "Generate VCards from CSV",
+                    "href": "/vcard-generator",
+                    "subtitle": [
+                        {
+                            "title": "Convert your contacts spreadsheet into contacts your phone can use"
+                        }
+                    ]
                 }
             ]
         }
