@@ -15,6 +15,9 @@ const ResumeGlobalStyle = createGlobalStyle`
     html,
     body {
         width: 8.5in;
+        @media screen and (max-width: 600px) {
+           width: 100%;
+        }
     }
 
     a {
@@ -37,6 +40,9 @@ const ResumeTitle = styled.div`
     justify-content: space-between;
     width: 100%;
     padding: 10pt 0;
+    @media screen and (max-width: 600px) {
+        display: block;
+    }
 `;
 
 const ResumeHeader = styled.h1`
