@@ -7,77 +7,66 @@ import { COLORS } from '../GlobalStyle';
 import data from './data.json';
 
 const ResumeGlobalStyle = createGlobalStyle`
-@page {
-  size: auto;
-  margin: 0;
-}
+    @page {
+    size: auto;
+    margin: 0;
+    }
 
-@media print {
-  html,
-  body {
-    width: 8.5in;
-    height: 100%;
-    overflow: hidden;
-  }
-}
+    html,
+    body {
+        width: 8.5in;
+    }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+    a {
+    color: inherit;
+    text-decoration: none;
+    }
 `;
 const ResumeWrap = styled.div`
-    background: white;
     color: ${COLORS.resume.primaryColor};
     font-family: Helvetica Neue, Helvetica, Sans-Serif;
     font-size: 10pt;
-    padding: 1rem;
-    display: flex;
+    padding: 20pt;
     @media screen and (max-width: 600px) {
         display: block;
     }
+`;
 
-    @media print {
-        padding: 0rem;
-    }
+const ResumeTitle = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10pt 0;
 `;
-const ResumeLeftColumn = styled.div`
-    flex: 1;
-    margin: 15rem 2rem 0;
-    @media screen and (max-width: 600px) {
-        margin: 1rem 0;
-    }
-`;
-const ResumeRightColumn = styled.div`
-    flex: 4;
-    margin-right: 2rem;
-    padding-top: 2rem;
-`;
+
 const ResumeHeader = styled.h1`
     border: 1px solid ${COLORS.resume.primaryColorLight};
-    border-width: 1px 0 0 0;
+    border-width: 0 0 1px 0;
     color: ${COLORS.resume.primaryColorLight};
     font-size: 18pt;
     font-weight: 400;
-    padding: 0.25em 0;
-    @media print {
-        font-size: 16pt;
-    }
+    padding: 5pt 0;
 `;
 const ResumeName = styled.div`
     color: ${COLORS.resume.primaryColorLight};
-    font-size: 27pt;
-    font-weight: 400;
-    margin-bottom: 0.5em;
+    font-size: 30pt;
+    font-weight: 500;
+    margin-bottom: 5pt;
 `;
 const ResumeSection = styled.div`
     display: block;
     width: 100%;
-    margin-bottom: 3em;
-    line-height: 20px;
-    @media print {
-        line-height: 16px;
-    }
+    margin-bottom: 20pt;
+    line-height: 16pt;
+`;
+const ResumeItems = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.22in;
+`;
+const ResumeItem = styled.div`
+    margin-bottom: 5pt;
+    width: 2.5in;
 `;
 const ResumeItemTitle = styled.div`
     font-weight: bold;
@@ -85,17 +74,15 @@ const ResumeItemTitle = styled.div`
 const ResumeItemTime = styled.div`
     font-style: italic;
 `;
-const ResumeItem = styled.div`
-    margin-bottom: 0.75em;
+const ResumeList = styled.div`
+    display: flex;
 `;
 const ResumeListName = styled.div`
     font-weight: bold;
-    width: 2rem;
-    position: absolute;
+    width: 1in;
 `;
 const ResumeListContent = styled.div`
-    margin-left: 3.5rem;
-    margin-bottom: 1em;
+    margin-bottom: 10pt;
 `;
 export const Resume = () => {
     useEffect(() => {
@@ -108,39 +95,37 @@ export const Resume = () => {
                 <title>Shekhar Khedekar - Resume</title>
             </Helmet>
             <ResumeGlobalStyle />
-            <ResumeLeftColumn>
+
+            <ResumeTitle>
+                <ResumeName>Shekhar Khedekar</ResumeName>
                 <div>
-                    <ResumeName>Shekhar Khedekar</ResumeName>
                     <div>
-                        <ResumeHeader>Contact</ResumeHeader>
-                        <div>
-                            <a href="mailto:shekhar.khedekar@gmail.com">
-                                shekhar.khedekar@gmail.com
-                            </a>
-                        </div>
-                        <div>
-                            <a href="tel:510.220.9106">510.220.9106</a>
-                        </div>
-                        <div>
-                            <a
-                                href="http://www.linkedin.com/in/shekharkhedekar"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                linkedin.com/in/shekharkhedekar
-                            </a>
-                        </div>
+                        <a href="mailto:shekhar.khedekar@gmail.com">
+                            shekhar.khedekar@gmail.com
+                        </a>
+                    </div>
+                    <div>
+                        <a href="tel:510.220.9106">510.220.9106</a>
+                    </div>
+                    <div>
+                        <a
+                            href="http://www.linkedin.com/in/shekharkhedekar"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            linkedin.com/in/shekharkhedekar
+                        </a>
                     </div>
                 </div>
-            </ResumeLeftColumn>
+            </ResumeTitle>
 
-            <ResumeRightColumn>
-                {data.sections &&
-                    data.sections.map((section) => (
-                        <ResumeSection>
-                            <ResumeHeader>{section.name}</ResumeHeader>
-                            <div>{section.description}</div>
+            {data.sections &&
+                data.sections.map((section) => (
+                    <ResumeSection>
+                        <ResumeHeader>{section.name}</ResumeHeader>
+                        <div>{section.description}</div>
 
+                        <ResumeItems>
                             {section.items &&
                                 section.items.map((item) => (
                                     <ResumeItem>
@@ -156,21 +141,19 @@ export const Resume = () => {
                                         )}
                                     </ResumeItem>
                                 ))}
+                        </ResumeItems>
 
-                            {section.lists &&
-                                section.lists.map((list) => (
-                                    <>
-                                        <ResumeListName>
-                                            {list.name}
-                                        </ResumeListName>
-                                        <ResumeListContent>
-                                            {list.content}
-                                        </ResumeListContent>
-                                    </>
-                                ))}
-                        </ResumeSection>
-                    ))}
-            </ResumeRightColumn>
+                        {section.lists &&
+                            section.lists.map((list) => (
+                                <ResumeList>
+                                    <ResumeListName>{list.name}</ResumeListName>
+                                    <ResumeListContent>
+                                        {list.content}
+                                    </ResumeListContent>
+                                </ResumeList>
+                            ))}
+                    </ResumeSection>
+                ))}
         </ResumeWrap>
     );
 };
