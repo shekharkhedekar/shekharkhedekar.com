@@ -8,21 +8,13 @@ import data from './data.json';
 
 const ResumeGlobalStyle = createGlobalStyle`
     @page {
-    size: auto;
-    margin: 0;
+        size: auto;
+        margin: 0;
     }
-
-    html,
-    body {
-        width: 8.5in;
-        @media screen and (max-width: 600px) {
-           width: 100%;
-        }
-    }
-
+    
     a {
-    color: inherit;
-    text-decoration: none;
+        color: inherit;
+        text-decoration: none;
     }
 `;
 const ResumeWrap = styled.div`
@@ -30,8 +22,11 @@ const ResumeWrap = styled.div`
     font-family: Helvetica Neue, Helvetica, Sans-Serif;
     font-size: 10pt;
     padding: 20pt;
+    margin: auto;
+    width: 8.5in;
     @media screen and (max-width: 600px) {
         display: block;
+        width: 100%;
     }
 `;
 
