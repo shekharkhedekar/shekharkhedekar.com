@@ -65,9 +65,9 @@ export const Setlister: FC = () => {
                             key={song.name}
                             checked={song.selected}
                         />{' '}
-                        {song.name} (P{getTuningSymbol(song.peter)} D
-                        {getTuningSymbol(song.dave)} R
-                        {getTuningSymbol(song.rene)})
+                        {song.name} ({getTuningSymbol('P', song.peter)}
+                        {getTuningSymbol('D', song.dave)}
+                        {getTuningSymbol('R', song.rene)})
                     </label>
                 ))}
             </div>

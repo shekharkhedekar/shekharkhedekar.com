@@ -26,10 +26,7 @@ export const Song: FC<SongProps> = ({ tuning }) => {
             >
                 {tuning.name} (
                 {Object.entries(tuning.tunings).map(([member, tuning]) => (
-                    <span key={tuning}>
-                        {member.charAt(0).toUpperCase()}
-                        {getTuningSymbol(tuning)}
-                    </span>
+                    <span key={tuning}>{getTuningSymbol(member, tuning)}</span>
                 ))}
                 )
             </div>

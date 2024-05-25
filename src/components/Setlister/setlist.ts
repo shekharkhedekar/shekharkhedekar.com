@@ -8,16 +8,18 @@ export type Song = {
 };
 type SetList = Song[];
 
-export const getTuningSymbol = (tuning: string) => {
+export const getTuningSymbol = (name: string, tuning: string) => {
+    const initial = name.charAt(0).toUpperCase();
+    let tuningSymbol = '🤷';
     if (tuning === 'Standard') {
-        return '⬆️';
+        tuningSymbol = '⬆️';
     }
 
     if (tuning === 'Drop') {
-        return '⬇️';
+        tuningSymbol = '⬇️';
     }
 
-    return '🤷';
+    return `${initial} ${tuningSymbol} `;
 };
 export const songs: SetList = [
     { name: 'Blake', rene: 'Standard', dave: 'Standard', peter: 'Standard' },
@@ -134,9 +136,7 @@ export const generateTunings = (setList: SetList) => {
                     currentSongTuning !== 'Either';
                 if (tuningChanged) {
                     song.changes.push(
-                        `${member.charAt(0).toUpperCase()}  ${getTuningSymbol(
-                            currentSongTuning
-                        )}`
+                        getTuningSymbol(member, currentSongTuning)
                     );
                 }
             });
