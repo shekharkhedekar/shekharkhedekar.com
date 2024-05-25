@@ -12,22 +12,16 @@ export const Setlister: FC = () => {
         songs.filter((song) => song.selected)
     );
     const tunings = generateTunings(songOrder);
-    const allTunings = tunings.flatMap((tuning) => tuning.changes);
+    const allChanges = tunings.flatMap((tuning) => tuning.changes);
 
     return (
-        <div
-            style={{
-                margin: '1rem 1rem 2rem 1rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '1rem',
-            }}
-        >
-            <h1>Setlister</h1>
+        <div style={{ margin: '1rem' }}>
+            <h1>BK Setlister</h1>
 
             <h2>
                 All Songs <Note>(select to add to set)</Note>
             </h2>
+
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {allSongs.map((song) => (
                     <label key={song.name}>
@@ -75,14 +69,16 @@ export const Setlister: FC = () => {
             <h2>
                 Set <Note>(drag to reorder)</Note>
             </h2>
+
             <div>
-                Number of tunings: <strong>Peter</strong>(
-                {allTunings.filter((tuning) => tuning.startsWith('P')).length}){' '}
+                Number of changes: <strong>Peter</strong>(
+                {allChanges.filter((tuning) => tuning.startsWith('P')).length}){' '}
                 <strong>Dave</strong>(
-                {allTunings.filter((tuning) => tuning.startsWith('D')).length}){' '}
+                {allChanges.filter((tuning) => tuning.startsWith('D')).length}){' '}
                 <strong>Rene</strong>(
-                {allTunings.filter((tuning) => tuning.startsWith('R')).length}){' '}
+                {allChanges.filter((tuning) => tuning.startsWith('R')).length}){' '}
             </div>
+
             <SortableList
                 onSortEnd={(oldIndex, newIndex) =>
                     setSongOrder((prev) => {
