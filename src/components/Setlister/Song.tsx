@@ -1,0 +1,51 @@
+import { FC } from 'react';
+
+import { getTuningSymbol, Permutation } from './setlist';
+
+export interface SongProps {
+    tuning: Permutation;
+}
+
+export const Song: FC<SongProps> = ({ tuning }) => {
+    return (
+        <div
+            style={{
+                border: '1px solid gray',
+                padding: '1rem',
+                borderRadius: '1rem',
+                boxShadow: '.1rem 0.1rem .1rem rgba(0, 0, 0, 0.5)',
+                transition: 'background-color 0.2s',
+                backgroundColor: 'white',
+                cursor: 'pointer',
+            }}
+        >
+            <div
+                style={{
+                    fontWeight: 'bold',
+                }}
+            >
+                {tuning.name} (
+                {Object.entries(tuning.tunings).map(([member, tuning]) => (
+                    <span key={tuning}>
+                        {member.charAt(0).toUpperCase()}
+                        {getTuningSymbol(tuning)}
+                    </span>
+                ))}
+                )
+            </div>
+
+            {tuning.changes.length > 0 && (
+                <div
+                    style={{
+                        fontSize: '0.75rem',
+                    }}
+                >
+                    Changes:
+                    {tuning.changes.map((tuning, i) => (
+                        <span key={tuning}>{tuning}</span>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};

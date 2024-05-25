@@ -9,6 +9,7 @@ import { GlobalStyle } from './components/GlobalStyle';
 import { Snake } from './components/Snake';
 import { VCardGenerator } from './components/VCardGenerator';
 import { Helmet } from 'react-helmet';
+import { Setlister } from './components/Setlister';
 
 const App = () => {
     return (
@@ -41,6 +42,7 @@ const App = () => {
                         path="/vcard-generator"
                         element={<VCardGenerator />}
                     ></Route>
+                    <Route path="/setlister" element={<Setlister />}></Route>
                 </Routes>
             </Router>
         </>
