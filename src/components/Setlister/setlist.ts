@@ -10,11 +10,13 @@ type SetList = Song[];
 
 export const getTuningSymbol = (tuning: string) => {
     if (tuning === 'Standard') {
-        return '⬆︎';
+        return '⬆️';
     }
+
     if (tuning === 'Drop') {
-        return '⬇︎';
+        return '⬇️';
     }
+
     return '🤷';
 };
 export const songs: SetList = [
