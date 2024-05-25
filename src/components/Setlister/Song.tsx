@@ -25,8 +25,10 @@ export const Song: FC<SongProps> = ({ tuning }) => {
                 }}
             >
                 {tuning.name} (
-                {Object.entries(tuning.tunings).map(([member, tuning]) => (
-                    <span key={tuning}>{getTuningSymbol(member, tuning)}</span>
+                {Object.entries(tuning.tunings).map(([member, tuning], i) => (
+                    <span key={tuning + i}>
+                        {getTuningSymbol(member, tuning)}
+                    </span>
                 ))}
                 )
             </div>
@@ -39,7 +41,7 @@ export const Song: FC<SongProps> = ({ tuning }) => {
                 >
                     Changes:
                     {tuning.changes.map((tuning, i) => (
-                        <span key={tuning}>{tuning}</span>
+                        <span key={tuning + i}>{tuning}</span>
                     ))}
                 </div>
             )}

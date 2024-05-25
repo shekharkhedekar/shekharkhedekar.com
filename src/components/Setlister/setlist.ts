@@ -126,15 +126,24 @@ export const generateTunings = (setList: SetList) => {
         const lastSong = acc[acc.length - 1];
         if (lastSong) {
             ['rene', 'dave', 'peter'].forEach((member) => {
+                // Reset tuning to last song before changing it
+                // @ts-ignore
+                song.tunings[member] = lastSong.tunings[member];
+
                 // @ts-ignore
                 const lastSongTuning: string = lastSong.tunings[member];
                 // @ts-ignore
-                const currentSongTuning: string = song.tunings[member];
-                const tuningChanged =
+                const currentSongTuning: string = item[member];
+                const isTuningChanged =
                     lastSongTuning !== currentSongTuning &&
-                    lastSongTuning !== 'Either' &&
                     currentSongTuning !== 'Either';
-                if (tuningChanged) {
+
+                if (isTuningChanged) {
+                    //@ts-ignore
+                    song.tunings[member] =
+                        currentSongTuning === 'Either'
+                            ? lastSongTuning
+                            : currentSongTuning;
                     song.changes.push(
                         getTuningSymbol(member, currentSongTuning)
                     );

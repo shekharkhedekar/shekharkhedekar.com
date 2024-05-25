@@ -30,7 +30,7 @@ export const Setlister: FC = () => {
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {allSongs.map((song) => (
-                    <label>
+                    <label key={song.name}>
                         <input
                             onChange={(e) => {
                                 const checked = e.target.checked;
