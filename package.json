@@ -15,6 +15,7 @@
         "@types/react-helmet": "^6.1.5",
         "@types/react-scroll": "^1.8.3",
         "@types/webfontloader": "^1.6.34",
+        "@zip.js/zip.js": "^2.7.52",
         "axios": "^0.26.1",
         "csvtojson": "^2.0.10",
         "eslint-config-airbnb": "^19.0.4",
