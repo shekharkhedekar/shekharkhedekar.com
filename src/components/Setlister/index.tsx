@@ -14,22 +14,22 @@ export const Setlister: FC = () => {
     );
     const tunings = generateTunings(songOrder);
     const allChanges = tunings.flatMap((tuning) => tuning.changes);
-    const tuningsString = encodeURIComponent(
-        JSON.stringify(
-            tunings.map(
-                (tuning) =>
-                    `${tuning.name}${
-                        tuning.changes.length
-                            ? ` (${tuning.changes.join('')})`
-                            : ''
-                    }`
-            )
-        )
+    const tuningsList = tunings.map(
+        (tuning) =>
+            `${tuning.name}${
+                tuning.changes.length ? ` (${tuning.changes.join('')})` : ''
+            }`
     );
+    const tuningsString = encodeURIComponent(JSON.stringify(tuningsList));
 
-    console.log(tuningsString.length);
     return (
-        <div style={{ margin: '1rem' }}>
+        <div
+            style={{
+                padding: '1rem',
+                backgroundColor: '#252121',
+                color: 'white',
+            }}
+        >
             <h1>BK Setlister</h1>
 
             <h2>
@@ -80,16 +80,28 @@ export const Setlister: FC = () => {
                 ))}
             </div>
 
-            <h2>
-                Set <Note>(drag to reorder)</Note>
+            <h2 style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div>
+                    Set <Note>(drag to reorder)</Note>
+                </div>
+                <Link
+                    to={`print?tunings=${tuningsString}`}
+                    target="_blank"
+                    style={{
+                        color: '#007bff',
+                        textDecoration: 'underline',
+                    }}
+                >
+                    Print
+                </Link>
             </h2>
 
-            <div>
-                Number of changes: <strong>Peter</strong>(
-                {allChanges.filter((tuning) => tuning.startsWith('P')).length}){' '}
-                <strong>Dave</strong>(
-                {allChanges.filter((tuning) => tuning.startsWith('D')).length}){' '}
-                <strong>Rene</strong>(
+            <div style={{ marginBottom: '1rem' }}>
+                Number of changes: <strong>Peter</strong> (
+                {allChanges.filter((tuning) => tuning.startsWith('P')).length})
+                / <strong>Dave</strong> (
+                {allChanges.filter((tuning) => tuning.startsWith('D')).length})
+                / <strong>Rene</strong> (
                 {allChanges.filter((tuning) => tuning.startsWith('R')).length}){' '}
             </div>
 
@@ -102,8 +114,6 @@ export const Setlister: FC = () => {
                         return newOrder;
                     })
                 }
-                className="list"
-                draggedItemClassName="dragged"
             >
                 <div
                     style={{
@@ -121,18 +131,6 @@ export const Setlister: FC = () => {
                     ))}
                 </div>
             </SortableList>
-
-            <Link
-                to={`print?tunings=${tuningsString}`}
-                target="_blank"
-                style={{
-                    fontSize: '1.5rem',
-                    marginTop: '1rem',
-                    display: 'block',
-                }}
-            >
-                Print
-            </Link>
         </div>
     );
 };
