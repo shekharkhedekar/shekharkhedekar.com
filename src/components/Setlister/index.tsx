@@ -5,6 +5,7 @@ import { Song as SongType } from './setlist';
 import { Note } from './Note';
 
 import SortableList, { SortableItem } from 'react-easy-sort';
+import { Link } from 'react-router-dom';
 
 export const Setlister: FC = () => {
     const [allSongs, setAllSongs] = useState<SongType[]>(songs);
@@ -13,7 +14,20 @@ export const Setlister: FC = () => {
     );
     const tunings = generateTunings(songOrder);
     const allChanges = tunings.flatMap((tuning) => tuning.changes);
+    const tuningsString = encodeURIComponent(
+        JSON.stringify(
+            tunings.map(
+                (tuning) =>
+                    `${tuning.name}${
+                        tuning.changes.length
+                            ? ` (${tuning.changes.join('')})`
+                            : ''
+                    }`
+            )
+        )
+    );
 
+    console.log(tuningsString.length);
     return (
         <div style={{ margin: '1rem' }}>
             <h1>BK Setlister</h1>
@@ -107,6 +121,18 @@ export const Setlister: FC = () => {
                     ))}
                 </div>
             </SortableList>
+
+            <Link
+                to={`print?tunings=${tuningsString}`}
+                target="_blank"
+                style={{
+                    fontSize: '1.5rem',
+                    marginTop: '1rem',
+                    display: 'block',
+                }}
+            >
+                Print
+            </Link>
         </div>
     );
 };

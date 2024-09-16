@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GroupMeetingSpot from './components/GroupMeetingSpot';
 import PictorialCongressVotes from './components/PictorialCongressVotes';
@@ -10,6 +9,7 @@ import { Snake } from './components/Snake';
 import { VCardGenerator } from './components/VCardGenerator';
 import { Helmet } from 'react-helmet';
 import { Setlister } from './components/Setlister';
+import { PrintSetList } from './components/Setlister/PrintSetList';
 
 const App = () => {
     return (
@@ -43,6 +43,10 @@ const App = () => {
                         element={<VCardGenerator />}
                     ></Route>
                     <Route path="/setlister" element={<Setlister />}></Route>
+                    <Route
+                        path="/setlister/print"
+                        element={<PrintSetList />}
+                    ></Route>
                 </Routes>
             </Router>
         </>

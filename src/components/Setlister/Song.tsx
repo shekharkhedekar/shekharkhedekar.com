@@ -24,27 +24,30 @@ export const Song: FC<SongProps> = ({ tuning }) => {
                     fontWeight: 'bold',
                 }}
             >
-                {tuning.name} (
+                {tuning.name}{' '}
+                {tuning.changes.length > 0 && (
+                    <>
+                        (
+                        {tuning.changes.map((tuning, i) => (
+                            <span key={tuning + i}>{tuning}</span>
+                        ))}
+                        )
+                    </>
+                )}
+            </div>
+
+            <div
+                style={{
+                    fontSize: '0.75rem',
+                    marginTop: '0.5rem',
+                }}
+            >
                 {Object.entries(tuning.tunings).map(([member, tuning], i) => (
                     <span key={tuning + i}>
                         {getTuningSymbol(member, tuning)}
                     </span>
                 ))}
-                )
             </div>
-
-            {tuning.changes.length > 0 && (
-                <div
-                    style={{
-                        fontSize: '0.75rem',
-                    }}
-                >
-                    Changes:
-                    {tuning.changes.map((tuning, i) => (
-                        <span key={tuning + i}>{tuning}</span>
-                    ))}
-                </div>
-            )}
         </div>
     );
 };
