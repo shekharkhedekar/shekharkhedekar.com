@@ -10,6 +10,7 @@ import { VCardGenerator } from './components/VCardGenerator';
 import { Helmet } from 'react-helmet';
 import { Setlister } from './components/Setlister';
 import { PrintSetList } from './components/Setlister/PrintSetList';
+import { StrandsAnimation } from './components/StrandsAnimation';
 
 const App = () => {
     return (
@@ -23,30 +24,25 @@ const App = () => {
             <GlobalStyle />
             <Router>
                 <Routes>
-                    <Route path="/" element={<Home />}></Route>
-                    <Route path="/resume" element={<Resume />}></Route>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/resume" element={<Resume />} />
                     <Route
                         path="/group-meeting-spot"
                         element={<GroupMeetingSpot />}
-                    ></Route>
+                    />
                     <Route
                         path="/pictorial-congress-votes"
                         element={<PictorialCongressVotes />}
-                    ></Route>
-                    <Route
-                        path="/find-my-bart"
-                        element={<FindMyBart />}
-                    ></Route>
-                    <Route path="/snake" element={<Snake />}></Route>
+                    />
+                    <Route path="/find-my-bart" element={<FindMyBart />} />
+                    <Route path="/snake" element={<Snake />} />
                     <Route
                         path="/vcard-generator"
                         element={<VCardGenerator />}
-                    ></Route>
-                    <Route path="/setlister" element={<Setlister />}></Route>
-                    <Route
-                        path="/setlister/print"
-                        element={<PrintSetList />}
-                    ></Route>
+                    />
+                    <Route path="/setlister" element={<Setlister />} />
+                    <Route path="/setlister/print" element={<PrintSetList />} />
+                    <Route path="/strands" element={<StrandsAnimation />} />
                 </Routes>
             </Router>
         </>
