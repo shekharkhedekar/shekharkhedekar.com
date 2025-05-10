@@ -12,46 +12,90 @@ const hasDuplicates = (arr: string[]) => {
 };
 
 export const RandomNamePicker = () => {
-    const [names, setNames] = useState<string>(
-        ['Alice', 'Bob', 'Charlie', 'David', 'Eve'].join('\n')
-    );
-    const namesArray = names
-        .split('\n')
-        .map((name) => name.trim())
-        .filter((name) => name);
+    const [names, setNames] = useState<string[]>([
+        'Alice',
+        'Bob',
+        'Charlie',
+        'David',
+        'Eve',
+    ]);
+    const [error, setError] = useState<string | null>(null);
+    const [value, setValue] = useState<string>('');
+
     const [pickedName, setPickedName] = useState<string | null>(null);
     const pickRandomName = () => {
-        if (hasDuplicates(namesArray)) {
-            console.log('Duplicates found');
+        setError(null);
+        if (hasDuplicates(names)) {
+            setError('Duplicates found');
             return;
         }
 
-        const getRandIndex = () =>
-            Math.floor(Math.random() * namesArray.length);
+        const getRandIndex = () => Math.floor(Math.random() * names.length);
         const index = getRandIndex();
-        const name = namesArray[index];
+        const name = names[index];
 
         setPickedName(name);
     };
     return (
-        <div style={{ padding: '1rem' }}>
+        <div
+            style={{
+                padding: '1rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '1rem',
+                alignItems: 'flex-start',
+            }}
+        >
             <h1>Random Name Picker</h1>
             <h2>Names</h2>
-            <div>
-                <textarea
-                    rows={10}
-                    onChange={(e) => {
-                        const value = e.target.value;
-                        setNames(value);
-                    }}
-                    value={names}
-                />
-            </div>
+            {names.map((name, index) => (
+                <div key={index} style={{ display: 'flex', gap: '0.5rem' }}>
+                    {name}
+                    <button
+                        onClick={() => {
+                            setNames((prev) => {
+                                return prev.filter((_, i) => i !== index);
+                            });
+                        }}
+                    >
+                        -
+                    </button>
+                </div>
+            ))}
+            <form onSubmit={(e) => e.preventDefault()}>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <input
+                        type="text"
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            setValue(value);
+                        }}
+                        value={value}
+                    />
+                    <button
+                        type="submit"
+                        onClick={() => {
+                            setNames((prev) => {
+                                return [...prev, value];
+                            });
+                            setValue('');
+                        }}
+                    >
+                        +
+                    </button>
+                </div>
+            </form>
             <button onClick={pickRandomName}>Pick Name</button>
             {pickedName && (
                 <div>
                     <h2>Picked Name</h2>
                     <p>{pickedName}</p>
+                </div>
+            )}
+            {error && (
+                <div style={{ color: 'red' }}>
+                    <h2>Error</h2>
+                    <p>{error}</p>
                 </div>
             )}
         </div>
