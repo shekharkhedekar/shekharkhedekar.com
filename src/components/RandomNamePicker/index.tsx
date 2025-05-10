@@ -71,6 +71,7 @@ export const RandomNamePicker = () => {
                             setValue(value);
                         }}
                         value={value}
+                        placeholder="Add a name"
                     />
                     <button
                         type="submit"
