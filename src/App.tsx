@@ -11,6 +11,7 @@ import { Helmet } from 'react-helmet';
 import { Setlister } from './components/Setlister';
 import { PrintSetList } from './components/Setlister/PrintSetList';
 import { StrandsAnimation } from './components/StrandsAnimation';
+import { RandomNamePicker } from './components/RandomNamePicker';
 
 const App = () => {
     return (
@@ -43,6 +44,10 @@ const App = () => {
                     <Route path="/setlister" element={<Setlister />} />
                     <Route path="/setlister/print" element={<PrintSetList />} />
                     <Route path="/strands" element={<StrandsAnimation />} />
+                    <Route
+                        path="/random-name-picker"
+                        element={<RandomNamePicker />}
+                    />
                 </Routes>
             </Router>
         </>
