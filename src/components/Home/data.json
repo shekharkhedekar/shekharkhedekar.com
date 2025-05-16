@@ -16,6 +16,27 @@
             "name": "Past",
             "items": [
                 {
+                    "title": "Miri AI",
+                    "description": "Frontend Engineer",
+                    "time": "2024-Present",
+                    "numYears": 1,
+                    "content": "Building the react native app and website for Miri AI, a platform for coaches to scale their impact with AI."
+                },
+                {
+                    "title": "Moment",
+                    "description": "Frontend Engineer",
+                    "time": "2023—2024",
+                    "numYears": 1,
+                    "content": "Building documentation tools for developers"
+                },
+                {
+                    "title": "Moment",
+                    "description": "Frontend Engineer - Contract",
+                    "time": "2022-2023",
+                    "numYears": 1,
+                    "content": "Building documentation tools for developers"
+                },
+                {
                     "title": "Stay-at-home Dad",
                     "description": "Chef, Chauffer, Event Planner",
                     "time": "2021-2022",

@@ -12,6 +12,7 @@ import { Setlister } from './components/Setlister';
 import { PrintSetList } from './components/Setlister/PrintSetList';
 import { StrandsAnimation } from './components/StrandsAnimation';
 import { RandomNamePicker } from './components/RandomNamePicker';
+import { Spotlight } from './components/Spotlight';
 
 const App = () => {
     return (
@@ -48,6 +49,7 @@ const App = () => {
                         path="/random-name-picker"
                         element={<RandomNamePicker />}
                     />
+                    <Route path="/spotlight" element={<Spotlight />} />
                 </Routes>
             </Router>
         </>
