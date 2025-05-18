@@ -64,11 +64,17 @@ a:hover,
 a:visited,
 a:focus,
 a:active {
-  text-decoration: none;
   color: ${COLORS.secondaryColorLight};
+  background: linear-gradient(currentColor 0 0) 
+    bottom center/
+    var(--underline-width, 0%) 0.1em
+    no-repeat;
+  text-decoration: none;
+  transition: background-size 0s;
 }
 a:hover {
-  text-decoration: underline;
+  --underline-width: 100%;
+  transition: background-size 0.1s;
 }
 a.sk-link-dark {
   &,

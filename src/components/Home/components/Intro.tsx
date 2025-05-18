@@ -89,24 +89,25 @@ export const Intro: React.FC = () => {
                         title="linkedIn"
                         isDark
                     >
-                        LinkedIn,{' '}
+                        LinkedIn
                     </Link>
-                    or find me on{' '}
+                    , or find me on{' '}
                     <Link
                         href="https://www.facebook.com/shekhar.khedekar"
                         title="facebook"
                         isDark
                     >
-                        Facebook,{' '}
+                        Facebook
                     </Link>
+                    ,{' '}
                     <Link
                         href="https://twitter.com/shekhar"
                         title="twitter"
                         isDark
                     >
-                        Twitter,{' '}
+                        Twitter
                     </Link>
-                    and{' '}
+                    , and{' '}
                     <Link
                         href="https://www.instagram.com/shekhark"
                         title="instagram"

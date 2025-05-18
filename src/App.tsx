@@ -13,6 +13,7 @@ import { PrintSetList } from './components/Setlister/PrintSetList';
 import { StrandsAnimation } from './components/StrandsAnimation';
 import { RandomNamePicker } from './components/RandomNamePicker';
 import { Spotlight } from './components/Spotlight';
+import { NoMatch } from './components/NoMatch';
 
 const App = () => {
     return (
@@ -50,6 +51,7 @@ const App = () => {
                         element={<RandomNamePicker />}
                     />
                     <Route path="/spotlight" element={<Spotlight />} />
+                    <Route path="*" element={<NoMatch />} />
                 </Routes>
             </Router>
         </>
