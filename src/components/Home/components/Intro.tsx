@@ -120,7 +120,10 @@ export const Intro: React.FC = () => {
             </IntroContentWrap>
             <DownArrow
                 onClick={() => {
-                    scroller.scrollTo('sk-work', { smooth: true });
+                    scroller.scrollTo('sk-work', {
+                        smooth: true,
+                        duration: 200,
+                    });
                 }}
             >
                 <FaArrowDown />

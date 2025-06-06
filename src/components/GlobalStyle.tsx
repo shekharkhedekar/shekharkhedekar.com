@@ -65,10 +65,10 @@ a:visited,
 a:focus,
 a:active {
   color: ${COLORS.secondaryColorLight};
-  background: linear-gradient(currentColor 0 0) 
-    bottom center/
-    var(--underline-width, 0%) 0.1em
-    no-repeat;
+  background-image: linear-gradient(currentColor);
+  background-position: bottom center;
+  background-size: var(--underline-width, 0%) 0.1em;
+  background-repeat: no-repeat;
   text-decoration: none;
   transition: background-size 0s;
 }
